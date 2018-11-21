@@ -1,0 +1,49 @@
+﻿namespace Alpha.CloneAccount.Api.Handlers
+{
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Enumerations;
+    using MediatR;
+    using Models;
+    using Params;
+    using Requests;
+    using Services;
+
+    public class CustomerHandler :
+        IRequestHandler<CustomerPTInfoQuery, CustomerPTInfo>,
+        IRequestHandler<CloneCustomerCommand, CloneCustomerResult>
+    {
+        private readonly CustomerService customerService;
+
+        public CustomerHandler(CustomerService customerService)
+        {
+            this.customerService = customerService;
+        }
+
+        public async Task<CustomerPTInfo> Handle(CustomerPTInfoQuery request, CancellationToken cancellationToken)
+            => await customerService.GetPTInfo(
+                request.CustId,
+                Enumeration.FromValue<UserLevel>(request.CustLevel),
+                request.Site);
+
+        public async Task<CloneCustomerResult> Handle(CloneCustomerCommand request, CancellationToken cancellationToken)
+            => await customerService.CloneCustomer(new CloneCustomerParam(
+                request.ActorId,
+                request.ActorSubAccId,
+                request.ActorSubAccName,
+                Enumeration.FromValue<UserLevel>(request.ActorUserLevel),
+                request.UserName,
+                request.Password,
+                request.FirstName,
+                request.LastName,
+                request.Phone,
+                request.MobilePhone,
+                request.Fax,
+                request.Credit,
+                request.MaxCredit,
+                request.SourceCustId,
+                request.Language,
+                request.IP,
+                request.SystemId));
+    }
+}

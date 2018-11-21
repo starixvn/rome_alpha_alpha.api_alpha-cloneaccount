@@ -1,0 +1,119 @@
+﻿namespace Alpha.CloneAccount.Services
+{
+    using System;
+    using System.Text;
+    using Microsoft.VisualBasic;
+
+    public interface PasswordService
+    {
+        string Generate(int length, bool specialCharacter, bool numeric, bool lowercase, bool uppercase);
+
+        string CfsEnCode(string plainText);
+    }
+
+    public class PasswordServiceImpl : PasswordService
+    {
+        public string Generate(int length, bool specialCharacter, bool numeric, bool lowercase, bool uppercase)
+        {
+            var password = new StringBuilder(length);
+            var random = new Random();
+            char c;
+
+            while (password.Length < length)
+            {
+                c = (char)random.Next(33, 127);
+                password.Append(c);
+
+                if (char.IsDigit(c))
+                {
+                    numeric = false;
+                }
+                else if (char.IsLower(c))
+                {
+                    lowercase = false;
+                }
+                else if (char.IsUpper(c))
+                {
+                    uppercase = false;
+                }
+                else if (!char.IsLetterOrDigit(c))
+                {
+                    specialCharacter = false;
+                }
+            }
+
+            if (specialCharacter)
+            {
+                password.Append((char)random.Next(33, 48));
+            }
+
+            if (numeric)
+            {
+                password.Append((char)random.Next(48, 58));
+            }
+
+            if (lowercase)
+            {
+                password.Append((char)random.Next(97, 123));
+            }
+
+            if (uppercase)
+            {
+                password.Append((char)random.Next(65, 91));
+            }
+
+            return password.ToString();
+        }
+
+        public string CfsEnCode(string plainText)
+        {
+            var num = 30;
+            var num2 = num - plainText.Length;
+
+            if (num2 > 1)
+            {
+                for (var m = 1; m <= num2; m++)
+                {
+                    plainText += Strings.Chr(0x15);
+                }
+            }
+
+            var num3 = 1.0;
+
+            for (var i = 1; i <= num; i++)
+            {
+                var num5 = num + Strings.Asc(Strings.Mid(plainText, i, 1)) * i;
+                num3 *= num5;
+            }
+
+            plainText = num3.ToString();
+            var str = string.Empty;
+
+            for (var j = 1; j <= plainText.Length; j++)
+            {
+                str += CfsCode(Strings.Mid(plainText, j, 3));
+            }
+
+            var str2 = string.Empty;
+
+            for (var k = 20; k <= str.Length - 0x12; k += 2)
+            {
+                str2 += Strings.Mid(str, k, 1);
+            }
+
+            return str2;
+        }
+
+        private static string CfsCode(string nWord)
+        {
+            var number = string.Empty;
+
+            for (var i = 1; i <= nWord.Length; i++)
+            {
+                number += Strings.Asc(Strings.Mid(nWord, i, 1));
+            }
+
+            return Conversion.Hex(number);
+        }
+    }
+}
