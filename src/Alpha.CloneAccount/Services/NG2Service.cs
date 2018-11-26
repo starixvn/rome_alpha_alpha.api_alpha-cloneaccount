@@ -38,9 +38,9 @@
                 try
                 {
                     return ng2StatusService.AutoInsertAccount(
-                        sourceCustomer.CustId,
-                        sourceCustomer.UserName,
-                        GetRoleIdEnum(sourceCustomer.RoleId),
+                        createdCustomer.CustId,
+                        createdCustomer.UserName,
+                        GetRoleIdEnum(createdCustomer.RoleId),
                         actor.CustId,
                         sourceCustomer.DisableNG2,
                         SiteId.Alpha,

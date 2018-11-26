@@ -5,16 +5,15 @@
     using Criteria;
     using Fanex.Data.Repository;
     using Fanex.Logging;
-    using Models;
-    using Params;
 
     public interface DCSService
     {
         Task InsertMemberSettings(
-            CustomerInfo createdCustomer,
-            CustomerInfo sourceCustomer,
-            CustomerInfo actor,
-            CopyCustomerParam param);
+            int custId,
+            int sourceCustId,
+            int actorId,
+            int actorSubAccId,
+            string ip);
     }
 
     public class DCSServiceImpl : DCSService
@@ -31,19 +30,21 @@
         }
 
         public async Task InsertMemberSettings(
-            CustomerInfo createdCustomer,
-            CustomerInfo sourceCustomer,
-            CustomerInfo actor,
-            CopyCustomerParam param)
+            int custId,
+            int sourceCustId,
+            int actorId,
+            int actorSubAccId,
+            string ip)
         {
             try
             {
-                await repository.ExecuteAsync(new InsertMemberDCSSettingCommand(
-                    createdCustomer.CustId,
-                    sourceCustomer.CustId,
-                    actor.CustId,
-                    param.ActorSubAccId,
-                    param.IP));
+                await repository.ExecuteAsync(
+                    new InsertMemberDCSSettingCommand(
+                        custId,
+                        sourceCustId,
+                        actorId,
+                        actorSubAccId,
+                        ip));
             }
             catch (AggregateException ex)
             {

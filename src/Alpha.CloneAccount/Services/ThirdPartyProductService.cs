@@ -58,7 +58,12 @@
             CustomerInfo actor,
             CopyCustomerParam param)
         {
-            await dcsService.InsertMemberSettings(createdCustomer, sourceCustomer, actor, param);
+            await dcsService.InsertMemberSettings(
+                createdCustomer.CustId,
+                sourceCustomer.CustId,
+                actor.CustId,
+                param.ActorSubAccId,
+                param.IP);
 
             goldDeluxeService.UpdateMemberSettings(createdCustomer, sourceCustomer, actor, param);
 

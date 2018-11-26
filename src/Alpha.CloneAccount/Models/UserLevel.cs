@@ -30,18 +30,6 @@
 
         public bool IsAgentLevel() => this == Agent;
 
-        public bool IsNotAgentLevel() => !IsAgentLevel();
-
         public bool IsMasterLevel() => this == Master;
-
-        public bool IsNotMasterLevel() => !IsMasterLevel();
-
-        public bool IsSuperLevel() => this == Super;
-
-        public bool IsNotSuperLevel() => !IsSuperLevel();
-
-        public bool IsMemberLevel() => this == Member;
-
-        public bool IsNotMemberLevel() => !IsMemberLevel();
     }
 }

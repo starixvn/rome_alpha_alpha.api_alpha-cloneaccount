@@ -88,7 +88,7 @@
 
         public byte RoleId { get; }
 
-        public UserLevel CustLeve
+        public UserLevel CustLevel
             => Enumeration.FromValue<UserLevel>(RoleId);
 
         public bool SyncCasino { get; }
