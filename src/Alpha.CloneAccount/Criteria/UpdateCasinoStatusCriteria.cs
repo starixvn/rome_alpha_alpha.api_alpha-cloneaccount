@@ -14,6 +14,7 @@
             bool disabledCS,
             bool syncCS,
             bool enableDownline,
+            byte systemId,
             string ip,
             string language,
             int actorId,
@@ -23,6 +24,7 @@
             DisabledCS = disabledCS;
             SyncCS = syncCS;
             EnableDownline = enableDownline;
+            SystemId = systemId;
             IP = ip;
             Language = language;
             ActorId = actorId;
@@ -37,7 +39,7 @@
 
         public bool EnableDownline { get; }
 
-        public int SystemId { get; }
+        public byte SystemId { get; }
 
         [SpParam(SqlParamName = "UserId")]
         public int ActorId { get; }

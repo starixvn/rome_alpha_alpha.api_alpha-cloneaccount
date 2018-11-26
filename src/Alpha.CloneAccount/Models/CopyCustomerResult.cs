@@ -1,8 +1,8 @@
 ﻿namespace Alpha.CloneAccount.Models
 {
-    public class CloneCustomerResult
+    public class CopyCustomerResult
     {
-        public CloneCustomerResult(
+        public CopyCustomerResult(
             int custId,
             string custName,
             string password,

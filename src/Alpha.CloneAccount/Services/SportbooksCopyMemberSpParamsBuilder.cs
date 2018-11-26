@@ -5,30 +5,16 @@
     using System.Data;
     using Params;
 
-    public interface SportbooksCloneMemberSpParamsBuilder
+    public interface SportbooksCopyMemberSpParamsBuilder
     {
-        Hashtable BuildSpParams(DataRow sportbooksSetting, CloneCustomerParam param, string hashPassword);
+        Hashtable BuildSpParams(DataRow sportbooksSetting, CopyCustomerParam param, string hashPassword);
     }
 
-    public class SportbooksCloneMemberSpParamsBuilderImpl : SportbooksCloneMemberSpParamsBuilder
+    public class SportbooksCopyMemberSpParamsBuilderImpl : SportbooksCopyMemberSpParamsBuilder
     {
-        public Hashtable BuildSpParams(DataRow sportbooksSetting, CloneCustomerParam param, string hashPassword)
+        public Hashtable BuildSpParams(DataRow sportbooksSetting, CopyCustomerParam param, string hashPassword)
         {
             var spParams = new Hashtable();
-
-            spParams.Add("1", new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "9999" });
-            spParams.Add("1_live", new string[] { "1", "3", "7", "8" });
-            spParams.Add("2", new string[] { "1", "2", "3", "7", "8", "20", "10", "9999" });
-            spParams.Add("3", new string[] { "1", "2", "3", "20", "10" });
-
-            spParams.Add("5", new string[] { "1", "2", "3", "20", "9999", "10" });
-
-            spParams.Add("8", new string[] { "1", "3", "20", "10" });
-            spParams.Add("10", new string[] { "1", "2", "3", "20", "10" });
-            spParams.Add("11", new string[] { "1", "20", "10" });
-            spParams.Add("99", new string[] { "1", "2", "3", "9", "20", "10" });
-            spParams.Add("161", new string[] { "81", "83", "86", "88" });
-            spParams.Add("161_live", new string[] { "85", "86", "87", "89", "90" });
 
             AddAccountInfoSpParams(sportbooksSetting, param, hashPassword, spParams);
             AddBettingLimitSpParams(sportbooksSetting, spParams);
@@ -37,7 +23,7 @@
             return spParams;
         }
 
-        private void AddAccountInfoSpParams(DataRow sportbooksSetting, CloneCustomerParam param, string hashPassword, Hashtable spParams)
+        private void AddAccountInfoSpParams(DataRow sportbooksSetting, CopyCustomerParam param, string hashPassword, Hashtable spParams)
         {
             spParams.Add("custid", 0);
             spParams.Add("username", param.UserName);
@@ -49,7 +35,7 @@
             spParams.Add("fax", param.Fax);
             spParams.Add("credit", param.Credit);
             spParams.Add("copyfromcustid", param.SourceCustId);
-            spParams.Add("uplineid", param.ActorId);
+            //spParams.Add("uplineid", param.ActorId);
             spParams.Add("systemid", param.SystemId);
             spParams.Add("playerdiscount", sportbooksSetting["playerdiscount"]);
             spParams.Add("playerdiscountcs", sportbooksSetting["playerdiscountcs"]);
@@ -64,7 +50,7 @@
             spParams.Add("disablenumber", sportbooksSetting["disablenumber"]);
             spParams.Add("language", param.Language);
             spParams.Add("ip", param.IP);
-            spParams.Add("userid", param.ActorId);
+            //spParams.Add("userid", param.ActorId);
             spParams.Add("creator", param.ActorId);
             spParams.Add("subaccid", param.ActorSubAccId);
             spParams.Add("errcode", 0);
@@ -108,10 +94,11 @@
         {
             var parameter = string.Empty;
             var parameter_max = string.Empty;
+            var sportTypesBetTypes = GetSportTypesBetTypes();
 
-            foreach (string key in spParams.Keys)
+            foreach (string key in sportTypesBetTypes.Keys)
             {
-                var bettypes = (string[])spParams[key];
+                var betTypes = (string[])sportTypesBetTypes[key];
 
                 switch (key)
                 {
@@ -136,7 +123,7 @@
                         break;
                 }
 
-                foreach (string bettype in bettypes)
+                foreach (string bettype in betTypes)
                 {
                     var param = string.Format(parameter, bettype);
                     var param_max = string.Format(parameter_max, bettype);
@@ -145,6 +132,27 @@
                     spParams.Add(param, min);
                 }
             }
+        }
+
+        private Hashtable GetSportTypesBetTypes()
+        {
+            var sportTypesBetTypes = new Hashtable();
+
+            sportTypesBetTypes.Add("1", new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "9999" });
+            sportTypesBetTypes.Add("1_live", new string[] { "1", "3", "7", "8" });
+            sportTypesBetTypes.Add("2", new string[] { "1", "2", "3", "7", "8", "20", "10", "9999" });
+            sportTypesBetTypes.Add("3", new string[] { "1", "2", "3", "20", "10" });
+
+            sportTypesBetTypes.Add("5", new string[] { "1", "2", "3", "20", "9999", "10" });
+
+            sportTypesBetTypes.Add("8", new string[] { "1", "3", "20", "10" });
+            sportTypesBetTypes.Add("10", new string[] { "1", "2", "3", "20", "10" });
+            sportTypesBetTypes.Add("11", new string[] { "1", "20", "10" });
+            sportTypesBetTypes.Add("99", new string[] { "1", "2", "3", "9", "20", "10" });
+            sportTypesBetTypes.Add("161", new string[] { "81", "83", "86", "88" });
+            sportTypesBetTypes.Add("161_live", new string[] { "85", "86", "87", "89", "90" });
+
+            return sportTypesBetTypes;
         }
     }
 }

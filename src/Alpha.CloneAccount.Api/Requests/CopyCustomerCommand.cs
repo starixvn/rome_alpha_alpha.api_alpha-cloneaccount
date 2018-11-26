@@ -3,7 +3,7 @@
     using MediatR;
     using Models;
 
-    public class CloneCustomerCommand : IRequest<CloneCustomerResult>
+    public class CopyCustomerCommand : IRequest<CopyCustomerResult>
     {
         public int ActorId { get; set; }
 
@@ -29,7 +29,7 @@
 
         public decimal Credit { get; set; }
 
-        public decimal MaxCredit { get; }
+        public decimal MaxCredit { get; set; }
 
         public int SourceCustId { get; set; }
 

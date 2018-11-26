@@ -14,7 +14,7 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param);
+            CopyCustomerParam param);
     }
 
     public class DCSServiceImpl : DCSService
@@ -34,7 +34,7 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param)
+            CopyCustomerParam param)
         {
             try
             {
@@ -44,6 +44,10 @@
                     actor.CustId,
                     param.ActorSubAccId,
                     param.IP));
+            }
+            catch (AggregateException ex)
+            {
+                logger.Warn(ex.Message);
             }
             catch (Exception ex)
             {

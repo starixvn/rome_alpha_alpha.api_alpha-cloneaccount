@@ -11,7 +11,7 @@
 
     public class CustomerHandler :
         IRequestHandler<CustomerPTInfoQuery, CustomerPTInfo>,
-        IRequestHandler<CloneCustomerCommand, CloneCustomerResult>
+        IRequestHandler<CopyCustomerCommand, CopyCustomerResult>
     {
         private readonly CustomerService customerService;
 
@@ -26,8 +26,8 @@
                 Enumeration.FromValue<UserLevel>(request.CustLevel),
                 request.Site);
 
-        public async Task<CloneCustomerResult> Handle(CloneCustomerCommand request, CancellationToken cancellationToken)
-            => await customerService.CloneCustomer(new CloneCustomerParam(
+        public async Task<CopyCustomerResult> Handle(CopyCustomerCommand request, CancellationToken cancellationToken)
+            => await customerService.CopyCustomer(new CopyCustomerParam(
                 request.ActorId,
                 request.ActorSubAccId,
                 request.ActorSubAccName,

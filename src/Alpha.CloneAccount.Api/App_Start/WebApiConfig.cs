@@ -9,7 +9,7 @@
     {
         public static void Register(HttpConfiguration config)
         {
-            config.Filters.Add(new ExceptionFilter());
+            config.Filters.Add(new GlobalExceptionFilter());
 
             // Web API routes
             config.MapHttpAttributeRoutes();

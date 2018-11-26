@@ -22,19 +22,20 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param);
+            CopyCustomerParam param);
 
         Task SyncMemberSettings(
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param,
+            CopyCustomerParam param,
             bool disableAutoMasterPT);
     }
 
     public class CasinoServiceImpl : CasinoService
     {
         private const string CasinoGroup1 = "01";
+        private const int CasinoFromSystem = 2; // Alpha.
 
         private readonly IDynamicRepository repository;
         private readonly MemberWinLimitService memberWinLimitService;
@@ -54,7 +55,7 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param)
+            CopyCustomerParam param)
         {
             if (actor.SyncCasino && sourceCustomer.SyncCasino && !CasinoSection.Instance.IsUMTime)
             {
@@ -78,7 +79,7 @@
                         param.IP,
                         actor.CustId,
                         actor.UserName,
-                        param.SystemId))
+                        CasinoFromSystem))
                     {
                         await UpdateCasinoStatus(
                             createdCustomer.CustId,
@@ -95,12 +96,16 @@
                             param.IP,
                             actor.CustId,
                             actor.UserName,
-                            param.SystemId);
+                            CasinoFromSystem);
                     }
                 }
-                catch (ErrorException casinoEx)
+                catch (AggregateException ex)
                 {
-                    logger.Info(casinoEx.Message);
+                    logger.Warn(ex.Message);
+                }
+                catch (ErrorException ex)
+                {
+                    logger.Info(ex.Message);
                 }
                 catch (Exception ex)
                 {
@@ -115,13 +120,14 @@
             bool syncCasino,
             bool isUpdateDownline,
             CustomerInfo actor,
-            CloneCustomerParam param)
+            CopyCustomerParam param)
         {
             var command = new UpdateCasinoStatusCriteria(
                 custId,
                 disableCasino,
                 syncCasino,
                 isUpdateDownline,
+                param.SystemId,
                 param.IP,
                 param.LanguageKey,
                 param.ActorId,
@@ -141,7 +147,7 @@
                     param.IP,
                     actor.CustId,
                     actor.UserName,
-                    param.SystemId);
+                    CasinoFromSystem);
             }
         }
 
@@ -149,7 +155,7 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param,
+            CopyCustomerParam param,
             bool disableAutoMasterPT)
         {
             if (actor.SyncCasino && sourceCustomer.SyncCasino && !CasinoSection.Instance.IsUMTime)
@@ -158,7 +164,7 @@
                 {
                     var enableBonus = false;
                     var enableJackpot = false;
-                    var isEnablePT = GetIsEnablePT(sourceCustomer.CustId);
+                    var isEnablePT = true; //GetIsEnablePT(sourceCustomer.CustId);
 
                     var customer = new Customer();
                     var isSuccessful = customer.AutoInsertAccount(
@@ -187,7 +193,7 @@
                         param.IP,
                         actor.CustId,
                         actor.UserName,
-                        param.SystemId);
+                        CasinoFromSystem);
 
                     if (isSuccessful)
                     {
@@ -209,12 +215,16 @@
                             false,
                             actor,
                             param);
-                        customer.RemoveAccount(createdCustomer.UserName, param.IP, actor.CustId, actor.UserName, param.SystemId);
+                        customer.RemoveAccount(createdCustomer.UserName, param.IP, actor.CustId, actor.UserName, CasinoFromSystem);
                     }
                 }
-                catch (ErrorException casinoEx)
+                catch (AggregateException ex)
                 {
-                    logger.Info(casinoEx.Message);
+                    logger.Warn(ex.Message);
+                }
+                catch (ErrorException ex)
+                {
+                    logger.Info(ex.Message);
                 }
                 catch (Exception ex)
                 {
@@ -237,7 +247,7 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param)
+            CopyCustomerParam param)
         {
             var dtGameKinds = CreateGameKinds();
             var dtGameTypesStake = CreateGameTypesStakes();
@@ -267,7 +277,7 @@
                     param.IP,
                     actor.CustId,
                     param.ActorSubAccId == 0 ? actor.UserName : param.ActorSubAccName,
-                    param.SystemId
+                    CasinoFromSystem
                 });
 
                 var lsGameType = sourceCustomer.SyncCasino
@@ -304,7 +314,7 @@
                             param.IP,
                             actor.CustId,
                             param.ActorSubAccId == 0 ? actor.UserName : param.ActorSubAccName,
-                            param.SystemId
+                            CasinoFromSystem
                         });
                     }
                 }
@@ -314,7 +324,7 @@
             customer.UpdateCustGameKind(dtGameKinds);
             customer.UpdateCustGameTypeStakeLevel(dtGameTypesStake);
 
-            UpdateWinLimit(createdCustomer.CustId, sourceCustomer.CustId, actor.CustId, param.ActorSubAccId);
+            UpdateWinLimit(createdCustomer.CustId, sourceCustomer.CustId, param);
         }
 
         private DataTable CreateGameKinds()
@@ -507,15 +517,16 @@
         private void UpdateWinLimit(
             int createdCustId,
             int sourceCustId,
-            int actorId,
-            int actorSubAccId)
+            CopyCustomerParam param)
         {
             var memberWinLimitSetting = memberWinLimitService.GetMemberWinLimit(sourceCustId);
 
             memberWinLimitService.UpdateMemberWinLimit(
                 createdCustId,
-                actorId,
-                actorSubAccId,
+                param.ActorId,
+                param.ActorSubAccId,
+                param.IP,
+                param.Language,
                 memberWinLimitSetting);
         }
     }

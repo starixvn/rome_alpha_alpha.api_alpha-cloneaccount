@@ -13,7 +13,7 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param);
+            CopyCustomerParam param);
     }
 
     public class NG2ServiceImpl : NG2Service
@@ -31,7 +31,7 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param)
+            CopyCustomerParam param)
         {
             if (!actor.HideNG2 && actor.SyncedNG2)
             {

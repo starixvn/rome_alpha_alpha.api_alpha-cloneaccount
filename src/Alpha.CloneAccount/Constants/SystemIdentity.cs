@@ -4,6 +4,6 @@
     {
         public const byte Alpha = 2;
 
-        public const byte Chatbot = 3;
+        public const byte Chatbot = 8;
     }
 }

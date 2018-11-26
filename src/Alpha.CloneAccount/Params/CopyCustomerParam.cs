@@ -3,9 +3,9 @@
     using Models;
     using Utils;
 
-    public class CloneCustomerParam
+    public class CopyCustomerParam
     {
-        public CloneCustomerParam(
+        public CopyCustomerParam(
             int actorId,
             int actorSubAccId,
             string actorSubAccName,
@@ -31,17 +31,17 @@
 
             UserName = userName;
             Password = password;
-            FirstName = firstName;
-            LastName = lastName;
-            Phone = phone;
-            MobilePhone = mobilePhone;
-            Fax = fax;
+            FirstName = firstName ?? string.Empty;
+            LastName = lastName ?? string.Empty;
+            Phone = phone ?? string.Empty;
+            MobilePhone = mobilePhone ?? string.Empty;
+            Fax = fax ?? string.Empty;
             Credit = credit;
             MaxCredit = maxCredit;
             SourceCustId = sourceCustId;
 
-            Language = language;
-            IP = ip;
+            Language = language ?? "en-US";
+            IP = ip ?? string.Empty;
             SystemId = systemId;
         }
 

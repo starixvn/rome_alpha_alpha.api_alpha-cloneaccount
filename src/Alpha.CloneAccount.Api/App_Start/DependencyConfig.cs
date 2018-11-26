@@ -76,7 +76,7 @@
 
             container.RegisterSingleton<CustomerService, CustomerServiceImpl>();
             container.RegisterSingleton<PasswordService, PasswordServiceImpl>();
-            container.RegisterSingleton<SportbooksCloneMemberSpParamsBuilder, SportbooksCloneMemberSpParamsBuilderImpl>();
+            container.RegisterSingleton<SportbooksCopyMemberSpParamsBuilder, SportbooksCopyMemberSpParamsBuilderImpl>();
             container.RegisterSingleton<ThirdPartyProductService, ThirdPartyProductServiceImpl>();
             container.RegisterSingleton<DCSService, DCSServiceImpl>();
             container.Register<GoldDeluxeService>(

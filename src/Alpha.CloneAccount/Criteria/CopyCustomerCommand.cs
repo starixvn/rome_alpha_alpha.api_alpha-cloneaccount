@@ -2,9 +2,9 @@
 {
     using Fanex.Data.Repository;
 
-    public abstract class CloneCustomerCommand : NonQueryCommand
+    public abstract class CopyCustomerCommand : NonQueryCommand
     {
-        protected CloneCustomerCommand(
+        protected CopyCustomerCommand(
             string userName,
             string userpwd,
             string firstName,
@@ -22,11 +22,11 @@
         {
             UserName = userName;
             UserPwd = userpwd;
-            FirstName = firstName ?? string.Empty;
-            LastName = lastName ?? string.Empty;
-            Phone = phone ?? string.Empty;
-            MobilePhone = mobilePhone ?? string.Empty;
-            Fax = fax ?? string.Empty;
+            FirstName = firstName;
+            LastName = lastName;
+            Phone = phone;
+            MobilePhone = mobilePhone;
+            Fax = fax;
             Credit = credit;
             Creator = creator;
             ExistingCustId = sourceCustId;

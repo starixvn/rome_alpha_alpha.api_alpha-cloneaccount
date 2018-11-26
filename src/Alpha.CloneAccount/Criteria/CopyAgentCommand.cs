@@ -1,8 +1,8 @@
 ﻿namespace Alpha.CloneAccount.Criteria
 {
-    public class CloneAgentCommand : CloneCustomerCommand
+    public class CopyAgentCommand : CopyCustomerCommand
     {
-        public CloneAgentCommand(
+        public CopyAgentCommand(
             string userName,
             string userpwd,
             string firstName,

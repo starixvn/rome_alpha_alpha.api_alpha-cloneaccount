@@ -1,13 +1,16 @@
 ﻿namespace Alpha.CloneAccount.Api
 {
+    using System;
     using System.Web.Http;
     using App_Start;
     using Configurations;
     using Fanex.Data;
     using Fanex.Data.CrossCutting.WrappingException;
     using Fanex.Data.OldConnectionStringProvider;
+    using Fanex.GoldDeluxe.CoreSetting.Mappings;
     using Fanex.Logging.Extensions.Database;
     using Fanex.Logging.Extensions.Web;
+    using Fanex.RemotingRef;
 
     public class WebApiApplication : System.Web.HttpApplication
     {
@@ -17,6 +20,8 @@
 
             DependencyConfig.Init();
             AppSettings.Verify();
+
+            AutoMapperConfiguration.Configure();
 
             DbSettingProviderManager
                 .StartNewSession()
@@ -29,18 +34,10 @@
                 .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
 
             ExceptionHandler.UseConfig(loggingConfiguration);
+
+            RefDataTypeContainer
+                .ConnectTo(new Uri(AppSettings.RemoteRefURL))
+                .FromApplication("Alpha.CloneAccount.Api");
         }
-
-        //protected void Application_Error(object sender, EventArgs e)
-        //{
-        //    if (Request.IsLocal)
-        //    {
-        //        return;
-        //    }
-
-        //    Exception ex = Server.GetLastError();
-
-        //    ExceptionHandler.Handle(ex);
-        //}
     }
 }

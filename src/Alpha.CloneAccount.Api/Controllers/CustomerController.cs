@@ -25,10 +25,10 @@
         }
 
         [HttpPost]
-        [Route("api/customer/clone")]
-        public async Task<CloneCustomerResult> Clone([FromBody]CloneCustomerCommand command)
-            => command.IsValid()
+        [Route("api/customer/copy")]
+        public async Task<CopyCustomerResult> Copy([FromBody]CopyCustomerCommand command)
+            => command?.IsValid() == true
             ? await mediator.Send(command)
-            : new CloneCustomerResult(0, null, null, 400, "Bad Request.");
+            : new CopyCustomerResult(0, null, null, 400, "Bad Request.");
     }
 }

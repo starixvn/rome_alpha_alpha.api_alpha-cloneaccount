@@ -17,7 +17,7 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param);
+            CopyCustomerParam param);
     }
 
     public class KenoServiceImpl : KenoService
@@ -37,7 +37,7 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param)
+            CopyCustomerParam param)
         {
             if (KenoSection.Instance.ShowSetting)
             {
@@ -45,7 +45,10 @@
                 {
                     var sourceSettings = GetSourceMemberSettings(sourceCustomer.CustId, actor.CustId, param.ActorSubAccId);
 
-                    return UpdateMemberSettings(createdCustomer.CustId, sourceSettings);
+                    sourceSettings.SystemId = param.SystemId;
+                    sourceSettings.CustomerInformation.CustId = createdCustomer.CustId;
+
+                    return UpdateMemberSettings(sourceSettings);
                 }
                 catch (Exception ex)
                 {
@@ -72,10 +75,8 @@
             return settingService.GetSettingInCaseOfAgentEditMember(custInfoViewModel);
         }
 
-        private IEnumerable<Result> UpdateMemberSettings(int custId, AgentEditMemberSettingViewModel sourceSettings)
+        private IEnumerable<Result> UpdateMemberSettings(AgentEditMemberSettingViewModel sourceSettings)
         {
-            sourceSettings.CustomerInformation.CustId = custId;
-
             foreach (var betSetting in sourceSettings.BetSettings)
             {
                 betSetting.IsStatusUpdated = true;

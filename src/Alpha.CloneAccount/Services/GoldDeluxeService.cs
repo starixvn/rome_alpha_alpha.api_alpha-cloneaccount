@@ -17,7 +17,7 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param);
+            CopyCustomerParam param);
     }
 
     public class GoldDeluxeServiceImpl : GoldDeluxeService
@@ -37,7 +37,7 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param)
+            CopyCustomerParam param)
         {
             try
             {
@@ -79,7 +79,7 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param)
+            CopyCustomerParam param)
         {
             var criteria = new UpdateSettingFromExistingMemberParameters
             {
@@ -99,7 +99,7 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param)
+            CopyCustomerParam param)
         {
             var editSettingViewModel = new EditSettingViewModel
             {
@@ -131,7 +131,7 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param)
+            CopyCustomerParam param)
         {
             var criteria = new UpdateDisableStatusParameters
             {
@@ -139,7 +139,8 @@
                 ActorId = actor.CustId,
                 SubAccId = param.ActorSubAccId,
                 Disable = sourceCustomer.DisableGoldDeluxe,
-                Ip = param.IP
+                Ip = param.IP,
+                SystemId = param.SystemId
             };
 
             return settingService.UpdateStatus(criteria);

@@ -14,25 +14,25 @@
     {
         Task<CustomerPTInfo> GetPTInfo(int custId, UserLevel custLevel, string site);
 
-        Task<CloneCustomerResult> CloneCustomer(CloneCustomerParam param);
+        Task<CopyCustomerResult> CopyCustomer(CopyCustomerParam param);
     }
 
     public class CustomerServiceImpl : CustomerService
     {
         private readonly IDynamicRepository repository;
         private readonly PasswordService passwordService;
-        private readonly SportbooksCloneMemberSpParamsBuilder cloneMemberSpParamsBuilder;
+        private readonly SportbooksCopyMemberSpParamsBuilder copyMemberSpParamsBuilder;
         private readonly ThirdPartyProductService thirdPartyProductService;
 
         public CustomerServiceImpl(
             IDynamicRepository repository,
             PasswordService passwordService,
-            SportbooksCloneMemberSpParamsBuilder cloneMemberSpParamsBuilder,
+            SportbooksCopyMemberSpParamsBuilder copyMemberSpParamsBuilder,
             ThirdPartyProductService thirdPartyProductService)
         {
             this.repository = repository;
             this.passwordService = passwordService;
-            this.cloneMemberSpParamsBuilder = cloneMemberSpParamsBuilder;
+            this.copyMemberSpParamsBuilder = copyMemberSpParamsBuilder;
             this.thirdPartyProductService = thirdPartyProductService;
         }
 
@@ -61,13 +61,13 @@
             return new GetSuperPTCriteria(custId, site);
         }
 
-        public async Task<CloneCustomerResult> CloneCustomer(CloneCustomerParam param)
+        public async Task<CopyCustomerResult> CopyCustomer(CopyCustomerParam param)
         {
             CheckAndGenerateRawPassword(param);
 
             var result = param.ActorUserLevel.IsAgentLevel()
-                ? await CloneMember(param)
-                : await CloneMasterOrAgent(param);
+                ? await CopyMember(param)
+                : await CopyMasterOrAgent(param);
 
             if (result?.IsSuccess == true)
             {
@@ -77,7 +77,7 @@
             return result;
         }
 
-        private void CheckAndGenerateRawPassword(CloneCustomerParam param)
+        private void CheckAndGenerateRawPassword(CopyCustomerParam param)
         {
             if (IsFromChatBotService(param.SystemId)
                 && string.IsNullOrWhiteSpace(param.Password))
@@ -89,13 +89,13 @@
         private static bool IsFromChatBotService(byte systemId)
             => systemId == SystemIdentity.Chatbot;
 
-        private async Task<CloneCustomerResult> CloneMasterOrAgent(CloneCustomerParam param)
+        private async Task<CopyCustomerResult> CopyMasterOrAgent(CopyCustomerParam param)
         {
-            var criteria = BuildCloneMasterOrAgentCriteria(param);
+            var criteria = BuildCopyMasterOrAgentCriteria(param);
 
             await repository.ExecuteAsync(criteria);
 
-            return new CloneCustomerResult(
+            return new CopyCustomerResult(
                 criteria.CustId,
                 param.UserName,
                 param.Password,
@@ -103,11 +103,11 @@
                 criteria.ErrMsg);
         }
 
-        private CloneCustomerCommand BuildCloneMasterOrAgentCriteria(CloneCustomerParam param)
+        private CopyCustomerCommand BuildCopyMasterOrAgentCriteria(CopyCustomerParam param)
         {
             if (param.ActorUserLevel.IsMasterLevel())
             {
-                return new CloneAgentCommand(
+                return new CopyAgentCommand(
                     param.UserName,
                     passwordService.CfsEnCode(param.Password),
                     param.FirstName,
@@ -126,7 +126,7 @@
                     param.SystemId);
             }
 
-            return new CloneMasterCommand(
+            return new CopyMasterCommand(
                 param.UserName,
                 passwordService.CfsEnCode(param.Password),
                 param.FirstName,
@@ -144,7 +144,7 @@
                 param.SystemId);
         }
 
-        private async Task<CloneCustomerResult> CloneMember(CloneCustomerParam param)
+        private async Task<CopyCustomerResult> CopyMember(CopyCustomerParam param)
         {
             var dataTable = await GetMemberSportbooksSetting(param.SourceCustId);
 
@@ -152,7 +152,7 @@
             {
                 using (IObjectDb db = new ObjectDb("Acc_CustomerInsMember_Ag"))
                 {
-                    var spParams = cloneMemberSpParamsBuilder.BuildSpParams(
+                    var spParams = copyMemberSpParamsBuilder.BuildSpParams(
                         dataTable.Rows[0],
                         param,
                         passwordService.CfsEnCode(param.Password));
@@ -160,7 +160,7 @@
                     await db.ExecuteNonQueryAsync(spParams);
                     var ouputParams = db.GetOuputParams();
 
-                    return new CloneCustomerResult(
+                    return new CopyCustomerResult(
                         Convert.ToInt32(ouputParams["custid"]),
                         param.UserName,
                         param.Password,
@@ -186,7 +186,7 @@
             }
         }
 
-        public async Task Sync3rdProductSettings(CloneCustomerParam param, int createdCustId)
+        public async Task Sync3rdProductSettings(CopyCustomerParam param, int createdCustId)
         {
             var createdCustomer = await GetCustomerInfo(createdCustId);
             var sourceCustomer = await GetCustomerInfo(param.SourceCustId);

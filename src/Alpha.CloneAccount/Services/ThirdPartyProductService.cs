@@ -10,13 +10,13 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param);
+            CopyCustomerParam param);
 
         Task SyncMemberSettings(
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param);
+            CopyCustomerParam param);
     }
 
     public class ThirdPartyProductServiceImpl : ThirdPartyProductService
@@ -45,7 +45,7 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param)
+            CopyCustomerParam param)
         {
             await casinoService.SyncMasterOrAgentSettings(createdCustomer, sourceCustomer, actor, param);
 
@@ -56,7 +56,7 @@
             CustomerInfo createdCustomer,
             CustomerInfo sourceCustomer,
             CustomerInfo actor,
-            CloneCustomerParam param)
+            CopyCustomerParam param)
         {
             await dcsService.InsertMemberSettings(createdCustomer, sourceCustomer, actor, param);
 
