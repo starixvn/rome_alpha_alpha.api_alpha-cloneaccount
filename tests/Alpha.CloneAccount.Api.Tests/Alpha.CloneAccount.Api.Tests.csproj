@@ -8,8 +8,8 @@
     <ProjectGuid>{2D09BA00-F4C8-4991-9A10-56A82992B55B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Alpha.CloneAccount.Site.Tests</RootNamespace>
-    <AssemblyName>Alpha.CloneAccount.Site.Tests</AssemblyName>
+    <RootNamespace>Alpha.CloneAccount.Api.Tests</RootNamespace>
+    <AssemblyName>Alpha.CloneAccount.Api.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>

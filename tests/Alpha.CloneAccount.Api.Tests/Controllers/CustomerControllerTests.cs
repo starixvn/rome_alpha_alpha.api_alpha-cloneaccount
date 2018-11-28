@@ -1,4 +1,4 @@
-﻿namespace Alpha.CloneAccount.Site.Tests.Controllers
+﻿namespace Alpha.CloneAccount.Api.Tests.Controllers
 {
     using System.Threading.Tasks;
     using Api.Controllers;

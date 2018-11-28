@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.CloneAccount", "src\A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.CloneAccount.Tests", "tests\Alpha.CloneAccount.Tests\Alpha.CloneAccount.Tests.csproj", "{AEB3F6A0-C290-496D-B5FF-44069DBC4B7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.CloneAccount.Site.Tests", "tests\Alpha.CloneAccount.Site.Tests\Alpha.CloneAccount.Site.Tests.csproj", "{2D09BA00-F4C8-4991-9A10-56A82992B55B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.CloneAccount.Api", "src\Alpha.CloneAccount.Api\Alpha.CloneAccount.Api.csproj", "{3B5B88CC-204E-488F-B974-85498B2B7D0F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{D7C7ED6D-2D41-4E2E-9640-D868437A684B}"
@@ -20,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{
 		SonarQube\Alpha-CloneAccountCSharp.ruleset = SonarQube\Alpha-CloneAccountCSharp.ruleset
 		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.CloneAccount.Api.Tests", "tests\Alpha.CloneAccount.Api.Tests\Alpha.CloneAccount.Api.Tests.csproj", "{2D09BA00-F4C8-4991-9A10-56A82992B55B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +35,14 @@ Global
 		{AEB3F6A0-C290-496D-B5FF-44069DBC4B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEB3F6A0-C290-496D-B5FF-44069DBC4B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEB3F6A0-C290-496D-B5FF-44069DBC4B7C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D09BA00-F4C8-4991-9A10-56A82992B55B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D09BA00-F4C8-4991-9A10-56A82992B55B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D09BA00-F4C8-4991-9A10-56A82992B55B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D09BA00-F4C8-4991-9A10-56A82992B55B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3B5B88CC-204E-488F-B974-85498B2B7D0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3B5B88CC-204E-488F-B974-85498B2B7D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B5B88CC-204E-488F-B974-85498B2B7D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B5B88CC-204E-488F-B974-85498B2B7D0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D09BA00-F4C8-4991-9A10-56A82992B55B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D09BA00-F4C8-4991-9A10-56A82992B55B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D09BA00-F4C8-4991-9A10-56A82992B55B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D09BA00-F4C8-4991-9A10-56A82992B55B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,7 +50,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{3F1E9756-2165-4588-BB9A-A8A1B566D262} = {F49F66CE-6CB2-486E-A0A5-1B8D54B53B44}
 		{AEB3F6A0-C290-496D-B5FF-44069DBC4B7C} = {75251E13-5932-4810-AF9B-DCC5B78BE059}
-		{2D09BA00-F4C8-4991-9A10-56A82992B55B} = {75251E13-5932-4810-AF9B-DCC5B78BE059}
 		{3B5B88CC-204E-488F-B974-85498B2B7D0F} = {F49F66CE-6CB2-486E-A0A5-1B8D54B53B44}
+		{2D09BA00-F4C8-4991-9A10-56A82992B55B} = {75251E13-5932-4810-AF9B-DCC5B78BE059}
 	EndGlobalSection
 EndGlobal
