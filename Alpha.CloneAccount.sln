@@ -15,6 +15,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.CloneAccount.Site.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.CloneAccount.Api", "src\Alpha.CloneAccount.Api\Alpha.CloneAccount.Api.csproj", "{3B5B88CC-204E-488F-B974-85498B2B7D0F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{D7C7ED6D-2D41-4E2E-9640-D868437A684B}"
+	ProjectSection(SolutionItems) = preProject
+		SonarQube\Alpha-CloneAccountCSharp.ruleset = SonarQube\Alpha-CloneAccountCSharp.ruleset
+		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
