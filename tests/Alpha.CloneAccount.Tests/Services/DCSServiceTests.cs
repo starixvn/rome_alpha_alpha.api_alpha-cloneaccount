@@ -25,7 +25,7 @@
         }
 
         [Fact]
-        public async Task InsertMemberSettings_ValidCriteria_CallExecuteAsync()
+        public async Task InsertMemberSettings_ValidCriteria_CallsExecuteAsync()
         {
             // Arrange
             var custId = 33120484;
@@ -54,7 +54,7 @@
         }
 
         [Fact]
-        public async Task InsertMemberSettings_InvalidCriteria_CallExecuteAsync()
+        public async Task InsertMemberSettings_InvalidCriteria_CallsExecuteAsync()
         {
             // Arrange
             var custId = -1;
@@ -83,7 +83,7 @@
         }
 
         [Fact]
-        public async Task InsertMemberSettings_ThrowException_CallWriteLog()
+        public async Task InsertMemberSettings_ThrowException_CallsWriteLog()
         {
             // Arrange
             var custId = 33120484;

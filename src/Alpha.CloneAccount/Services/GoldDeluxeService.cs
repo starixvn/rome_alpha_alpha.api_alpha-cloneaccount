@@ -3,6 +3,7 @@
     using System;
     using AutoMapper;
     using Fanex.GoldDeluxe.CoreSetting.CommandResult;
+    using Fanex.GoldDeluxe.CoreSetting.DTOs;
     using Fanex.GoldDeluxe.CoreSetting.Enumerations;
     using Fanex.GoldDeluxe.CoreSetting.ParameterObjects;
     using Fanex.GoldDeluxe.CoreSetting.Services;
@@ -14,9 +15,9 @@
     public interface GoldDeluxeService
     {
         IMultipleCommandResults UpdateMemberSettings(
-            CustomerInfo createdCustomer,
-            CustomerInfo sourceCustomer,
-            CustomerInfo actor,
+            int custId,
+            int sourceCustId,
+            bool disableGoldDeluxe,
             CopyCustomerParam param);
     }
 
@@ -34,36 +35,67 @@
         }
 
         public IMultipleCommandResults UpdateMemberSettings(
-            CustomerInfo createdCustomer,
-            CustomerInfo sourceCustomer,
-            CustomerInfo actor,
+            int custId,
+            int sourceCustId,
+            bool disableGoldDeluxe,
             CopyCustomerParam param)
         {
             try
             {
                 // Update WinLimit, PT and Comm.
-                var result = UpdateSettingFromExistingMember(
-                    createdCustomer,
-                    sourceCustomer,
-                    actor,
-                    param);
+                var criteria = new UpdateSettingFromExistingMemberParameters
+                {
+                    CustId = custId,
+                    FromCustId = sourceCustId,
+                    UpLineId = param.ActorId,
+                    ActorId = param.ActorId,
+                    SubAccId = param.ActorSubAccId,
+                    Ip = param.IP,
+                    Language = param.LanguageKey
+                };
+
+                var result = UpdateSettingFromExistingMember(criteria);
                 var commandResults = result.CommandResultsList;
 
-                var gameSettingResult = UpdateGameSettings(
-                    createdCustomer,
-                    sourceCustomer,
-                    actor,
-                    param);
-                commandResults.Add(gameSettingResult);
+                var editSettingViewModel = new EditSettingViewModel
+                {
+                    CustId = sourceCustId,
+                    UpLineId = param.ActorId,
+                    Level = CustomerLevel.Member,
+                    UpLineLevel = CustomerLevel.Agent,
+                    ActorId = param.ActorId,
+                    Language = param.Language,
+                    FormType = FormType.Edit
+                };
+
+                var getSettingParams = Mapper.Map<EditSettingViewModel, GetSettingParameters>(editSettingViewModel);
+                var settingDTO = GetSourceMemberSetting(getSettingParams);
+
+                var updateSettingParam = new UpdateGameSettingParameters
+                {
+                    ActorId = param.ActorId,
+                    CustId = custId,
+                    GameSetting = settingDTO.GameSetting,
+                    Ip = param.IP,
+                    Language = param.Language
+                };
+
+                commandResults.Add(UpdateGameSetting(updateSettingParam));
 
                 if (result.IsSuccessful)
                 {
-                    var statusResult = UpdateStatus(
-                        createdCustomer,
-                        sourceCustomer,
-                        actor,
-                        param);
-                    commandResults.Add(statusResult);
+                    // Update Status.
+                    var statusParam = new UpdateDisableStatusParameters
+                    {
+                        CustId = custId,
+                        ActorId = param.ActorId,
+                        SubAccId = param.ActorSubAccId,
+                        Disable = disableGoldDeluxe,
+                        Ip = param.IP,
+                        SystemId = param.SystemId
+                    };
+
+                    commandResults.Add(UpdateStatus(statusParam));
                 }
 
                 return result;
@@ -71,79 +103,21 @@
             catch (Exception ex)
             {
                 logger.Warn(ex.Message);
-                return null;
+                return new MultipleCommandResults();
             }
         }
 
         private IMultipleCommandResults UpdateSettingFromExistingMember(
-            CustomerInfo createdCustomer,
-            CustomerInfo sourceCustomer,
-            CustomerInfo actor,
-            CopyCustomerParam param)
-        {
-            var criteria = new UpdateSettingFromExistingMemberParameters
-            {
-                CustId = createdCustomer.CustId,
-                FromCustId = sourceCustomer.CustId,
-                UpLineId = actor.CustId,
-                ActorId = actor.CustId,
-                SubAccId = param.ActorSubAccId,
-                Ip = param.IP,
-                Language = param.LanguageKey
-            };
+            UpdateSettingFromExistingMemberParameters criteria)
+            => settingService.UpdateSettingFromExistingMember(criteria);
 
-            return settingService.UpdateSettingFromExistingMember(criteria);
-        }
+        private SettingDTO GetSourceMemberSetting(GetSettingParameters settingParam)
+            => settingService.GetSetting(settingParam);
 
-        private ICommandResults UpdateGameSettings(
-            CustomerInfo createdCustomer,
-            CustomerInfo sourceCustomer,
-            CustomerInfo actor,
-            CopyCustomerParam param)
-        {
-            var editSettingViewModel = new EditSettingViewModel
-            {
-                CustId = sourceCustomer.CustId,
-                UpLineId = actor.CustId,
-                Level = CustomerLevel.Member,
-                UpLineLevel = CustomerLevel.Agent,
-                ActorId = actor.CustId,
-                Language = param.Language,
-                FormType = FormType.Edit
-            };
+        private ICommandResults UpdateGameSetting(UpdateGameSettingParameters settingParam)
+            => settingService.UpdateGameSetting(settingParam);
 
-            var settingParams = Mapper.Map<EditSettingViewModel, GetSettingParameters>(editSettingViewModel);
-            var settingDTO = settingService.GetSetting(settingParams);
-
-            var criteria = new UpdateGameSettingParameters
-            {
-                ActorId = actor.CustId,
-                CustId = createdCustomer.CustId,
-                GameSetting = settingDTO.GameSetting,
-                Ip = param.IP,
-                Language = param.Language
-            };
-
-            return settingService.UpdateGameSetting(criteria);
-        }
-
-        private ICommandResults UpdateStatus(
-            CustomerInfo createdCustomer,
-            CustomerInfo sourceCustomer,
-            CustomerInfo actor,
-            CopyCustomerParam param)
-        {
-            var criteria = new UpdateDisableStatusParameters
-            {
-                CustId = createdCustomer.CustId,
-                ActorId = actor.CustId,
-                SubAccId = param.ActorSubAccId,
-                Disable = sourceCustomer.DisableGoldDeluxe,
-                Ip = param.IP,
-                SystemId = param.SystemId
-            };
-
-            return settingService.UpdateStatus(criteria);
-        }
+        private ICommandResults UpdateStatus(UpdateDisableStatusParameters statusParam)
+            => settingService.UpdateStatus(statusParam);
     }
 }

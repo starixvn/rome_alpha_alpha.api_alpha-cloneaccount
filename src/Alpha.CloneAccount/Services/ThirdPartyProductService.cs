@@ -49,7 +49,7 @@
         {
             await casinoService.SyncMasterOrAgentSettings(createdCustomer, sourceCustomer, actor, param);
 
-            ng2Service.SyncCustomerSettings(createdCustomer, sourceCustomer, actor, param);
+            ng2Service.SyncCustomerSettings(createdCustomer, sourceCustomer.DisableNG2, actor, param);
         }
 
         public async Task SyncMemberSettings(
@@ -65,13 +65,22 @@
                 param.ActorSubAccId,
                 param.IP);
 
-            goldDeluxeService.UpdateMemberSettings(createdCustomer, sourceCustomer, actor, param);
+            goldDeluxeService.UpdateMemberSettings(
+                createdCustomer.CustId,
+                sourceCustomer.CustId,
+                sourceCustomer.DisableGoldDeluxe,
+                param);
 
             await casinoService.SyncMemberSettings(createdCustomer, sourceCustomer, actor, param, true);
 
-            kenoService.UpdateMemberSettings(createdCustomer, sourceCustomer, actor, param);
+            kenoService.UpdateMemberSettings(
+                createdCustomer.CustId,
+                sourceCustomer.CustId,
+                actor.CustId,
+                param.ActorSubAccId,
+                param.SystemId);
 
-            ng2Service.SyncCustomerSettings(createdCustomer, sourceCustomer, actor, param);
+            ng2Service.SyncCustomerSettings(createdCustomer, sourceCustomer.DisableNG2, actor, param);
         }
     }
 }

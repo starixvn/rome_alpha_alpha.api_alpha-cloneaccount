@@ -11,7 +11,7 @@
     {
         Result SyncCustomerSettings(
             CustomerInfo createdCustomer,
-            CustomerInfo sourceCustomer,
+            bool disableNG2,
             CustomerInfo actor,
             CopyCustomerParam param);
     }
@@ -29,7 +29,7 @@
 
         public Result SyncCustomerSettings(
             CustomerInfo createdCustomer,
-            CustomerInfo sourceCustomer,
+            bool disableNG2,
             CustomerInfo actor,
             CopyCustomerParam param)
         {
@@ -42,7 +42,7 @@
                         createdCustomer.UserName,
                         GetRoleIdEnum(createdCustomer.RoleId),
                         actor.CustId,
-                        sourceCustomer.DisableNG2,
+                        disableNG2,
                         SiteId.Alpha,
                         actor.Currency,
                         actor.CustId,

@@ -8,45 +8,55 @@
     using Fanex.CustomerSetting.Module.Keno.KenoSetting.Services;
     using Fanex.CustomerSetting.Module.Keno.KenoSetting.ViewModels;
     using Fanex.Logging;
-    using Models;
-    using Params;
 
     public interface KenoService
     {
         IEnumerable<Result> UpdateMemberSettings(
-            CustomerInfo createdCustomer,
-            CustomerInfo sourceCustomer,
-            CustomerInfo actor,
-            CopyCustomerParam param);
+            int custId,
+            int sourceCustId,
+            int actorId,
+            int actorSubAccId,
+            byte systemId);
     }
 
     public class KenoServiceImpl : KenoService
     {
         private readonly IKenoSettingService settingService;
         private readonly ILogger logger;
+        private readonly Func<bool> showKenoSettingFunc;
 
         public KenoServiceImpl(
             IKenoSettingService settingService,
-            ILogger logger)
+            ILogger logger,
+            Func<bool> showKenoSettingFunc)
         {
             this.settingService = settingService;
             this.logger = logger;
+            this.showKenoSettingFunc = showKenoSettingFunc;
         }
 
         public IEnumerable<Result> UpdateMemberSettings(
-            CustomerInfo createdCustomer,
-            CustomerInfo sourceCustomer,
-            CustomerInfo actor,
-            CopyCustomerParam param)
+            int custId,
+            int sourceCustId,
+            int actorId,
+            int actorSubAccId,
+            byte systemId)
         {
-            if (KenoSection.Instance.ShowSetting)
+            if (showKenoSettingFunc())
             {
                 try
                 {
-                    var sourceSettings = GetSourceMemberSettings(sourceCustomer.CustId, actor.CustId, param.ActorSubAccId);
+                    var custInfoViewModel = new CustomerInformationViewModel
+                    {
+                        CustId = sourceCustId,
+                        UserId = actorId,
+                        SubAccId = actorSubAccId,
+                        IsMultipleEdit = 0
+                    };
 
-                    sourceSettings.SystemId = param.SystemId;
-                    sourceSettings.CustomerInformation.CustId = createdCustomer.CustId;
+                    var sourceSettings = GetSourceMemberSettings(custInfoViewModel);
+                    sourceSettings.SystemId = systemId;
+                    sourceSettings.CustomerInformation.CustId = custId;
 
                     return UpdateMemberSettings(sourceSettings);
                 }
@@ -60,20 +70,8 @@
         }
 
         private AgentEditMemberSettingViewModel GetSourceMemberSettings(
-            int sourceCustId,
-            int actorId,
-            int actorSubAccId)
-        {
-            var custInfoViewModel = new CustomerInformationViewModel
-            {
-                CustId = sourceCustId,
-                UserId = actorId,
-                SubAccId = actorSubAccId,
-                IsMultipleEdit = 0
-            };
-
-            return settingService.GetSettingInCaseOfAgentEditMember(custInfoViewModel);
-        }
+            CustomerInformationViewModel custInfoViewModel)
+            => settingService.GetSettingInCaseOfAgentEditMember(custInfoViewModel);
 
         private IEnumerable<Result> UpdateMemberSettings(AgentEditMemberSettingViewModel sourceSettings)
         {

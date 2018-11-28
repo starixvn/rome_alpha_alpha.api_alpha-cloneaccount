@@ -40,8 +40,12 @@
         {
             var criteria = GetCustomerPTCriteria(custId, custLevel, site);
             var customerPTInfo = await repository.GetAsync<CustomerPTInfo>(criteria);
-            customerPTInfo.CustId = custId;
-            customerPTInfo.CustLevel = custLevel.Value;
+
+            if (customerPTInfo != null)
+            {
+                customerPTInfo.CustId = custId;
+                customerPTInfo.CustLevel = custLevel.Value;
+            }
 
             return customerPTInfo;
         }
