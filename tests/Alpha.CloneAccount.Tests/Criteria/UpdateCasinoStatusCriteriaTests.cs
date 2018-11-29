@@ -25,6 +25,28 @@
                 && criteria.ErrMsg == null);
         }
 
+        [Fact]
+        public void GetSettingKey_Always_ReturnsValidSettingKey()
+        {
+            // Arrange
+            var criteria = new UpdateCasinoStatusCriteria(
+                33120519,
+                false,
+                true,
+                true,
+                SystemIdentity.Chatbot,
+                string.Empty,
+                "E",
+                33120484,
+                0);
+
+            // Act
+            var actualResult = criteria.GetSettingKey();
+
+            // Assert
+            Assert.Equal("Acc_UpdCSStatus_Cust", actualResult);
+        }
+
         [Theory]
         [InlineData(int.MinValue, false)]
         [InlineData(0, false)]
