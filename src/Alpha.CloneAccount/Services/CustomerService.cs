@@ -176,7 +176,7 @@
             return null;
         }
 
-        private async Task<DataTable> GetMemberSportbooksSetting(int custId)
+        private static async Task<DataTable> GetMemberSportbooksSetting(int custId)
         {
             ICriteria criteria = new GetMemberSportbooksSettingCriteria(custId);
 

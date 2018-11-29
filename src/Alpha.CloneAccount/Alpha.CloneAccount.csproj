@@ -224,6 +224,7 @@
     <Compile Include="Criteria\InsertMemberDCSSettingCommand.cs" />
     <Compile Include="Criteria\UpdateCasinoStatusCriteria.cs" />
     <Compile Include="Enumerations\Enumeration.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\CustomerInfo.cs" />
     <Compile Include="Models\CustomerPTInfo.cs" />
     <Compile Include="Models\CopyCustomerResult.cs" />

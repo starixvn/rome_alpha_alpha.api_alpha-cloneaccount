@@ -42,6 +42,7 @@
         public bool IsValid()
             => ActorId > 0
             && ActorSubAccId >= 0
+            && 1 < ActorUserLevel && ActorUserLevel < 5
             && !string.IsNullOrWhiteSpace(UserName)
             && Credit >= 0
             && MaxCredit >= 0

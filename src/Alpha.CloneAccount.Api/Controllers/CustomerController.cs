@@ -21,7 +21,7 @@
 
             return message.IsValid()
               ? await mediator.Send(message)
-              : new CustomerPTInfo() { CustId = custId };
+              : new CustomerPTInfo { CustId = custId };
         }
 
         [HttpPost]
