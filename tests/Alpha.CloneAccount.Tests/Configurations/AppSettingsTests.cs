@@ -9,13 +9,27 @@
     public class AppSettingsTests
     {
         [Fact]
-        public void Verify_MissingStoreProcedurePath_ThrowsConfigurationErrorsException()
+        public void Verify_MissingStoredProcedurePath_ThrowsConfigurationErrorsException()
         {
             // Arrange
             AppSettings.AppSettingValues = new NameValueCollection();
 
             // Act & Assert
             Assert.Throws<ConfigurationErrorsException>(() => AppSettings.Verify());
+        }
+
+        [Fact]
+        public void Verify_StoredProcedurePath_ReturnsCorrectStoredProcedurePath()
+        {
+            // Arrange
+            AppSettings.AppSettingValues = new NameValueCollection();
+            AppSettings.AppSettingValues.Add("StoredProcedurePath", "App_Data/SPNames");
+
+            // Act
+            AppSettings.Verify();
+
+            // Assert
+            Assert.NotEmpty(AppSettings.StoredProcedurePath);
         }
 
         [Fact]

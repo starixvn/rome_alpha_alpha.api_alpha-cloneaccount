@@ -7,6 +7,18 @@
     public class GetSuperPTCriteriaTests
     {
         [Fact]
+        public void Constructor_Always_AssignsCorrectProperties()
+        {
+            // Arrange & Act
+            var criteria = new GetSuperPTCriteria(33120484, "BEST-ODDS");
+
+            // Assert
+            Assert.True(
+                criteria.CustId == 33120484
+                && criteria.Site == "BEST-ODDS");
+        }
+
+        [Fact]
         public void GetSettingKey_Always_ReturnsValidSettingKey()
         {
             // Arrange

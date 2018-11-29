@@ -26,24 +26,24 @@
                 Enumeration.FromValue<UserLevel>(request.CustLevel),
                 request.Site);
 
-        public async Task<CopyCustomerResult> Handle(CopyCustomerCommand command, CancellationToken cancellationToken)
+        public async Task<CopyCustomerResult> Handle(CopyCustomerCommand request, CancellationToken cancellationToken)
             => await customerService.CopyCustomer(new CopyCustomerParam(
-                command.ActorId,
-                command.ActorSubAccId,
-                command.ActorSubAccName,
-                Enumeration.FromValue<UserLevel>(command.ActorUserLevel),
-                command.UserName,
-                command.Password,
-                command.FirstName,
-                command.LastName,
-                command.Phone,
-                command.MobilePhone,
-                command.Fax,
-                command.Credit,
-                command.MaxCredit,
-                command.SourceCustId,
-                command.Language,
-                command.IP,
-                command.SystemId));
+                request.ActorId,
+                request.ActorSubAccId,
+                request.ActorSubAccName,
+                Enumeration.FromValue<UserLevel>(request.ActorUserLevel),
+                request.UserName,
+                request.Password,
+                request.FirstName,
+                request.LastName,
+                request.Phone,
+                request.MobilePhone,
+                request.Fax,
+                request.Credit,
+                request.MaxCredit,
+                request.SourceCustId,
+                request.Language,
+                request.IP,
+                request.SystemId));
     }
 }

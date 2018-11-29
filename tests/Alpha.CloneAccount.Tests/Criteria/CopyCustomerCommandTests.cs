@@ -8,6 +8,38 @@
     public class CopyCustomerCommandTests
     {
         [Fact]
+        public void Constructor_Always_AssignsCorrectProperties()
+        {
+            // Arrange & Act
+            var criteria = new CopyCustomerCommandForTesting(
+                "master",
+                "1234aa",
+                "---",
+                "---",
+                "---",
+                "---",
+                "---",
+                1000,
+                8,
+                108,
+                109,
+                "en-US",
+                "::1",
+                SystemIdentity.Chatbot);
+
+            // Assert
+            Assert.True(
+                criteria.FirstName == "---"
+                && criteria.LastName == "---"
+                && criteria.Phone == "---"
+                && criteria.MobilePhone == "---"
+                && criteria.Fax == "---"
+                && criteria.SubAccountId == 109
+                && criteria.Language == "en-US"
+                && criteria.IP == "::1");
+        }
+
+        [Fact]
         public void GetSettingKey_Always_ThrowsNotImplementedException()
         {
             // Arrange
@@ -38,6 +70,7 @@
         [InlineData("agent", true)]
         public void IsValid_UserName_ReturnsExpectedResult(string userName, bool expectedResult)
         {
+            // Arrange
             var criteria = new CopyCustomerCommandForTesting(
                 userName,
                 "1234aa",

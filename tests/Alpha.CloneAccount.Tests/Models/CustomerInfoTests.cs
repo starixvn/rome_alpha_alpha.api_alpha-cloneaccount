@@ -7,6 +7,38 @@
     public class CustomerInfoTests
     {
         [Fact]
+        public void DefaultConstructor_Always_AssignsCorrectDefaultValues()
+        {
+            // Arrange & Act
+            var actualResult = new CustomerInfo();
+
+            // Assert
+            Assert.True(
+                actualResult.CustId == 0
+                && actualResult.UserPwd == null
+                && actualResult.UserName == null
+                && actualResult.UserName2 == null
+                && actualResult.FirstName == null
+                && actualResult.LastName == null
+                && actualResult.Phone == null
+                && actualResult.MobilePhone == null
+                && actualResult.Fax == null
+                && actualResult.Currency == 0
+                && !actualResult.Closed
+                && !actualResult.Suspend
+                && actualResult.SuperId == 0
+                && actualResult.MasterId == 0
+                && actualResult.AgentId == 0
+                && actualResult.RoleId == 0
+                && !actualResult.SyncCasino
+                && !actualResult.DisableCasino
+                && !actualResult.HideNG2
+                && !actualResult.SyncedNG2
+                && !actualResult.DisableNG2
+                && !actualResult.DisableGoldDeluxe);
+        }
+
+        [Fact]
         public void Constructor_Always_AssignsCorrectProperties()
         {
             // Arrange & Act

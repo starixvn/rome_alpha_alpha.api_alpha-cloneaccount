@@ -7,6 +7,22 @@
     public class InsertMemberDCSSettingCommandTests
     {
         [Fact]
+        public void Constructor_Always_AssignsCorrectErrCodeAndErrMsg()
+        {
+            // Arrange & Act
+            var criteria = new InsertMemberDCSSettingCommand(33120519, 33120520, 33120484, 0, string.Empty)
+            {
+                ErrCode = 201,
+                ErrMsg = "Master Max Credit must be between 0 and 24,875,698"
+            };
+
+            // Assert
+            Assert.True(
+                criteria.ErrCode == 201
+                && criteria.ErrMsg == "Master Max Credit must be between 0 and 24,875,698");
+        }
+
+        [Fact]
         public void GetSettingKey_Always_ReturnsValidSettingKey()
         {
             // Arrange

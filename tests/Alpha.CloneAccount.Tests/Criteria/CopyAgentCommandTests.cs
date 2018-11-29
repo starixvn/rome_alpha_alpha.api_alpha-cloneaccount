@@ -8,6 +8,16 @@
     public class CopyAgentCommandTests
     {
         [Fact]
+        public void Constructor_Always_AssignsCorrectMaxCredit()
+        {
+            // Arrange & Act
+            var criteria = GetCopyAgentCommand(8);
+
+            // Assert
+            Assert.True(criteria.MaxCredit == 1000000);
+        }
+
+        [Fact]
         public void GetSettingKey_Always_ReturnsValidSettingKey()
         {
             // Arrange

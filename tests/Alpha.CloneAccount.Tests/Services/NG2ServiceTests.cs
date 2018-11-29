@@ -207,8 +207,11 @@
                     param.ActorSubAccId);
         }
 
-        [Fact]
-        public void SyncCustomerSettings_Always_CallsAutoInsertAccount()
+        [Theory]
+        [InlineData(4)]
+        [InlineData(3)]
+        [InlineData(2)]
+        public void SyncCustomerSettings_Always_CallsAutoInsertAccount(byte actorUserLevel)
         {
             // Arrange
             var createdCustomer = new CustomerInfo(
@@ -227,7 +230,7 @@
                 33120480,
                 0,
                 0,
-                3,
+                (byte)(actorUserLevel - 1),
                 true,
                 false,
                 false,
@@ -251,7 +254,7 @@
                 0,
                 0,
                 0,
-                4,
+                actorUserLevel,
                 true,
                 false,
                 false,
@@ -262,7 +265,7 @@
                 33120519,
                 0,
                 string.Empty,
-                Enumeration.FromValue<UserLevel>(4),
+                Enumeration.FromValue<UserLevel>(actorUserLevel),
                 "master",
                 "1234aa",
                 string.Empty,
@@ -286,7 +289,7 @@
                 .AutoInsertAccount(
                     createdCustomer.CustId,
                     createdCustomer.UserName,
-                    RoleId.Master,
+                    (RoleId)(actorUserLevel - 1),
                     actor.CustId,
                     disableNG2,
                     SiteId.Alpha,

@@ -8,26 +8,21 @@
     public class UpdateCasinoStatusCriteriaTests
     {
         [Fact]
-        public void GetSettingKey_Always_ReturnsValidSettingKey()
+        public void DefaultConstructor_Always_AssignsCorrectDefaultValues()
         {
-            // Arrange
-            var criteria = new UpdateCasinoStatusCriteria(
-                33120519,
-                false,
-                true,
-                true,
-                SystemIdentity.Chatbot,
-                string.Empty,
-                "E",
-                33120484,
-                0);
-            var expectedResult = "Acc_UpdCSStatus_Cust";
-
-            // Act
-            var actualResult = criteria.GetSettingKey();
+            // Arrange & Act
+            var criteria = new UpdateCasinoStatusCriteria();
 
             // Assert
-            Assert.Equal(expectedResult, actualResult);
+            Assert.True(
+                !criteria.DisabledCS
+                && !criteria.SyncCS
+                && !criteria.EnableDownline
+                && criteria.IP == null
+                && criteria.Language == null
+                && !criteria.Status
+                && criteria.ErrCode == 0
+                && criteria.ErrMsg == null);
         }
 
         [Theory]
