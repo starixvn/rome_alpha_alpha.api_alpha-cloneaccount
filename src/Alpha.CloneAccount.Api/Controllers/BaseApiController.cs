@@ -6,7 +6,7 @@
 
     [RoutePrefix("api/{controller}")]
     [HmacAuthorizationFilter]
-    public class BaseApiController : ApiController
+    public abstract class BaseApiController : ApiController
     {
         protected readonly IMediator mediator;
 
