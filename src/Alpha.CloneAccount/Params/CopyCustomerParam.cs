@@ -20,6 +20,7 @@
             decimal credit,
             decimal maxCredit,
             int sourceCustId,
+            string sourceUsername,
             string language,
             string ip,
             byte systemId)
@@ -39,6 +40,7 @@
             Credit = credit;
             MaxCredit = maxCredit;
             SourceCustId = sourceCustId;
+            SourceUsername = sourceUsername;
 
             Language = language ?? "en-US";
             IP = ip ?? string.Empty;
@@ -72,6 +74,8 @@
         public decimal MaxCredit { get; }
 
         public int SourceCustId { get; }
+
+        public string SourceUsername { get; }
 
         public string Language { get; }
 

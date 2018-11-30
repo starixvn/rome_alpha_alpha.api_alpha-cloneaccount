@@ -28,6 +28,7 @@
                 1000,
                 1000000,
                 33120480,
+                "sourceUsername",
                 "en-US",
                 string.Empty,
                 SystemIdentity.Chatbot);
@@ -47,6 +48,7 @@
                 && actualResult.Credit == 1000
                 && actualResult.MaxCredit == 1000000
                 && actualResult.SourceCustId == 33120480
+                && actualResult.SourceUsername == "sourceUsername"
                 && actualResult.Language == "en-US"
                 && actualResult.IP == string.Empty
                 && actualResult.SystemId == SystemIdentity.Chatbot
@@ -72,6 +74,7 @@
                 1000,
                 1000000,
                 33120480,
+                "sourceUsername",
                 "en-US",
                 string.Empty,
                 SystemIdentity.Chatbot);

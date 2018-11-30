@@ -33,6 +33,8 @@
 
         public int SourceCustId { get; set; }
 
+        public string SourceUsername { get; set; }
+
         public string Language { get; set; }
 
         public string IP { get; set; }

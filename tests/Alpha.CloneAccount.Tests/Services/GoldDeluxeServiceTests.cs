@@ -54,6 +54,7 @@
                 1000,
                 1000000,
                 sourceCustId,
+                "sourceUsername",
                 "en-US",
                 string.Empty,
                 SystemIdentity.Chatbot);
@@ -99,12 +100,14 @@
                 1000,
                 1000000,
                 sourceCustId,
+                "sourceUsername",
                 "en-US",
                 string.Empty,
                 SystemIdentity.Chatbot);
             settingService
                 .UpdateSettingFromExistingMember(Arg.Any<UpdateSettingFromExistingMemberParameters>())
-                .Returns(new MultipleCommandResults {
+                .Returns(new MultipleCommandResults
+                {
                     CommandResultsList = new List<ICommandResults>()
                 });
 
@@ -149,6 +152,7 @@
                 1000,
                 1000000,
                 sourceCustId,
+                "sourceUsername",
                 "en-US",
                 string.Empty,
                 SystemIdentity.Chatbot);
@@ -203,6 +207,7 @@
                 1000,
                 1000000,
                 sourceCustId,
+                "sourceUsername",
                 "en-US",
                 string.Empty,
                 SystemIdentity.Chatbot);
@@ -254,6 +259,7 @@
                 1000,
                 1000000,
                 sourceCustId,
+                "sourceUsername",
                 "en-US",
                 string.Empty,
                 SystemIdentity.Chatbot);

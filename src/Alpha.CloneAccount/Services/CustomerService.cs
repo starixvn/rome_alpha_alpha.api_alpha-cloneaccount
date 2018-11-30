@@ -103,6 +103,7 @@
                 criteria.CustId,
                 param.UserName,
                 param.Password,
+                param.SourceUsername,
                 criteria.ErrCode,
                 criteria.ErrMsg);
         }
@@ -168,6 +169,7 @@
                         Convert.ToInt32(ouputParams["custid"]),
                         param.UserName,
                         param.Password,
+                        param.SourceUsername,
                         Convert.ToInt32(ouputParams["errcode"]),
                         ouputParams["errmsg"].ToString());
                 }

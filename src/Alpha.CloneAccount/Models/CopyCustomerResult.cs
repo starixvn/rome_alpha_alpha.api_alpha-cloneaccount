@@ -6,12 +6,14 @@
             int custId,
             string custName,
             string password,
+            string sourceUsername,
             int code,
             string message)
         {
             CustId = custId;
             CustName = custName;
             Password = password;
+            SourceUsername = sourceUsername;
             Code = code;
             Message = message;
         }
@@ -21,6 +23,8 @@
         public string CustName { get; }
 
         public string Password { get; }
+
+        public string SourceUsername { get; }
 
         public int Code { get; }
 

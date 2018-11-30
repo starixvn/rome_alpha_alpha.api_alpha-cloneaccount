@@ -10,7 +10,7 @@
         public void Constructor_Always_AssignsCorrectProperties()
         {
             // Arrange & Act
-            var actualResult = new CopyCustomerResult(33120484, "agent", "1234aa", 0, string.Empty);
+            var actualResult = new CopyCustomerResult(33120484, "agent", "1234aa", "sourceUsername", 0, string.Empty);
 
             // Assert
             Assert.True(
@@ -26,7 +26,7 @@
         public void IsSuccess_ValidCode_ReturnsTrue()
         {
             // Arrange
-            var result = new CopyCustomerResult(33120484, "agent", "1234aa", 0, string.Empty);
+            var result = new CopyCustomerResult(33120484, "agent", "1234aa", "sourceUsername", 0, string.Empty);
 
             // Act
             var actualResult = result.IsSuccess;
@@ -39,7 +39,7 @@
         public void IsSuccess_InvalidCode_ReturnsFalse()
         {
             // Arrange
-            var result = new CopyCustomerResult(0, string.Empty, string.Empty, 201, "Master Max Credit must be between 0 and 24,875,698");
+            var result = new CopyCustomerResult(0, string.Empty, string.Empty, string.Empty, 201, "Master Max Credit must be between 0 and 24,875,698");
 
             // Act
             var actualResult = result.IsSuccess;
