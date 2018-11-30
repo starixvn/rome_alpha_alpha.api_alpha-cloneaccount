@@ -6,14 +6,20 @@
             int custId,
             string custName,
             string password,
+            int custLevel,
             string sourceUsername,
+            decimal credit,
+            decimal maxCredit,
             int code,
             string message)
         {
             CustId = custId;
             CustName = custName;
             Password = password;
+            CustLevel = custLevel;
             SourceUsername = sourceUsername;
+            Credit = credit;
+            MaxCredit = maxCredit;
             Code = code;
             Message = message;
         }
@@ -24,7 +30,13 @@
 
         public string Password { get; }
 
+        public int CustLevel { get; }
+
         public string SourceUsername { get; }
+
+        public decimal Credit { get; }
+
+        public decimal MaxCredit { get; }
 
         public int Code { get; }
 

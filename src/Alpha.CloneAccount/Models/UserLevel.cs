@@ -31,5 +31,7 @@
         public bool IsAgentLevel() => this == Agent;
 
         public bool IsMasterLevel() => this == Master;
+
+        public UserLevel GetDirectDownLineLevel() => FromValue<UserLevel>((byte)(Value - 1));
     }
 }

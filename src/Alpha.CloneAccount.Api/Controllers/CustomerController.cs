@@ -29,6 +29,6 @@
         public async Task<CopyCustomerResult> Copy([FromBody]CopyCustomerCommand command)
             => command?.IsValid() == true
             ? await mediator.Send(command)
-            : new CopyCustomerResult(0, null, null, null, 400, "Bad Request.");
+            : new CopyCustomerResult(0, null, null, 0, null, 0, 0, 400, "Bad Request.");
     }
 }

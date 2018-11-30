@@ -103,7 +103,10 @@
                 criteria.CustId,
                 param.UserName,
                 param.Password,
+                param.ActorUserLevel.GetDirectDownLineLevel().Value,
                 param.SourceUsername,
+                param.Credit,
+                param.MaxCredit,
                 criteria.ErrCode,
                 criteria.ErrMsg);
         }
@@ -169,7 +172,10 @@
                         Convert.ToInt32(ouputParams["custid"]),
                         param.UserName,
                         param.Password,
+                        param.ActorUserLevel.GetDirectDownLineLevel().Value,
                         param.SourceUsername,
+                        param.Credit,
+                        param.MaxCredit,
                         Convert.ToInt32(ouputParams["errcode"]),
                         ouputParams["errmsg"].ToString());
                 }
