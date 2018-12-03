@@ -2,6 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using CloneAccount.Enumerations;
+    using CloneAccount.Models;
+    using CloneAccount.Params;
     using CloneAccount.Services;
     using Constants;
     using Fanex.CustomerSetting.Module.Keno.KenoSetting.Entities;
@@ -36,16 +39,30 @@
 
             var custId = 33120484;
             var sourceCustId = 33120485;
-            var actorId = 33120519;
-            var actorSubAccId = 0;
+            var param = new CopyCustomerParam(
+                33120519,
+                0,
+                string.Empty,
+                Enumeration.FromValue<UserLevel>(2),
+                "member",
+                "1234aa",
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                1000,
+                1000000,
+                sourceCustId,
+                "en-US",
+                string.Empty,
+                SystemIdentity.Chatbot);
 
             // Act
             kenoService.UpdateMemberSettings(
                 custId,
                 sourceCustId,
-                actorId,
-                actorSubAccId,
-                SystemIdentity.Chatbot);
+                param);
 
             // Assert
             settingService
@@ -59,16 +76,30 @@
             // Arrange
             var custId = 33120484;
             var sourceCustId = 33120485;
-            var actorId = 33120519;
-            var actorSubAccId = 0;
+            var param = new CopyCustomerParam(
+                33120519,
+                0,
+                string.Empty,
+                Enumeration.FromValue<UserLevel>(2),
+                "member",
+                "1234aa",
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                1000,
+                1000000,
+                sourceCustId,
+                "en-US",
+                string.Empty,
+                SystemIdentity.Chatbot);
 
             // Act
             kenoService.UpdateMemberSettings(
                 custId,
                 sourceCustId,
-                actorId,
-                actorSubAccId,
-                SystemIdentity.Chatbot);
+                param);
 
             // Assert
             settingService
@@ -82,8 +113,24 @@
             // Arrange
             var custId = 33120484;
             var sourceCustId = 33120485;
-            var actorId = 33120519;
-            var actorSubAccId = 0;
+            var param = new CopyCustomerParam(
+                33120519,
+                0,
+                string.Empty,
+                Enumeration.FromValue<UserLevel>(2),
+                "member",
+                "1234aa",
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                1000,
+                1000000,
+                sourceCustId,
+                "en-US",
+                string.Empty,
+                SystemIdentity.Chatbot);
             settingService
                 .GetSettingInCaseOfAgentEditMember(Arg.Any<CustomerInformationViewModel>())
                 .Returns(new AgentEditMemberSettingViewModel {
@@ -96,14 +143,12 @@
             kenoService.UpdateMemberSettings(
                 custId,
                 sourceCustId,
-                actorId,
-                actorSubAccId,
-                SystemIdentity.Chatbot);
+                param);
 
             // Assert
             settingService
                 .Received()
-                .UpdateMemberCustomerSettingInCaseOfAgentEditMember(Arg.Any<AgentEditMemberSettingViewModel>());
+                .UpdateMemberCustomerSettingInCaseOfAgentEditMember(Arg.Any<AgentEditMemberSettingViewModel>(), Arg.Any<IKenoSession>());
         }
 
         [Fact]
@@ -112,8 +157,24 @@
             // Arrange
             var custId = 33120484;
             var sourceCustId = 33120485;
-            var actorId = 33120519;
-            var actorSubAccId = 0;
+            var param = new CopyCustomerParam(
+                33120519,
+                0,
+                string.Empty,
+                Enumeration.FromValue<UserLevel>(2),
+                "member",
+                "1234aa",
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                1000,
+                1000000,
+                sourceCustId,
+                "en-US",
+                string.Empty,
+                SystemIdentity.Chatbot);
             var exceptionMessage = "Test Exception";
             settingService
                 .GetSettingInCaseOfAgentEditMember(Arg.Any<CustomerInformationViewModel>())
@@ -123,9 +184,7 @@
             kenoService.UpdateMemberSettings(
                 custId,
                 sourceCustId,
-                actorId,
-                actorSubAccId,
-                SystemIdentity.Chatbot);
+                param);
 
             // Assert
             logger.Received().Warn(exceptionMessage);

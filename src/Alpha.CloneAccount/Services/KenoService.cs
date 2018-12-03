@@ -4,19 +4,17 @@
     using System.Collections.Generic;
     using System.Linq;
     using Fanex.CustomerSetting.Module.Core.Models;
-    using Fanex.CustomerSetting.Module.Keno.KenoSetting.Configurations;
     using Fanex.CustomerSetting.Module.Keno.KenoSetting.Services;
     using Fanex.CustomerSetting.Module.Keno.KenoSetting.ViewModels;
     using Fanex.Logging;
+    using Params;
 
     public interface KenoService
     {
         IEnumerable<Result> UpdateMemberSettings(
             int custId,
             int sourceCustId,
-            int actorId,
-            int actorSubAccId,
-            byte systemId);
+            CopyCustomerParam param);
     }
 
     public class KenoServiceImpl : KenoService
@@ -38,9 +36,7 @@
         public IEnumerable<Result> UpdateMemberSettings(
             int custId,
             int sourceCustId,
-            int actorId,
-            int actorSubAccId,
-            byte systemId)
+            CopyCustomerParam param)
         {
             if (showKenoSettingFunc())
             {
@@ -49,16 +45,16 @@
                     var custInfoViewModel = new CustomerInformationViewModel
                     {
                         CustId = sourceCustId,
-                        UserId = actorId,
-                        SubAccId = actorSubAccId,
+                        UserId = param.ActorId,
+                        SubAccId = param.ActorSubAccId,
                         IsMultipleEdit = 0
                     };
 
                     var sourceSettings = GetSourceMemberSettings(custInfoViewModel);
-                    sourceSettings.SystemId = systemId;
+                    sourceSettings.SystemId = param.SystemId;
                     sourceSettings.CustomerInformation.CustId = custId;
 
-                    return UpdateMemberSettings(sourceSettings);
+                    return UpdateMemberSettings(sourceSettings, param);
                 }
                 catch (Exception ex)
                 {
@@ -73,7 +69,7 @@
             CustomerInformationViewModel custInfoViewModel)
             => settingService.GetSettingInCaseOfAgentEditMember(custInfoViewModel);
 
-        private IEnumerable<Result> UpdateMemberSettings(AgentEditMemberSettingViewModel sourceSettings)
+        private IEnumerable<Result> UpdateMemberSettings(AgentEditMemberSettingViewModel sourceSettings, CopyCustomerParam param)
         {
             foreach (var betSetting in sourceSettings.BetSettings)
             {
@@ -87,7 +83,9 @@
                 positionTaking.IsUpdateA1 = true;
             }
 
-            return settingService.UpdateMemberCustomerSettingInCaseOfAgentEditMember(sourceSettings);
+            IKenoSession kenoSession = new KenoStalelessSession(param);
+
+            return settingService.UpdateMemberCustomerSettingInCaseOfAgentEditMember(sourceSettings, kenoSession);
         }
     }
 }

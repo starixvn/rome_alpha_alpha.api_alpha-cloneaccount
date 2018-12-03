@@ -76,9 +76,7 @@
             kenoService.UpdateMemberSettings(
                 createdCustomer.CustId,
                 sourceCustomer.CustId,
-                actor.CustId,
-                param.ActorSubAccId,
-                param.SystemId);
+                param);
 
             ng2Service.SyncCustomerSettings(createdCustomer, sourceCustomer.DisableNG2, actor, param);
         }

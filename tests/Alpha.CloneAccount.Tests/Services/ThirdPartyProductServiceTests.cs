@@ -258,9 +258,7 @@
                 .UpdateMemberSettings(
                     createdCustomer.CustId,
                     sourceCustomer.CustId,
-                    actor.CustId,
-                    param.ActorSubAccId,
-                    param.SystemId);
+                    param);
 
             ng2Service
                 .Received()

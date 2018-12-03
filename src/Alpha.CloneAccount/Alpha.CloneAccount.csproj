@@ -79,7 +79,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.CustomerSetting.Module.Keno.KenoSetting, Version=2.0.1.6, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Keno.Setting.2.0.1.6-data02\lib\net461\Fanex.CustomerSetting.Module.Keno.KenoSetting.dll</HintPath>
+      <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Keno.Setting.2.0.1.6-data03\lib\net461\Fanex.CustomerSetting.Module.Keno.KenoSetting.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Data, Version=2.1.0.1, Culture=neutral, processorArchitecture=MSIL">
@@ -239,6 +239,7 @@
     <Compile Include="Services\GoldDeluxeService.cs" />
     <Compile Include="Services\KenoService.cs" />
     <Compile Include="Services\DCSService.cs" />
+    <Compile Include="Services\KenoStalelessSession.cs" />
     <Compile Include="Services\NG2Service.cs" />
     <Compile Include="Services\SportbooksCopyMemberSpParamsBuilder.cs" />
     <Compile Include="Services\PasswordService.cs" />
