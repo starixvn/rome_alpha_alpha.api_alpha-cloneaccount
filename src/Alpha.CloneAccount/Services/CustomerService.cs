@@ -41,10 +41,10 @@
 
         public async Task<Result> ValidateMaxNewMember(int agentId, string language)
         {
-            var criteria = new ValidateMaxNewMemberCriteria(agentId, LanguageUtils.ToLanguageKey(language));
-            await repository.ExecuteAsync(criteria);
+            var command = new ValidateMaxNewMemberCriteria(agentId, LanguageUtils.ToLanguageKey(language));
+            await repository.ExecuteAsync(command);
 
-            return new Result(criteria.ErrCode, criteria.ErrMsg);
+            return new Result(command.ErrCode, command.ErrMsg);
         }
 
         public async Task<CustomerPTInfo> GetPTInfo(int custId, UserLevel custLevel, string site)

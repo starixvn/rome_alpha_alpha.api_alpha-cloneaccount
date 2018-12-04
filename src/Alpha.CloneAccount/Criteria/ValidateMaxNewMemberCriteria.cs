@@ -2,7 +2,7 @@
 {
     using Fanex.Data.Repository;
 
-    public class ValidateMaxNewMemberCriteria : CriteriaBase
+    public class ValidateMaxNewMemberCriteria : NonQueryCommand
     {
         public ValidateMaxNewMemberCriteria(int agentId, string language)
         {
