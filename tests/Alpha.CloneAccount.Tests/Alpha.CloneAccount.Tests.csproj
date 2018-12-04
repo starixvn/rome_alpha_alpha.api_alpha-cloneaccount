@@ -162,10 +162,12 @@
     <Compile Include="Criteria\GetSuperPTCriteriaTests.cs" />
     <Compile Include="Criteria\InsertMemberDCSSettingCommandTests.cs" />
     <Compile Include="Criteria\UpdateCasinoStatusCriteriaTests.cs" />
+    <Compile Include="Criteria\ValidateMaxNewMemberCriteriaTests.cs" />
     <Compile Include="Enumerations\EnumerationTests.cs" />
     <Compile Include="Models\CopyCustomerResultTests.cs" />
     <Compile Include="Models\CustomerInfoTests.cs" />
     <Compile Include="Models\CustomerPTInfoTests.cs" />
+    <Compile Include="Models\ResultTests.cs" />
     <Compile Include="Models\UserLevelForTesting.cs" />
     <Compile Include="Models\UserLevelTests.cs" />
     <Compile Include="Params\CopyCustomerParamTests.cs" />

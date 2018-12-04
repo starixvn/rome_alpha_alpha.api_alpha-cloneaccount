@@ -23,6 +23,8 @@
 
     <Setting Key="Acc_UpdCSStatus_Cust" SpName="Acc_UpdCSStatus_Cust" DbName="DBCust.CustDB.BODBDownlineNet" Plain="0" />
     <Setting Key="Acc_CustSetting_DCSSettingCopyInsertMember" SpName="Acc_CustSetting_DCSSettingCopyInsertMember" DbName="DBCust.CustDB.BODBDownlineNet" Plain="0" />
+
+    <Setting Key="Age_MaxMemberLimitBySuperCheck" SpName="Age_MaxMemberLimitBySuperCheck" DbName="DBCust.CustDB.BODBDownlineNet" Plain="0" />
   </Function>
 
   <Function Name="Gold Deluxe">

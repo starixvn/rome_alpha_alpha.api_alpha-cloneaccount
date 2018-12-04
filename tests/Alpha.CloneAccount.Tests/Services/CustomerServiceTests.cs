@@ -30,24 +30,36 @@
         }
 
         [Fact]
+        public async Task ValidateMaxNewMember_ValidCriteria_CallsExecuteAsync()
+        {
+            // Arrange
+            var agentId = 33120484;
+            var language = "en-US";
+
+            // Act
+            await customerService.ValidateMaxNewMember(agentId, language);
+
+            // Assert
+            await repository
+                .Received()
+                .ExecuteAsync(Arg.Any<ValidateMaxNewMemberCriteria>());
+        }
+
+        [Fact]
         public async Task GetPTInfo_ValidSuperCriteria_CallsGetAsync()
         {
             // Arrange
             var custId = 33120484;
             var custLevel = Enumeration.FromValue<UserLevel>(4);
             var site = "BET-ODDS";
-            var expectedResult = new CustomerPTInfo(custId, custLevel.Value, "00", 1000000000);
-            repository
-                .GetAsync<CustomerPTInfo>(Arg.Any<ICriteria>())
-                .Returns(expectedResult);
 
             // Act
             await customerService.GetPTInfo(custId, custLevel, site);
 
             // Assert
             await repository
-                .DidNotReceive()
-                .GetAsync<CustomerPTInfo>(new GetSuperPTCriteria(custId, site));
+                .Received()
+                .GetAsync<CustomerPTInfo>(Arg.Any<GetSuperPTCriteria>());
         }
 
         [Fact]
@@ -63,8 +75,8 @@
 
             // Assert
             await repository
-                .DidNotReceive()
-                .GetAsync<CustomerPTInfo>(new GetMasterPTCriteria(custId));
+                .Received()
+                .GetAsync<CustomerPTInfo>(Arg.Any<GetMasterPTCriteria>());
         }
 
         [Fact]
@@ -80,8 +92,8 @@
 
             // Assert
             await repository
-                .DidNotReceive()
-                .GetAsync<CustomerPTInfo>(new GetAgentPTCriteria(custId));
+                .Received()
+                .GetAsync<CustomerPTInfo>(Arg.Any<GetAgentPTCriteria>());
         }
 
         [Fact]

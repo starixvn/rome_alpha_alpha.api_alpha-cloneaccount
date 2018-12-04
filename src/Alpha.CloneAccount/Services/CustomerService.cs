@@ -9,9 +9,12 @@
     using Fanex.Data.Repository;
     using Models;
     using Params;
+    using Utils;
 
     public interface CustomerService
     {
+        Task<Result> ValidateMaxNewMember(int agentId, string language);
+
         Task<CustomerPTInfo> GetPTInfo(int custId, UserLevel custLevel, string site);
 
         Task<CopyCustomerResult> CopyCustomer(CopyCustomerParam param);
@@ -34,6 +37,14 @@
             this.passwordService = passwordService;
             this.copyMemberSpParamsBuilder = copyMemberSpParamsBuilder;
             this.thirdPartyProductService = thirdPartyProductService;
+        }
+
+        public async Task<Result> ValidateMaxNewMember(int agentId, string language)
+        {
+            var criteria = new ValidateMaxNewMemberCriteria(agentId, LanguageUtils.ToLanguageKey(language));
+            await repository.ExecuteAsync(criteria);
+
+            return new Result(criteria.ErrCode, criteria.ErrMsg);
         }
 
         public async Task<CustomerPTInfo> GetPTInfo(int custId, UserLevel custLevel, string site)

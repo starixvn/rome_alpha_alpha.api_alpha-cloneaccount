@@ -10,6 +10,7 @@
     using Services;
 
     public class CustomerHandler :
+        IRequestHandler<ValidateMaxNewMemberQuery, Result>,
         IRequestHandler<CustomerPTInfoQuery, CustomerPTInfo>,
         IRequestHandler<CopyCustomerCommand, CopyCustomerResult>
     {
@@ -19,6 +20,9 @@
         {
             this.customerService = customerService;
         }
+
+        public async Task<Result> Handle(ValidateMaxNewMemberQuery request, CancellationToken cancellationToken)
+            => await customerService.ValidateMaxNewMember(request.AgentId, request.Language);
 
         public async Task<CustomerPTInfo> Handle(CustomerPTInfoQuery request, CancellationToken cancellationToken)
             => await customerService.GetPTInfo(

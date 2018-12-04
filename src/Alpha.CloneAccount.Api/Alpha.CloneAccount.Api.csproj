@@ -280,6 +280,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\CustomerPTInfoQuery.cs" />
     <Compile Include="Requests\CopyCustomerCommand.cs" />
+    <Compile Include="Requests\ValidateMaxNewMemberQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -14,6 +14,17 @@
         }
 
         [HttpGet]
+        [Route("api/customer/{agentId}/ValidateMaxNewMember")]
+        public async Task<Result> ValidateMaxNewMember(int agentId, string language)
+        {
+            var message = new ValidateMaxNewMemberQuery(agentId, language);
+
+            return message.IsValid()
+              ? await mediator.Send(message)
+              : new Result(400, "Bad Request.");
+        }
+
+        [HttpGet]
         [Route("api/customer/{custId}/{custLevel}/pt")]
         public async Task<CustomerPTInfo> GetPT(int custId, byte custLevel, string site)
         {

@@ -6,6 +6,7 @@
     using Fanex.Module.NG2.Services;
     using Models;
     using Params;
+    using Result = Fanex.Module.NG2.Entities.Result;
 
     public interface NG2Service
     {

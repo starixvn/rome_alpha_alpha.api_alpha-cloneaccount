@@ -223,6 +223,7 @@
     <Compile Include="Criteria\GetSuperPTCriteria.cs" />
     <Compile Include="Criteria\InsertMemberDCSSettingCommand.cs" />
     <Compile Include="Criteria\UpdateCasinoStatusCriteria.cs" />
+    <Compile Include="Criteria\ValidateMaxNewMemberCriteria.cs" />
     <Compile Include="Enumerations\Enumeration.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\CustomerInfo.cs" />
@@ -230,6 +231,7 @@
     <Compile Include="Models\CopyCustomerResult.cs" />
     <Compile Include="Models\GameKindDetail.cs" />
     <Compile Include="Models\GameTypeDetail.cs" />
+    <Compile Include="Models\Result.cs" />
     <Compile Include="Models\StakeLevelDetail.cs" />
     <Compile Include="Models\UserLevel.cs" />
     <Compile Include="Params\CopyCustomerParam.cs" />

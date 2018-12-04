@@ -21,6 +21,40 @@
         }
 
         [Fact]
+        public async Task ValidateMaxNewMember_ValidParams_CallsMediatorSendValidateMaxNewMemberQuery()
+        {
+            // Arrange
+            var custId = 33120484;
+            var language = "en-us";
+
+            // Act
+            await customerController.ValidateMaxNewMember(custId, language);
+
+            // Assert
+            await mediator
+                .Received()
+                .Send(Arg.Is<ValidateMaxNewMemberQuery>(
+                    q => q.AgentId == custId && q.Language == language));
+        }
+
+        [Fact]
+        public async Task ValidateMaxNewMember_InvalidParams_NotCallMediatorSendValidateMaxNewMemberQuery()
+        {
+            // Arrange
+            var custId = 0;
+            var language = "en-us";
+
+            // Act
+            await customerController.ValidateMaxNewMember(custId, language);
+
+            // Assert
+            await mediator
+                .DidNotReceive()
+                .Send(Arg.Is<ValidateMaxNewMemberQuery>(
+                    q => q.AgentId == custId && q.Language == language));
+        }
+
+        [Fact]
         public async Task GetPT_ValidParams_CallsMediatorSendCustomerPTInfoQuery()
         {
             // Arrange

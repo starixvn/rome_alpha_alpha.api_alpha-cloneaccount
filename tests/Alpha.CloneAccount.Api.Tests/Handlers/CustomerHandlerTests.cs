@@ -25,6 +25,21 @@
         }
 
         [Fact]
+        public async Task HandleValidateMaxNewMember_Always_CallsValidateMaxNewMember()
+        {
+            // Arrange
+            var request = new ValidateMaxNewMemberQuery(8, "en-US");
+
+            // Act
+            await customerHandler.Handle(request, default(CancellationToken));
+
+            // Assert
+            await customerService
+                .Received()
+                .ValidateMaxNewMember(request.AgentId, request.Language);
+        }
+
+        [Fact]
         public async Task HandleCustomerPTInfo_Always_CallsGetPTInfo()
         {
             // Arrange

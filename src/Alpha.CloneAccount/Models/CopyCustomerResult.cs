@@ -1,6 +1,6 @@
 ﻿namespace Alpha.CloneAccount.Models
 {
-    public class CopyCustomerResult
+    public class CopyCustomerResult : Result
     {
         public CopyCustomerResult(
             int custId,
@@ -11,7 +11,7 @@
             decimal credit,
             decimal maxCredit,
             int code,
-            string message)
+            string message) : base(code, message)
         {
             CustId = custId;
             CustName = custName;
@@ -20,8 +20,6 @@
             SourceUsername = sourceUsername;
             Credit = credit;
             MaxCredit = maxCredit;
-            Code = code;
-            Message = message;
         }
 
         public int CustId { get; }
@@ -37,11 +35,5 @@
         public decimal Credit { get; }
 
         public decimal MaxCredit { get; }
-
-        public int Code { get; }
-
-        public string Message { get; }
-
-        public bool IsSuccess => Code == 0;
     }
 }
