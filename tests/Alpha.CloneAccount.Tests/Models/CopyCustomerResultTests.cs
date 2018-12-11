@@ -18,6 +18,7 @@
                 && actualResult.CustName == "agent"
                 && actualResult.Password == "1234aa"
                 && actualResult.CustLevel == 2
+                && actualResult.SourceUsername == "sourceUsername"
                 && actualResult.Credit == 0
                 && actualResult.MaxCredit == 0
                 && actualResult.Code == 0

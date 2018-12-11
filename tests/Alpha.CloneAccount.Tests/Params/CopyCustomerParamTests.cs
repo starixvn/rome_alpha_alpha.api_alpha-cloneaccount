@@ -85,5 +85,36 @@
             // Assert
             Assert.Equal("1234aaAA", param.Password);
         }
+
+        [Fact]
+        public void SetUserName_Always_AssignsCorrectUserName()
+        {
+            // Arrange
+            var param = new CopyCustomerParam(
+                33120484,
+                0,
+                string.Empty,
+                Enumeration.FromValue<UserLevel>(4),
+                "master",
+                "1234aa",
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                1000,
+                1000000,
+                33120480,
+                "sourceUsername",
+                "en-US",
+                string.Empty,
+                SystemIdentity.Chatbot);
+
+            // Act
+            param.SetPassword("masterZZ");
+
+            // Assert
+            Assert.Equal("masterZZ", param.UserName);
+        }
     }
 }

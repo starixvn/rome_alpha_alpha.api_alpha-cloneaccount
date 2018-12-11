@@ -61,5 +61,20 @@
             // Assert
             Assert.Equal(expectedApiKey, actualApiKey);
         }
+
+        [Fact]
+        public void RetryTimesIfUserNameNotAvailable_Always_ReturnsCorrectConfig()
+        {
+            // Arrange
+            AppSettings.AppSettingValues = new NameValueCollection();
+            AppSettings.AppSettingValues.Add("RetryTimesIfUserNameNotAvailable", "5");
+            var expectedRetryTimesIfUserNameNotAvailable = 5;
+
+            // Act
+            var actualRetryTimesIfUserNameNotAvailable = AppSettings.RetryTimesIfUserNameNotAvailable;
+
+            // Assert
+            Assert.Equal(expectedRetryTimesIfUserNameNotAvailable, actualRetryTimesIfUserNameNotAvailable);
+        }
     }
 }
