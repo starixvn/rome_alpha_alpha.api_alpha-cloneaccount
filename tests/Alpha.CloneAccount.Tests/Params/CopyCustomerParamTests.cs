@@ -111,7 +111,7 @@
                 SystemIdentity.Chatbot);
 
             // Act
-            param.SetPassword("masterZZ");
+            param.SetUserName("masterZZ");
 
             // Assert
             Assert.Equal("masterZZ", param.UserName);
