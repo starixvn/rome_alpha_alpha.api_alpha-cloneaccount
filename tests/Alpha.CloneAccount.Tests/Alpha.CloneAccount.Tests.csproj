@@ -176,6 +176,7 @@
     <Compile Include="Services\DCSServiceTests.cs" />
     <Compile Include="Services\GoldDeluxeServiceTests.cs" />
     <Compile Include="Services\KenoServiceTests.cs" />
+    <Compile Include="Services\KenoStalelessSessionTests.cs" />
     <Compile Include="Services\NG2ServiceTests.cs" />
     <Compile Include="Services\ThirdPartyProductServiceTests.cs" />
     <Compile Include="Utils\LanguageUtilsTests.cs" />

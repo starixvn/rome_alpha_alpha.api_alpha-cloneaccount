@@ -3,6 +3,7 @@
     using System;
     using System.Data;
     using System.Threading.Tasks;
+    using Configurations;
     using Constants;
     using Criteria;
     using Fanex.Data;
@@ -78,21 +79,38 @@
 
         public async Task<CopyCustomerResult> CopyCustomer(CopyCustomerParam param)
         {
+            var retryLoop = 0;
+            CopyCustomerResult result;
+
             CheckAndGenerateRawPassword(param);
 
-            var result = param.ActorUserLevel.IsAgentLevel()
-                ? await CopyMember(param)
-                : await CopyMasterOrAgent(param);
-
-            if (result?.IsSuccess == true)
+            do
             {
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-                Task.Run(async () =>
+                result = param.ActorUserLevel.IsAgentLevel()
+                    ? await CopyMember(param)
+                    : await CopyMasterOrAgent(param);
+
+                if (result?.Code == 201 && IsFromChatBotService(param.SystemId))
                 {
-                    await Sync3rdProductSettings(param, result.CustId);
-                });
+                    retryLoop++;
+                    param.SetUserName(await GetAvailableDownlineUserName(param));
+                }
+                else
+                {
+                    if (result?.IsSuccess == true)
+                    {
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+                        Task.Run(async () =>
+                        {
+                            await Sync3rdProductSettings(param, result.CustId);
+                        });
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-            }
+
+                    }
+
+                    return result;
+                }
+            } while (retryLoop < AppSettings.RetryTimesIfUserNameNotAvailable);
 
             return result;
         }
@@ -243,5 +261,22 @@
 
         private async Task<CustomerInfo> GetCustomerInfo(int custId)
             => await repository.GetAsync<CustomerInfo>(new GetCustomerInfoCriteria(custId));
+
+        private async Task<string> GetAvailableDownlineUserName(CopyCustomerParam param)
+        {
+            var ptInfo = await GetPTInfo(param.ActorId, param.ActorUserLevel, string.Empty);
+
+            if (ptInfo != null)
+            {
+                var userName = param.UserName;
+                var length = param.ActorUserLevel.IsAgentLevel()
+                    ? userName.Length - 3
+                    : userName.Length - 2;
+
+                return userName.Substring(0, length) + ptInfo.Suffix;
+            }
+
+            return string.Empty;
+        }
     }
 }

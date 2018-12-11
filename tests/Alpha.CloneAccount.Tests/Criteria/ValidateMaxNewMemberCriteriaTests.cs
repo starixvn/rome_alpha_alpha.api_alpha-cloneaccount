@@ -38,7 +38,7 @@
         [InlineData(33120484, true)]
         public void IsValid_AgentId_ReturnsExpectedResult(int agentId, bool expectedResult)
         {
-            var criteria = new GetSuperPTCriteria(agentId, "en-US");
+            var criteria = new ValidateMaxNewMemberCriteria(agentId, "en-US");
 
             // Act
             var actualResult = criteria.IsValid();

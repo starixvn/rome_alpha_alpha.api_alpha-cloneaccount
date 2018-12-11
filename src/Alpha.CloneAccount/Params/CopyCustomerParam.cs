@@ -55,7 +55,7 @@
 
         public UserLevel ActorUserLevel { get; }
 
-        public string UserName { get; }
+        public string UserName { get; private set; }
 
         public string Password { get; private set; }
 
@@ -89,6 +89,11 @@
         public void SetPassword(string password)
         {
             Password = password;
+        }
+
+        public void SetUserName(string userName)
+        {
+            UserName = userName;
         }
     }
 }

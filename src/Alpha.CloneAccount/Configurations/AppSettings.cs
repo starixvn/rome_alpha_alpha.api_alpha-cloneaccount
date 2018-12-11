@@ -24,6 +24,10 @@
 
         public static string ApiKey => GetConfigValue("ApiKey");
 
+        public static int RetryTimesIfUserNameNotAvailable => GetIntConfigValue("RetryTimesIfUserNameNotAvailable");
+
+        public static int GetIntConfigValue(string configName) => int.Parse(GetConfigValue(configName));
+
         public static string GetConfigValue(string configName) => AppSettingValues[configName];
 
         public static void Verify()
