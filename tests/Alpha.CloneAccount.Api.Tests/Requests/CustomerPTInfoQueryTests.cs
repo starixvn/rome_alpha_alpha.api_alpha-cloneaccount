@@ -10,13 +10,12 @@
         public void CustomerPTInfoQuery_DefaultConstructor_AssignsCorrectDefaultValue()
         {
             // Arrange & Act
-            var ptInfo = new CustomerPTInfoQuery(8, 4, "BET-ODDS");
+            var ptInfo = new CustomerPTInfoQuery(8, 4);
 
             // Assert
             Assert.True(
                 ptInfo.CustId == 8
-                && ptInfo.CustLevel == 4
-                && ptInfo.Site == "BET-ODDS");
+                && ptInfo.CustLevel == 4);
         }
 
         [Theory]
@@ -26,7 +25,7 @@
         public void IsValid_CustId_ReturnsCorrectExpectedResult(int custId, bool expected)
         {
             // Arrange
-            var ptInfo = new CustomerPTInfoQuery(custId, 4, "BET-ODDS");
+            var ptInfo = new CustomerPTInfoQuery(custId, 4);
 
             // Act
             var actual = ptInfo.IsValid();
@@ -42,7 +41,7 @@
         public void IsValid_CustLevel_ReturnsCorrectExpectedResult(byte custLevel, bool expected)
         {
             // Arrange
-            var ptInfo = new CustomerPTInfoQuery(8, custLevel, "BET-ODDS");
+            var ptInfo = new CustomerPTInfoQuery(8, custLevel);
 
             // Act
             var actual = ptInfo.IsValid();

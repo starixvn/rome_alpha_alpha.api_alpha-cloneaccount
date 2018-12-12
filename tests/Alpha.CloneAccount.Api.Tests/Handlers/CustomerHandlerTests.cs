@@ -43,7 +43,7 @@
         public async Task HandleCustomerPTInfo_Always_CallsGetPTInfo()
         {
             // Arrange
-            var request = new CustomerPTInfoQuery(8, 4, "BET-ODDS");
+            var request = new CustomerPTInfoQuery(8, 4);
 
             // Act
             await customerHandler.Handle(request, default(CancellationToken));
@@ -51,7 +51,7 @@
             // Assert
             await customerService
                 .Received()
-                .GetPTInfo(request.CustId, Enumeration.FromValue<UserLevel>(request.CustLevel), request.Site);
+                .GetSMAPTInfo(Enumeration.FromValue<UserLevel>(request.CustLevel), request.CustId);
         }
 
         [Fact]

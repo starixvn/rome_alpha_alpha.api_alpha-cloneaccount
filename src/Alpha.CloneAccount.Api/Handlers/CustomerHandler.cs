@@ -25,10 +25,9 @@
             => await customerService.ValidateMaxNewMember(request.AgentId, request.Language);
 
         public async Task<CustomerPTInfo> Handle(CustomerPTInfoQuery request, CancellationToken cancellationToken)
-            => await customerService.GetPTInfo(
-                request.CustId,
+            => await customerService.GetSMAPTInfo(
                 Enumeration.FromValue<UserLevel>(request.CustLevel),
-                request.Site);
+                request.CustId);
 
         public async Task<CopyCustomerResult> Handle(CopyCustomerCommand request, CancellationToken cancellationToken)
             => await customerService.CopyCustomer(new CopyCustomerParam(

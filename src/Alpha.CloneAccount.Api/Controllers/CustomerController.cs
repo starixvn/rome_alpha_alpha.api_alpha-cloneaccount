@@ -26,9 +26,9 @@
 
         [HttpGet]
         [Route("api/customer/{custId}/{custLevel}/pt")]
-        public async Task<CustomerPTInfo> GetPT(int custId, byte custLevel, string site)
+        public async Task<CustomerPTInfo> GetPT(int custId, byte custLevel)
         {
-            var message = new CustomerPTInfoQuery(custId, custLevel, site);
+            var message = new CustomerPTInfoQuery(custId, custLevel);
 
             return message.IsValid()
               ? await mediator.Send(message)

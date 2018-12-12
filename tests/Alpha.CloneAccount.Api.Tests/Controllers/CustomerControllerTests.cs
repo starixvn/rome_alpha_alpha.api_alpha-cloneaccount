@@ -60,16 +60,15 @@
             // Arrange
             var custId = 33120484;
             byte custLevel = 4;
-            var site = "BET-ODDS";
 
             // Act
-            await customerController.GetPT(custId, custLevel, site);
+            await customerController.GetPT(custId, custLevel);
 
             // Assert
             await mediator
                 .Received()
                 .Send(Arg.Is<CustomerPTInfoQuery>(
-                    q => q.CustId == custId && q.CustLevel == custLevel && q.Site == site));
+                    q => q.CustId == custId && q.CustLevel == custLevel));
         }
 
         [Fact]
@@ -78,16 +77,15 @@
             // Arrange
             var custId = 0;
             byte custLevel = 4;
-            var site = "BET-ODDS";
 
             // Act
-            await customerController.GetPT(custId, custLevel, site);
+            await customerController.GetPT(custId, custLevel);
 
             // Assert
             await mediator
                 .DidNotReceive()
                 .Send(Arg.Is<CustomerPTInfoQuery>(
-                    q => q.CustId == custId && q.CustLevel == custLevel && q.Site == site));
+                    q => q.CustId == custId && q.CustLevel == custLevel));
         }
 
         [Fact]
@@ -96,16 +94,15 @@
             // Arrange
             var custId = 33120484;
             byte custLevel = 10;
-            var site = "BET-ODDS";
 
             // Act
-            await customerController.GetPT(custId, custLevel, site);
+            await customerController.GetPT(custId, custLevel);
 
             // Assert
             await mediator
                 .DidNotReceive()
                 .Send(Arg.Is<CustomerPTInfoQuery>(
-                    q => q.CustId == custId && q.CustLevel == custLevel && q.Site == site));
+                    q => q.CustId == custId && q.CustLevel == custLevel));
         }
 
         [Fact]

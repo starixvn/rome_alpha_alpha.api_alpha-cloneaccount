@@ -50,16 +50,14 @@
         {
             // Arrange
             var custId = 33120484;
-            var custLevel = Enumeration.FromValue<UserLevel>(4);
-            var site = "BET-ODDS";
 
             // Act
-            await customerService.GetPTInfo(custId, custLevel, site);
+            await customerService.GetSMAPTInfo(UserLevel.Super, custId);
 
             // Assert
             await repository
                 .Received()
-                .GetAsync<CustomerPTInfo>(Arg.Any<GetSuperPTCriteria>());
+                .GetAsync<CustomerPTInfo>(Arg.Any<GetSMAPTInfoCriteria>());
         }
 
         [Fact]
@@ -67,16 +65,14 @@
         {
             // Arrange
             var custId = 33120484;
-            var custLevel = Enumeration.FromValue<UserLevel>(3);
-            var site = "BET-ODDS";
 
             // Act
-            await customerService.GetPTInfo(custId, custLevel, site);
+            await customerService.GetSMAPTInfo(UserLevel.Master, custId);
 
             // Assert
             await repository
                 .Received()
-                .GetAsync<CustomerPTInfo>(Arg.Any<GetMasterPTCriteria>());
+                .GetAsync<CustomerPTInfo>(Arg.Any<GetSMAPTInfoCriteria>());
         }
 
         [Fact]
@@ -84,16 +80,14 @@
         {
             // Arrange
             var custId = 33120484;
-            var custLevel = Enumeration.FromValue<UserLevel>(2);
-            var site = "BET-ODDS";
 
             // Act
-            await customerService.GetPTInfo(custId, custLevel, site);
+            await customerService.GetSMAPTInfo(UserLevel.Agent, custId);
 
             // Assert
             await repository
                 .Received()
-                .GetAsync<CustomerPTInfo>(Arg.Any<GetAgentPTCriteria>());
+                .GetAsync<CustomerPTInfo>(Arg.Any<GetSMAPTInfoCriteria>());
         }
 
         [Fact]
@@ -101,16 +95,15 @@
         {
             // Arrange
             var custId = 0;
-            var custLevel = Enumeration.FromValue<UserLevel>(2);
-            var site = "BET-ODDS";
+            var custLevel = UserLevel.Agent;
 
             // Act
-            await customerService.GetPTInfo(custId, custLevel, site);
+            await customerService.GetSMAPTInfo(custLevel, custId);
 
             // Assert
             await repository
                 .DidNotReceive()
-                .GetAsync<CustomerPTInfo>(new GetAgentPTCriteria(custId));
+                .GetAsync<CustomerPTInfo>(new GetSMAPTInfoCriteria(custLevel, custId));
         }
 
         [Fact]
@@ -118,15 +111,14 @@
         {
             // Arrange
             var custId = 8;
-            var custLevel = Enumeration.FromValue<UserLevel>(4);
-            var site = "BET-ODDS";
+            var custLevel = UserLevel.Super;
             CustomerPTInfo expectedResult = null;
             repository
                 .GetAsync<CustomerPTInfo>(Arg.Any<ICriteria>())
                 .Returns(expectedResult);
 
             // Act
-            var actualResult = await customerService.GetPTInfo(custId, custLevel, site);
+            var actualResult = await customerService.GetSMAPTInfo(custLevel, custId);
 
             // Assert
             Assert.Null(actualResult);

@@ -16,7 +16,7 @@
     {
         Task<Result> ValidateMaxNewMember(int agentId, string language);
 
-        Task<CustomerPTInfo> GetPTInfo(int custId, UserLevel custLevel, string site);
+        Task<CustomerPTInfo> GetSMAPTInfo(UserLevel custLevel, int custId);
 
         Task<CopyCustomerResult> CopyCustomer(CopyCustomerParam param);
     }
@@ -48,9 +48,9 @@
             return new Result(command.ErrCode, command.ErrMsg);
         }
 
-        public async Task<CustomerPTInfo> GetPTInfo(int custId, UserLevel custLevel, string site)
+        public async Task<CustomerPTInfo> GetSMAPTInfo(UserLevel custLevel, int custId)
         {
-            var criteria = GetCustomerPTCriteria(custId, custLevel, site);
+            var criteria = new GetSMAPTInfoCriteria(custLevel, custId);
             var customerPTInfo = await repository.GetAsync<CustomerPTInfo>(criteria);
 
             if (customerPTInfo != null)
@@ -60,21 +60,6 @@
             }
 
             return customerPTInfo;
-        }
-
-        private static ICriteria GetCustomerPTCriteria(int custId, UserLevel custLevel, string site)
-        {
-            if (custLevel.IsAgentLevel())
-            {
-                return new GetAgentPTCriteria(custId);
-            }
-
-            if (custLevel.IsMasterLevel())
-            {
-                return new GetMasterPTCriteria(custId);
-            }
-
-            return new GetSuperPTCriteria(custId, site);
         }
 
         public async Task<CopyCustomerResult> CopyCustomer(CopyCustomerParam param)
@@ -264,7 +249,7 @@
 
         private async Task<string> GetAvailableDownlineUserName(CopyCustomerParam param)
         {
-            var ptInfo = await GetPTInfo(param.ActorId, param.ActorUserLevel, string.Empty);
+            var ptInfo = await GetSMAPTInfo(param.ActorUserLevel, param.ActorId);
 
             if (ptInfo != null)
             {
