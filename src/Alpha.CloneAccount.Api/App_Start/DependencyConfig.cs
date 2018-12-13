@@ -76,17 +76,17 @@ namespace Alpha.CloneAccount.Api.App_Start
         {
             container.RegisterSingleton(() => Logger.Log);
 
-            container.RegisterSingleton<CustomerService, CustomerServiceImpl>();
+            container.Register<CustomerService, CustomerServiceImpl>(Lifestyle.Scoped);
             container.RegisterSingleton<PasswordService, PasswordServiceImpl>();
             container.RegisterSingleton<SportbooksCopyMemberSpParamsBuilder, SportbooksCopyMemberSpParamsBuilderImpl>();
-            container.RegisterSingleton<ThirdPartyProductService, ThirdPartyProductServiceImpl>();
+            container.Register<ThirdPartyProductService, ThirdPartyProductServiceImpl>(Lifestyle.Scoped);
             container.RegisterSingleton<DCSService, DCSServiceImpl>();
             container.Register<GoldDeluxeService>(
                 () => new GoldDeluxeServiceImpl(new SettingService(), container.GetInstance<ILogger>()),
                 Lifestyle.Singleton);
             container.Register<KenoService>(
                 () => new KenoServiceImpl(new KenoSettingService(), container.GetInstance<ILogger>(), () => KenoSection.Instance.ShowSetting),
-                Lifestyle.Singleton);
+                Lifestyle.Scoped);
             container.RegisterSingleton<CasinoService, CasinoServiceImpl>();
             container.RegisterSingleton<MemberWinLimitService, MemberWinLimitServiceImpl>();
             container.RegisterSingleton<NG2Service, NG2ServiceImpl>();
