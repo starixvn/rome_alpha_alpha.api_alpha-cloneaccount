@@ -18,7 +18,7 @@
                 !criteria.DisabledCS
                 && !criteria.SyncCS
                 && !criteria.EnableDownline
-                && criteria.IP == null
+                && criteria.LoginIP == null
                 && criteria.Language == null
                 && !criteria.Status
                 && criteria.ErrCode == 0

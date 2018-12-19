@@ -25,7 +25,7 @@
             SyncCS = syncCS;
             EnableDownline = enableDownline;
             SystemId = systemId;
-            IP = ip;
+            LoginIP = ip;
             Language = language;
             ActorId = actorId;
             SubAccId = subAccId;
@@ -46,7 +46,7 @@
 
         public int SubAccId { get; }
 
-        public string IP { get; }
+        public string LoginIP { get; }
 
         public string Language { get; }
 
