@@ -148,7 +148,7 @@
                     param.ActorId,
                     param.SourceCustId,
                     param.ActorSubAccId,
-                    param.Language,
+                    param.LanguageKey,
                     param.IP,
                     param.SystemId);
             }
@@ -166,7 +166,7 @@
                 param.ActorId,
                 param.SourceCustId,
                 param.ActorSubAccId,
-                param.Language,
+                param.LanguageKey,
                 param.IP,
                 param.SystemId);
         }
