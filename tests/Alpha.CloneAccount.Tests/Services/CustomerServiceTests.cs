@@ -148,7 +148,7 @@
                 string.Empty,
                 SystemIdentity.Chatbot);
             passwordService
-                .Generate(6, true, true, true)
+                .Generate()
                 .Returns("1234aaAA");
 
             // Act
@@ -184,7 +184,7 @@
                 string.Empty,
                 SystemIdentity.Chatbot);
             passwordService
-                .Generate(6, true, true, true)
+                .Generate()
                 .Returns("1234aaAA");
 
             // Act

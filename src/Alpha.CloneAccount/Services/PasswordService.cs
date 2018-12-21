@@ -7,7 +7,7 @@ namespace Alpha.CloneAccount.Services
 
     public interface PasswordService
     {
-        string Generate(int length, bool numeric, bool lowercase, bool uppercase);
+        string Generate(int length = 6);
 
         string CfsEnCode(string plainText);
     }
@@ -18,72 +18,27 @@ namespace Alpha.CloneAccount.Services
         private const string LowercaseString = "abcdefghijklmnopqrstuvwxyz";
         private const string UppercaseString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-        public string Generate(int length, bool numeric, bool lowercase, bool uppercase)
+        public string Generate(int length = 6)
         {
-            var passwordSet = GetPasswordSet(numeric, lowercase, uppercase);
+            var passwordSet = $"{NumericString}{LowercaseString}{UppercaseString}";
             var passwordSetLength = passwordSet.Length;
 
             var password = new StringBuilder(length);
             var random = new Random();
             char c;
+            length -= 3;
 
             while (0 < length--)
             {
                 c = passwordSet[random.Next(passwordSetLength)];
                 password.Append(c);
-
-                if (char.IsDigit(c))
-                {
-                    numeric = false;
-                }
-                else if (char.IsLower(c))
-                {
-                    lowercase = false;
-                }
-                else if (char.IsUpper(c))
-                {
-                    uppercase = false;
-                }
             }
 
-            if (numeric)
-            {
-                password.Append(NumericString[random.Next(NumericString.Length)]);
-            }
-
-            if (lowercase)
-            {
-                password.Append(LowercaseString[random.Next(LowercaseString.Length)]);
-            }
-
-            if (uppercase)
-            {
-                password.Append(UppercaseString[random.Next(UppercaseString.Length)]);
-            }
+            password.Append(NumericString[random.Next(NumericString.Length)]);
+            password.Append(LowercaseString[random.Next(LowercaseString.Length)]);
+            password.Append(UppercaseString[random.Next(UppercaseString.Length)]);
 
             return password.ToString();
-        }
-
-        private static string GetPasswordSet(bool numeric, bool lowercase, bool uppercase)
-        {
-            var passwordSet = new StringBuilder();
-
-            if (numeric)
-            {
-                passwordSet.Append(NumericString);
-            }
-
-            if (lowercase)
-            {
-                passwordSet.Append(LowercaseString);
-            }
-
-            if (uppercase)
-            {
-                passwordSet.Append(UppercaseString);
-            }
-
-            return passwordSet.ToString();
         }
 
         public string CfsEnCode(string plainText)
