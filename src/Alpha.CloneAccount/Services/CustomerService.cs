@@ -105,7 +105,7 @@
             if (IsFromChatBotService(param.SystemId)
                 && string.IsNullOrWhiteSpace(param.Password))
             {
-                param.SetPassword(passwordService.Generate(8, true, true, true));
+                param.SetPassword(passwordService.Generate(6, true, true, true));
             }
         }
 
