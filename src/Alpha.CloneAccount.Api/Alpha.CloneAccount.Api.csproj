@@ -258,7 +258,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Data\SPNames\SIT\DBLOG.bodb_CustomerLog.BODBDownlineNet.xml" />
-    <Content Include="Areas\Logs\APILoggerSpNames.xml" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -310,12 +309,6 @@
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Alpha.CloneAccount.Api.ruleset" />
-    <Content Include="Areas\ONEbook.NG2.API.config" />
-    <Content Include="Areas\Logs\APILoggerConnectionStrings.uat.config" />
-    <Content Include="Areas\Logs\APILoggerConnectionStrings.sit.config" />
-    <Content Include="Areas\Logs\APILoggerConnectionStrings.pro.config" />
-    <Content Include="Areas\Logs\APILoggerConnectionStrings.mnl.config" />
-    <Content Include="Areas\Logs\APILoggerConnectionStrings.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
