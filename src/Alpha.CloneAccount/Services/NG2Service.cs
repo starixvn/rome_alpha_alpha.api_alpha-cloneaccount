@@ -48,6 +48,7 @@
                         actor.Currency,
                         actor.CustId,
                         param.SystemId,
+                        param.IP,
                         param.Language,
                         param.ActorSubAccId);
                 }

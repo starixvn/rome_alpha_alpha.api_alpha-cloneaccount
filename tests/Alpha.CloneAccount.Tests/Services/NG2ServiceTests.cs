@@ -114,6 +114,7 @@
                     actor.Currency,
                     actor.CustId,
                     param.SystemId,
+                    param.IP,
                     param.Language,
                     param.ActorSubAccId);
         }
@@ -205,6 +206,7 @@
                     actor.Currency,
                     actor.CustId,
                     param.SystemId,
+                    param.IP,
                     param.Language,
                     param.ActorSubAccId);
         }
@@ -299,6 +301,7 @@
                     actor.Currency,
                     actor.CustId,
                     param.SystemId,
+                    param.IP,
                     param.Language,
                     param.ActorSubAccId);
         }
@@ -385,6 +388,7 @@
                     actor.Currency,
                     actor.CustId,
                     param.SystemId,
+                    param.IP,
                     param.Language,
                     param.ActorSubAccId)
                 .Throws(new Exception(exceptionMessage));
