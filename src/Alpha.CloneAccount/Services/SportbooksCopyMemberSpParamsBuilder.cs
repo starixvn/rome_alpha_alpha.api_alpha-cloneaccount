@@ -60,7 +60,7 @@ namespace Alpha.CloneAccount.Services
 
         private void AddBettingLimitSpParams(DataRow sportbooksSetting, Hashtable spParams)
         {
-            var sportTypes = new[] { "1", "1mp", "2", "3", "5", "8", "10", "11", "99", "99mp", "161" };
+            var sportTypes = new[] { "1", "1mp", "2", "3", "5", "8", "10", "11", "99", "99mp", "161", "164" };
             var parameters = new[] { "minbetv{0}", "maxbetv{0}", "maxpermatchv{0}" };
 
             foreach (string item in sportTypes)
