@@ -19,6 +19,8 @@
         Task<CustomerPTInfo> GetSMAPTInfo(UserLevel custLevel, int custId);
 
         Task<CopyCustomerResult> CopyCustomer(CopyCustomerParam param);
+
+        Task<Result> CheckReachLimitDownline(CheckReachLimitDownlineParam param);
     }
 
     public class CustomerServiceImpl : CustomerService
@@ -90,7 +92,6 @@
                             await Sync3rdProductSettings(param, result.CustId);
                         });
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-
                     }
 
                     return result;
@@ -262,6 +263,19 @@
             }
 
             return string.Empty;
+        }
+
+        public async Task<Result> CheckReachLimitDownline(CheckReachLimitDownlineParam param)
+        {
+            var command = new CheckReachLimitDownlineCommand(
+                param.CustId,
+                param.CustLevel,
+                param.Username,
+                param.LanguageKey);
+
+            await repository.ExecuteAsync(command);
+
+            return new Result(command.ErrCode, command.ErrMsg);
         }
     }
 }

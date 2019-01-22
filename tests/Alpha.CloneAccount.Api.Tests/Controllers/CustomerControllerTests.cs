@@ -156,5 +156,28 @@
                 .DidNotReceive()
                 .Send(Arg.Any<CopyCustomerCommand>());
         }
+
+        [Fact]
+        public async Task CheckReachLimitDownline_Always_CallsMediatorSendCheckReachLimitDownlineQuery()
+        {
+            // Arrange
+            var query = new CheckReachLimitDownlineQuery
+            {
+                CustId = 1,
+                CustLevel = 2,
+                Username = "username",
+                Language = "en-US"
+            };
+
+            // Act
+            await customerController.CheckReachLimitDownline(query);
+
+            // Assert
+            await mediator.Received().Send(Arg.Is<CheckReachLimitDownlineQuery>(
+                q => q.CustId == query.CustId
+                    && q.CustLevel == query.CustLevel
+                    && query.Username == q.Username
+                    && q.Language == query.Language));
+        }
     }
 }

@@ -151,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurations\AppSettingsTests.cs" />
+    <Compile Include="Criteria\CheckReachLimitDownlineCommandTests.cs" />
     <Compile Include="Criteria\CopyAgentCommandTests.cs" />
     <Compile Include="Criteria\CopyCustomerCommandForTesting.cs" />
     <Compile Include="Criteria\CopyCustomerCommandTests.cs" />
