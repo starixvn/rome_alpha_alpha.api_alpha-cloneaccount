@@ -12,7 +12,8 @@
     public class CustomerHandler :
         IRequestHandler<ValidateMaxNewMemberQuery, Result>,
         IRequestHandler<CustomerPTInfoQuery, CustomerPTInfo>,
-        IRequestHandler<CopyCustomerCommand, CopyCustomerResult>
+        IRequestHandler<CopyCustomerCommand, CopyCustomerResult>,
+        IRequestHandler<CheckReachLimitDownlineQuery, Result>
     {
         private readonly CustomerService customerService;
 
@@ -49,5 +50,13 @@
                 request.Language,
                 request.IP,
                 request.SystemId));
+
+        public async Task<Result> Handle(CheckReachLimitDownlineQuery request, CancellationToken cancellationToken)
+            => await customerService.CheckReachLimitDownline(
+                new CheckReachLimitDownlineParam(
+                    request.CustId,
+                    request.CustLevel,
+                    request.Username,
+                    request.Language));
     }
 }

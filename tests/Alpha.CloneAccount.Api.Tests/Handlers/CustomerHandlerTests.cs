@@ -78,5 +78,28 @@
                 .Received()
                 .CopyCustomer(Arg.Any<CopyCustomerParam>());
         }
+
+        [Fact]
+        public async Task HandleCheckReachLimitDownlineQuery_Always_CallsCheckReachLimitDownline()
+        {
+            // Arrange
+            var query = new CheckReachLimitDownlineQuery
+            {
+                CustId = 1,
+                CustLevel = 2,
+                Username = "username",
+                Language = "en-US"
+            };
+
+            // Act
+            await customerHandler.Handle(query, default(CancellationToken));
+
+            // Assert
+            await customerService.Received().CheckReachLimitDownline(Arg.Is<CheckReachLimitDownlineParam>(
+                p => p.CustId == query.CustId
+                    && p.CustLevel == query.CustLevel
+                    && p.Username == query.Username
+                    && p.Language == query.Language));
+        }
     }
 }
