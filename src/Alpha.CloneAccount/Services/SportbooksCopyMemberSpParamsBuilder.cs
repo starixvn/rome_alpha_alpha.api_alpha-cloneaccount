@@ -43,7 +43,6 @@ namespace Alpha.CloneAccount.Services
             spParams.Add("playerdiscount1x2", sportbooksSetting["playerdiscount1x2"]);
             spParams.Add("playerdiscountnumber", sportbooksSetting["playerdiscountnumber"]);
             spParams.Add("playerdiscountmyanmarodds", sportbooksSetting["playerdiscountmyanmarodds"]);
-            spParams.Add("suspended", sportbooksSetting["suspended"]);
             spParams.Add("recommend", param.ActorId);
             spParams.Add("ugroup", sportbooksSetting["ugroup"]);
             spParams.Add("closed", sportbooksSetting["closed"]);
