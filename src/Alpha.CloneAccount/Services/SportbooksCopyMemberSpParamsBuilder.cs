@@ -148,7 +148,7 @@ namespace Alpha.CloneAccount.Services
             sportTypesBetTypes.Add("8", new string[] { "1", "3", "20", "10" });
             sportTypesBetTypes.Add("10", new string[] { "1", "2", "3", "20", "10" });
             sportTypesBetTypes.Add("11", new string[] { "1", "20", "10" });
-            sportTypesBetTypes.Add("99", new string[] { "1", "2", "3", "9", "20", "10" });
+            sportTypesBetTypes.Add("99", new string[] { "1", "2", "3", "9", "20", "10", "9999" });
             sportTypesBetTypes.Add("161", new string[] { "81", "83", "86", "88" });
             sportTypesBetTypes.Add("161_live", new string[] { "85", "86", "87", "89", "90" });
 
