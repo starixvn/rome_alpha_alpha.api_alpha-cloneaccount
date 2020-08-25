@@ -83,9 +83,7 @@
                 positionTaking.IsUpdateA1 = true;
             }
 
-            IKenoSession kenoSession = new KenoStalelessSession(param);
-
-            return settingService.UpdateMemberCustomerSettingInCaseOfAgentEditMember(sourceSettings, kenoSession);
+            return settingService.UpdateMemberCustomerSettingInCaseOfAgentEditMember(sourceSettings, true);
         }
     }
 }

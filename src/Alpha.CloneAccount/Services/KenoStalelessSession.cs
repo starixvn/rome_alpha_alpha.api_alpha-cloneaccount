@@ -25,5 +25,8 @@
 
         public int UserId
             => copyCustomerParam.ActorId;
+
+        public bool IsBelongToSpecialGroups 
+            => Configurations.AppSettings.AppSettingValues["SiteGroup"].Equals("789y", System.StringComparison.OrdinalIgnoreCase);
     }
 }

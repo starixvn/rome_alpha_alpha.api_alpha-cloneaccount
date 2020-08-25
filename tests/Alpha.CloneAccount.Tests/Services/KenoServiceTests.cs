@@ -151,7 +151,7 @@
             // Assert
             settingService
                 .Received()
-                .UpdateMemberCustomerSettingInCaseOfAgentEditMember(Arg.Any<AgentEditMemberSettingViewModel>(), Arg.Any<IKenoSession>());
+                .UpdateMemberCustomerSettingInCaseOfAgentEditMember(Arg.Any<AgentEditMemberSettingViewModel>(), true);
         }
 
         [Fact]
