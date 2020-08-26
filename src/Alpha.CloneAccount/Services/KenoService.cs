@@ -53,6 +53,7 @@
                     var sourceSettings = GetSourceMemberSettings(custInfoViewModel);
                     sourceSettings.SystemId = param.SystemId;
                     sourceSettings.CustomerInformation.CustId = custId;
+                    sourceSettings.CustomerInformation.Ip = param.IP;
 
                     return UpdateMemberSettings(sourceSettings);
                 }
