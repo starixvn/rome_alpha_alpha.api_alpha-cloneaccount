@@ -92,7 +92,8 @@
                         SubAccId = param.ActorSubAccId,
                         Disable = disableGoldDeluxe,
                         Ip = param.IP,
-                        SystemId = param.SystemId
+                        SystemId = param.SystemId,
+                        IsSC = true
                     };
 
                     commandResults.Add(UpdateStatus(statusParam));
@@ -102,7 +103,7 @@
             }
             catch (Exception ex)
             {
-                logger.Warn(ex.Message);
+                logger.Warn(ex.ToString());
                 return new MultipleCommandResults();
             }
         }

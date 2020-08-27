@@ -53,12 +53,13 @@
                     var sourceSettings = GetSourceMemberSettings(custInfoViewModel);
                     sourceSettings.SystemId = param.SystemId;
                     sourceSettings.CustomerInformation.CustId = custId;
+                    sourceSettings.CustomerInformation.Ip = param.IP;
 
-                    return UpdateMemberSettings(sourceSettings, param);
+                    return UpdateMemberSettings(sourceSettings);
                 }
                 catch (Exception ex)
                 {
-                    logger.Warn(ex.Message);
+                    logger.Warn(ex.ToString());
                 }
             }
 
@@ -69,7 +70,7 @@
             CustomerInformationViewModel custInfoViewModel)
             => settingService.GetSettingInCaseOfAgentEditMember(custInfoViewModel);
 
-        private IEnumerable<Result> UpdateMemberSettings(AgentEditMemberSettingViewModel sourceSettings, CopyCustomerParam param)
+        private IEnumerable<Result> UpdateMemberSettings(AgentEditMemberSettingViewModel sourceSettings)
         {
             foreach (var betSetting in sourceSettings.BetSettings)
             {
@@ -83,9 +84,7 @@
                 positionTaking.IsUpdateA1 = true;
             }
 
-            IKenoSession kenoSession = new KenoStalelessSession(param);
-
-            return settingService.UpdateMemberCustomerSettingInCaseOfAgentEditMember(sourceSettings, kenoSession);
+            return settingService.UpdateMemberCustomerSettingInCaseOfAgentEditMember(sourceSettings, true);
         }
     }
 }
