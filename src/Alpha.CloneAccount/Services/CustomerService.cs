@@ -77,7 +77,7 @@
                     ? await CopyMember(param)
                     : await CopyMasterOrAgent(param);
 
-                if (result?.Code == 201 && IsFromChatBotService(param.SystemId))
+                if (result?.Code == 201 && IsFromChatbotOrQrCode(param.SystemId, param.IsQrCode))
                 {
                     retryLoop++;
                     param.SetUserName(await GetAvailableDownlineUserName(param));
@@ -103,15 +103,15 @@
 
         private void CheckAndGenerateRawPassword(CopyCustomerParam param)
         {
-            if (IsFromChatBotService(param.SystemId)
+            if (IsFromChatbotOrQrCode(param.SystemId, param.IsQrCode)
                 && string.IsNullOrWhiteSpace(param.Password))
             {
                 param.SetPassword(passwordService.Generate());
             }
         }
 
-        private static bool IsFromChatBotService(byte systemId)
-            => systemId == SystemIdentity.Chatbot;
+        private static bool IsFromChatbotOrQrCode(byte systemId, bool isQrCode)
+            => systemId == SystemIdentity.Chatbot || isQrCode;
 
         private async Task<CopyCustomerResult> CopyMasterOrAgent(CopyCustomerParam param)
         {

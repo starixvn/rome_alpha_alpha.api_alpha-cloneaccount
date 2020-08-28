@@ -96,7 +96,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
 
             // Act
             ng2Service.SyncCustomerSettings(createdCustomer, disableNG2, actor, param);
@@ -188,7 +189,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
 
             // Act
             ng2Service.SyncCustomerSettings(createdCustomer, disableNG2, actor, param);
@@ -283,7 +285,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
 
             // Act
             ng2Service.SyncCustomerSettings(createdCustomer, disableNG2, actor, param);
@@ -375,7 +378,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
             var exceptionMessage = "Test Exception";
             ng2StatusService
                 .AutoInsertAccount(

@@ -32,7 +32,8 @@
                 "sourceUsername",
                 "en-US",
                 "127.0.0.1",
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
 
             // Act
             var actualResult = new KenoStalelessSession(param);

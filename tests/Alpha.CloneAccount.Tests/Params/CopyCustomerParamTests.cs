@@ -31,7 +31,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
 
             // Assert
             Assert.True(
@@ -77,7 +78,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
 
             // Act
             param.SetPassword("1234aaAA");
@@ -108,7 +110,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
 
             // Act
             param.SetUserName("masterZZ");

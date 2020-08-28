@@ -23,8 +23,10 @@
             string sourceUsername,
             string language,
             string ip,
-            byte systemId)
+            byte systemId,
+            bool isQrCode)
         {
+            IsQrCode = isQrCode;
             ActorId = actorId;
             ActorSubAccId = actorSubAccId;
             ActorSubAccName = actorSubAccName;
@@ -46,6 +48,8 @@
             IP = ip ?? string.Empty;
             SystemId = systemId;
         }
+
+        public bool IsQrCode { get; }
 
         public int ActorId { get; }
 

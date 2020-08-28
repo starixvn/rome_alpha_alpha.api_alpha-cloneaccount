@@ -146,7 +146,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
             passwordService
                 .Generate()
                 .Returns("1234aaAA");
@@ -182,7 +183,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
             passwordService
                 .Generate()
                 .Returns("1234aaAA");
