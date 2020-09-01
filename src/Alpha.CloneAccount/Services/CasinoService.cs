@@ -102,15 +102,15 @@ namespace Alpha.CloneAccount.Services
                 }
                 catch (AggregateException ex)
                 {
-                    logger.Warn(ex.Message);
+                    logger.Warn(ex.ToString());
                 }
                 catch (ErrorException ex)
                 {
-                    logger.Info(ex.Message);
+                    logger.Info(ex.ToString());
                 }
                 catch (Exception ex)
                 {
-                    logger.Warn(ex.Message);
+                    logger.Warn(ex.ToString());
                 }
             }
         }
@@ -221,15 +221,15 @@ namespace Alpha.CloneAccount.Services
                 }
                 catch (AggregateException ex)
                 {
-                    logger.Warn(ex.Message);
+                    logger.Warn(ex.ToString());
                 }
                 catch (ErrorException ex)
                 {
-                    logger.Info(ex.Message);
+                    logger.Info(ex.ToString());
                 }
                 catch (Exception ex)
                 {
-                    logger.Warn(ex.Message);
+                    logger.Warn(ex.ToString());
                 }
             }
         }

@@ -54,7 +54,7 @@
                 }
                 catch (Exception ex)
                 {
-                    logger.Warn(ex.Message);
+                    logger.Warn(ex.ToString());
                 }
             }
 
