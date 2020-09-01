@@ -77,7 +77,7 @@
                     ? await CopyMember(param)
                     : await CopyMasterOrAgent(param);
 
-                if (result?.Code == 201 && IsFromChatbotOrQrCode(param.SystemId, param.IsQrCode))
+                if (result?.Code == 201 && IsFromChatbot(param.SystemId))
                 {
                     retryLoop++;
                     param.SetUserName(await GetAvailableDownlineUserName(param));
@@ -110,8 +110,11 @@
             }
         }
 
+        private static bool IsFromChatbot(byte systemId)
+            => systemId == SystemIdentity.Chatbot;
+
         private static bool IsFromChatbotOrQrCode(byte systemId, bool isQrCode)
-            => systemId == SystemIdentity.Chatbot || isQrCode;
+            => IsFromChatbot(systemId) || isQrCode;
 
         private async Task<CopyCustomerResult> CopyMasterOrAgent(CopyCustomerParam param)
         {
