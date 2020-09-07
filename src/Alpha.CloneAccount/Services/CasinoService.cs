@@ -471,7 +471,7 @@ namespace Alpha.CloneAccount.Services
             var lsGameType = new List<GameTypeDetail>();
 
             var basicInfo = new BasicInfo();
-            var dtGameType = basicInfo.GetGameType(gameKindID, custId, exchangeId);
+            var dtGameType = basicInfo.GetGameType(gameKindID);
 
             foreach (DataRow row in dtGameType.Rows)
             {
