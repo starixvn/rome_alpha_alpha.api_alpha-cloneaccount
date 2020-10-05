@@ -108,6 +108,9 @@
       <HintPath>..\..\packages\Fanex.Module.NG2.Alpha.1.0.1.2\lib\net461\Fanex.Module.NG2.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fanex.NAP.Framework, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.NAP.Framework.1.0.0.2\lib\net40\Fanex.NAP.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="HandHistoryLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CasinoLibrary.2.0.6.1\lib\net40\HandHistoryLibrary.dll</HintPath>
     </Reference>
