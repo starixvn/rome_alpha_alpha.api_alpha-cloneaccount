@@ -381,6 +381,7 @@
                 SystemIdentity.Chatbot,
                 false);
             var exceptionMessage = "Test Exception";
+            var ex = new Exception(exceptionMessage);
             ng2StatusService
                 .AutoInsertAccount(
                     createdCustomer.CustId,
@@ -395,13 +396,13 @@
                     param.IP,
                     param.Language,
                     param.ActorSubAccId)
-                .Throws(new Exception(exceptionMessage));
+                .Throws(ex);
 
             // Act
             ng2Service.SyncCustomerSettings(createdCustomer, disableNG2, actor, param);
 
             // Assert
-            logger.Received().Warn(exceptionMessage);
+            logger.Received().Warn(ex.ToString());
         }
     }
 }
