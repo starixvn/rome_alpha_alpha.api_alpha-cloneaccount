@@ -57,7 +57,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
 
             // Act
             goldDeluxeService.UpdateMemberSettings(
@@ -103,7 +104,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
             settingService
                 .UpdateSettingFromExistingMember(Arg.Any<UpdateSettingFromExistingMemberParameters>())
                 .Returns(new MultipleCommandResults
@@ -155,7 +157,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
             settingService
                 .UpdateSettingFromExistingMember(Arg.Any<UpdateSettingFromExistingMemberParameters>())
                 .Returns(new MultipleCommandResults
@@ -210,7 +213,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
             settingService
                 .UpdateSettingFromExistingMember(Arg.Any<UpdateSettingFromExistingMemberParameters>())
                 .Returns(new MultipleCommandResults
@@ -262,7 +266,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
             var exceptionMessage = "Test Exception";
             settingService
                 .UpdateSettingFromExistingMember(Arg.Any<UpdateSettingFromExistingMemberParameters>())
@@ -276,7 +281,7 @@
                 param);
 
             // Assert
-            logger.Received().Warn(exceptionMessage);
+            logger.Received().Throws(new Exception(exceptionMessage));
         }
     }
 }

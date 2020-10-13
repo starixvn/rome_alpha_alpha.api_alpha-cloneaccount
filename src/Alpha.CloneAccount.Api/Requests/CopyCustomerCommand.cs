@@ -40,6 +40,7 @@
         public string IP { get; set; }
 
         public byte SystemId { get; set; }
+        public bool IsQrCode { get; set; }
 
         public bool IsValid()
             => ActorId > 0

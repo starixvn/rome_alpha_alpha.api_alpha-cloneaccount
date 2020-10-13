@@ -49,7 +49,8 @@
                 request.SourceUsername,
                 request.Language,
                 request.IP,
-                request.SystemId));
+                request.SystemId,
+                request.IsQrCode));
 
         public async Task<Result> Handle(CheckReachLimitDownlineQuery request, CancellationToken cancellationToken)
             => await customerService.CheckReachLimitDownline(

@@ -26,6 +26,7 @@ namespace Alpha.CloneAccount.Services
 
         private void AddAccountInfoSpParams(DataRow sportbooksSetting, CopyCustomerParam param, string hashPassword, Hashtable spParams)
         {
+            spParams.Add("isqrcode", param.IsQrCode);
             spParams.Add("custid", 0);
             spParams.Add("username", param.UserName);
             spParams.Add("userpwd", hashPassword);

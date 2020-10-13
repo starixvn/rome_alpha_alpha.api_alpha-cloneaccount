@@ -57,7 +57,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
 
             // Act
             kenoService.UpdateMemberSettings(
@@ -95,7 +96,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
 
             // Act
             kenoService.UpdateMemberSettings(
@@ -133,7 +135,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
             settingService
                 .GetSettingInCaseOfAgentEditMember(Arg.Any<CustomerInformationViewModel>())
                 .Returns(new AgentEditMemberSettingViewModel {
@@ -178,7 +181,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
             var exceptionMessage = "Test Exception";
             settingService
                 .GetSettingInCaseOfAgentEditMember(Arg.Any<CustomerInformationViewModel>())
@@ -191,7 +195,7 @@
                 param);
 
             // Assert
-            logger.Received().Warn(exceptionMessage);
+            logger.Received().Throws(new Exception(exceptionMessage));
         }
     }
 }

@@ -45,12 +45,11 @@
       <HintPath>..\..\packages\EasyNetQ.0.53.3.414\lib\net45\EasyNetQ.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.CustomerSetting.Module.Core, Version=2.0.4.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Core.2.0.4.1\lib\net461\Fanex.CustomerSetting.Module.Core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Fanex.CustomerSetting.Module.Core, Version=2.0.4.7, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Core.2.0.4.7\lib\net461\Fanex.CustomerSetting.Module.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.CustomerSetting.Module.Keno.KenoSetting, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Keno.Setting.2.0.2\lib\net461\Fanex.CustomerSetting.Module.Keno.KenoSetting.dll</HintPath>
+    <Reference Include="Fanex.CustomerSetting.Module.Keno.KenoSetting, Version=2.0.2.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Keno.Setting.2.0.2.5\lib\net461\Fanex.CustomerSetting.Module.Keno.KenoSetting.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Data, Version=2.1.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Data.2.1.0.1\lib\net461\Fanex.Data.dll</HintPath>
@@ -60,8 +59,8 @@
       <HintPath>..\..\packages\Fanex.Data.Repository.1.0.2.1\lib\net461\Fanex.Data.Repository.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.GoldDeluxe.CoreSetting, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.GoldDeluxe.Setting.1.0.3\lib\net461\Fanex.GoldDeluxe.CoreSetting.dll</HintPath>
+    <Reference Include="Fanex.GoldDeluxe.CoreSetting, Version=1.0.3.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.GoldDeluxe.Setting.1.0.3.5\lib\net461\Fanex.GoldDeluxe.CoreSetting.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Logging.1.0.0.0\lib\net40\Fanex.Logging.dll</HintPath>

@@ -38,17 +38,17 @@
       <HintPath>..\..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="CasinoLibrary, Version=2.0.3.38621, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CasinoLibrary.2.0.3.38621\lib\net40\CasinoLibrary.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="CasinoLibrary, Version=2.0.6.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CasinoLibrary.2.0.6.2\lib\net40\CasinoLibrary.dll</HintPath>
     </Reference>
     <Reference Include="CasinoSetting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CasinoLibrary.2.0.3.38621\lib\net40\CasinoSetting.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\packages\CasinoLibrary.2.0.6.2\lib\net40\CasinoSetting.dll</HintPath>
     </Reference>
     <Reference Include="CasinoUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CasinoLibrary.2.0.3.38621\lib\net40\CasinoUtility.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\packages\CasinoLibrary.2.0.6.2\lib\net40\CasinoUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="Couchbase, Version=1.0.0.0, Culture=neutral, PublicKeyToken=81137140da4e57ef, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Caching.1.0.404.95\lib\net40\Couchbase.dll</HintPath>
     </Reference>
     <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
@@ -62,24 +62,28 @@
       <HintPath>..\..\packages\EasyNetQ.0.53.3.414\lib\net45\EasyNetQ.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Enyim.Caching, Version=2.12.0.0, Culture=neutral, PublicKeyToken=81137140da4e57ef, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Caching.1.0.404.95\lib\net40\Enyim.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.Caching, Version=1.0.404.95, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Caching.1.0.404.95\lib\net40\Fanex.Caching.dll</HintPath>
+    </Reference>
     <Reference Include="Fanex.Common, Version=1.0.404.97, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Common.1.0.404.97\lib\net40\Fanex.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.CustomerSetting.Module.Casino, Version=2.0.3.6, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Casino.2.0.3.6\lib\net461\Fanex.CustomerSetting.Module.Casino.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Fanex.CustomerSetting.Module.Casino, Version=2.0.4.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Casino.2.0.4.5\lib\net40\Fanex.CustomerSetting.Module.Casino.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.CustomerSetting.Module.Core, Version=2.0.4.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Core.2.0.4.1\lib\net461\Fanex.CustomerSetting.Module.Core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Fanex.CustomerSetting.Module.Core, Version=2.0.4.7, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Core.2.0.4.7\lib\net461\Fanex.CustomerSetting.Module.Core.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.CustomerSetting.Module.Keno.KenoResources, Version=1.0.0.7, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Keno.KenoResources.1.0.0.8\lib\net40\Fanex.CustomerSetting.Module.Keno.KenoResources.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.CustomerSetting.Module.Keno.KenoSetting, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Keno.Setting.2.0.2\lib\net461\Fanex.CustomerSetting.Module.Keno.KenoSetting.dll</HintPath>
+    <Reference Include="Fanex.CustomerSetting.Module.Keno.KenoSetting, Version=2.0.2.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Keno.Setting.2.0.2.5\lib\net461\Fanex.CustomerSetting.Module.Keno.KenoSetting.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Data, Version=2.1.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Data.2.1.0.1\lib\net461\Fanex.Data.dll</HintPath>
@@ -89,8 +93,8 @@
       <HintPath>..\..\packages\Fanex.Data.Repository.1.0.2.1\lib\net461\Fanex.Data.Repository.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fanex.GoldDeluxe.CoreSetting, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.GoldDeluxe.Setting.1.0.3\lib\net461\Fanex.GoldDeluxe.CoreSetting.dll</HintPath>
+    <Reference Include="Fanex.GoldDeluxe.CoreSetting, Version=1.0.3.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.GoldDeluxe.Setting.1.0.3.5\lib\net461\Fanex.GoldDeluxe.CoreSetting.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Logging.1.0.0.0\lib\net40\Fanex.Logging.dll</HintPath>
@@ -104,9 +108,11 @@
       <HintPath>..\..\packages\Fanex.Module.NG2.Alpha.1.0.1.2\lib\net461\Fanex.Module.NG2.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Fanex.NAP.Framework, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.NAP.Framework.1.0.0.2\lib\net40\Fanex.NAP.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="HandHistoryLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CasinoLibrary.2.0.3.38621\lib\net40\HandHistoryLibrary.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\packages\CasinoLibrary.2.0.6.2\lib\net40\HandHistoryLibrary.dll</HintPath>
     </Reference>
     <Reference Include="IBCCrypt, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\IBCCrypt.1.1.0.0\lib\IBCCrypt.dll</HintPath>
@@ -116,13 +122,15 @@
       <HintPath>..\..\packages\ILogger.1.0.0.0\lib\net40\ILogger.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <HintPath>..\..\packages\log4net.1.2.9.1\lib\net40\log4net.dll</HintPath>
     </Reference>
     <Reference Include="MessagePack, Version=1.7.3.4, Culture=neutral, PublicKeyToken=b4a0369545f0a1be, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MessagePack.1.7.3.4\lib\net45\MessagePack.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EnterpriseLibrary.Caching.5.0.414.0\lib\net40\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EnterpriseLibrary.Common.5.0.414.0\lib\net40\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
@@ -145,9 +153,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="NetUtility, Version=4.5.6325.30210, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NetUtility.4.5.6325.30210\lib\net40\NetUtility.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="NetUtility, Version=1.0.4199.22106, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NetUtility.1.0.4199.22106\lib\net40\NetUtility.dll</HintPath>
     </Reference>
     <Reference Include="ONEbook.NG2.API, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ONEbook.NG2.API.NAP.1.0.0.5\lib\net461\ONEbook.NG2.API.dll</HintPath>
@@ -250,7 +257,9 @@
     <None Include="Alpha.CloneAccount.Debug.ruleset" />
     <None Include="Alpha.CloneAccount.ruleset" />
     <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\Google.Protobuf.dll" />

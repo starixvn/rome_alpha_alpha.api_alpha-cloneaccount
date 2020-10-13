@@ -120,7 +120,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
 
             // Act
             await thirdPartyProductService.SyncMasterOrAgentSettings(createdCustomer, sourceCustomer, actor, param);
@@ -226,7 +227,8 @@
                 "sourceUsername",
                 "en-US",
                 string.Empty,
-                SystemIdentity.Chatbot);
+                SystemIdentity.Chatbot,
+                false);
 
             // Act
             await thirdPartyProductService.SyncMemberSettings(createdCustomer, sourceCustomer, actor, param);

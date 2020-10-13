@@ -56,6 +56,8 @@
 
         public string ErrMsg { get; set; }
 
+        public bool IsSc => true;
+
         public override string GetSettingKey()
             => "Acc_UpdCSStatus_Cust";
 

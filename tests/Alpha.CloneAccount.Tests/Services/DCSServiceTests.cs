@@ -92,9 +92,10 @@
             var actorSubAccId = 0;
             var ip = string.Empty;
             var exceptionMessage = "Test Exception";
+            var ex = new Exception(exceptionMessage);
             dynamicRepository
                 .ExecuteAsync(Arg.Any<InsertMemberDCSSettingCommand>())
-                .Throws(new Exception(exceptionMessage));
+                .Throws(ex);
 
             // Act
             await dcsService.InsertMemberSettings(
@@ -105,7 +106,7 @@
                 ip);
 
             // Assert
-            logger.Received().Warn(exceptionMessage);
+            logger.Received().Warn(ex.ToString());
         }
     }
 }

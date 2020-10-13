@@ -51,4 +51,8 @@
     <Setting Key="Acc_CustomerWinLimitSelEdit" SpName="Acc_CustomerWinLimitSelEdit" DbName="DBCUST.CustDB.BODBDownlineNet" Plain="0" />
     <Setting Key="Acc_CustomerWinlimitUpd" SpName="Acc_CustomerWinlimitUpd" DbName="DBCust.CustDB.BODBDownlineNet" Plain="0" />
   </Function>
+
+  <Function Name="UM On product">
+    <Setting Key="Acc_CheckUM" SpName="Acc_CheckUM" DbName="DBCust.CustDB.BODBDownlineNet" />
+  </Function>
 </Functions>
