@@ -1,5 +1,6 @@
 ﻿namespace Alpha.CloneAccount.Criteria
 {
+    using Alpha.CloneAccount.Configurations;
     using Fanex.Data;
     using Fanex.Data.Repository;
 
@@ -31,6 +32,8 @@
         public int ActorSubAccId { get; }
 
         public string IP { get; }
+
+        public byte SettingStatus => AppSettings.SettingStatus;
 
         public int ErrCode { get; set; }
 

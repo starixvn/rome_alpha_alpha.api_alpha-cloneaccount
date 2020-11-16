@@ -24,6 +24,15 @@
 
         public static string ApiKey => GetConfigValue("ApiKey");
 
+        public static byte SettingStatus
+        {
+            get
+            {
+                byte.TryParse(GetConfigValue("SettingStatus"), out byte settingStatus);
+                return settingStatus;
+            }
+        }
+
         public static int RetryTimesIfUserNameNotAvailable => GetIntConfigValue("RetryTimesIfUserNameNotAvailable");
 
         public static int GetIntConfigValue(string configName) => int.Parse(GetConfigValue(configName));

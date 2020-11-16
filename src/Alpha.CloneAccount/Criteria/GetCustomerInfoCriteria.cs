@@ -1,5 +1,6 @@
 ﻿namespace Alpha.CloneAccount.Criteria
 {
+    using Alpha.CloneAccount.Configurations;
     using Fanex.Data.Repository;
 
     public class GetCustomerInfoCriteria : CriteriaBase
@@ -10,6 +11,8 @@
         }
 
         public int CustId { get; }
+
+        public byte SettingStatus => AppSettings.SettingStatus;
 
         public override string GetSettingKey()
             => "Age_CustomerSelUserInfo";

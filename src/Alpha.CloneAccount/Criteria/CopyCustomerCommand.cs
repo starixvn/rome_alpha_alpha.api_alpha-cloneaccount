@@ -1,5 +1,6 @@
 ﻿namespace Alpha.CloneAccount.Criteria
 {
+    using Alpha.CloneAccount.Configurations;
     using Fanex.Data.Repository;
 
     public abstract class CopyCustomerCommand : NonQueryCommand
@@ -65,6 +66,8 @@
         public byte SystemId { get; }
 
         public int CustId { get; set; }
+
+        public byte SettingStatus => AppSettings.SettingStatus;
 
         public int ErrCode { get; set; }
 
