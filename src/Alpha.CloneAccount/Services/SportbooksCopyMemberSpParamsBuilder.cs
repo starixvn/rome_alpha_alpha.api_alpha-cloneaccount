@@ -4,6 +4,7 @@ namespace Alpha.CloneAccount.Services
     using System;
     using System.Collections;
     using System.Data;
+    using Alpha.CloneAccount.Configurations;
     using Params;
 
     public interface SportbooksCopyMemberSpParamsBuilder
@@ -53,6 +54,7 @@ namespace Alpha.CloneAccount.Services
             //spParams.Add("userid", param.ActorId);
             spParams.Add("creator", param.ActorId);
             spParams.Add("subaccid", param.ActorSubAccId);
+            spParams.Add("settingstatus", AppSettings.SettingStatus);
             spParams.Add("errcode", 0);
             spParams.Add("errmsg", string.Empty);
         }
