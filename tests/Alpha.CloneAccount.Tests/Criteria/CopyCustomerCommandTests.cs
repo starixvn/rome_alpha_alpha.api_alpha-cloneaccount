@@ -1,6 +1,8 @@
 ﻿namespace Alpha.CloneAccount.Tests.Criteria
 {
     using System;
+    using System.Collections.Specialized;
+    using Alpha.CloneAccount.Configurations;
     using Constants;
     using Xunit;
 
@@ -238,6 +240,35 @@
 
             // Assert
             Assert.Equal(expectedResult, actualResult);
+        }
+
+        [Theory]
+        [InlineData("1", 1)]
+        [InlineData("0", 0)]
+        [InlineData("abc", 0)]
+        public void SettingStatus_Always_AssignsCorrectValue(string settingStatus, byte expectedResult)
+        {
+            // Arrange & Act
+            AppSettings.AppSettingValues = new NameValueCollection();
+            AppSettings.AppSettingValues.Add("SettingStatus", settingStatus);
+            var criteria = new CopyCustomerCommandForTesting(
+                "master",
+                "1234aa",
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                1000,
+                8,
+                33120485,
+                0,
+                "en-US",
+                string.Empty,
+                SystemIdentity.Chatbot);
+
+            // Assert
+            Assert.Equal(expectedResult, criteria.SettingStatus);
         }
     }
 }

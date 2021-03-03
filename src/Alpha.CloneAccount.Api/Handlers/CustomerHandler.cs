@@ -13,7 +13,8 @@
         IRequestHandler<ValidateMaxNewMemberQuery, Result>,
         IRequestHandler<CustomerPTInfoQuery, CustomerPTInfo>,
         IRequestHandler<CopyCustomerCommand, CopyCustomerResult>,
-        IRequestHandler<CheckReachLimitDownlineQuery, Result>
+        IRequestHandler<CheckReachLimitDownlineQuery, Result>,
+        IRequestHandler<CheckLimitNewDownlineQuery, Result>
     {
         private readonly CustomerService customerService;
 
@@ -58,6 +59,13 @@
                     request.CustId,
                     request.CustLevel,
                     request.Username,
+                    request.Language));
+
+        public async Task<Result> Handle(CheckLimitNewDownlineQuery request, CancellationToken cancellationToken)
+            => await customerService.CheckLimitNewDownline(
+                new CheckLimitNewDownlineParam(
+                    request.CustId,
+                    Enumeration.FromValue<UserLevel>(request.CustLevel),
                     request.Language));
     }
 }

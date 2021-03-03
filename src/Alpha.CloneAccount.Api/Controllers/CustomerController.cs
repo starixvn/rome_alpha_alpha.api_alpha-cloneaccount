@@ -47,5 +47,10 @@
         [Route("CheckReachLimitDownline")]
         public async Task<Result> CheckReachLimitDownline([FromBody]CheckReachLimitDownlineQuery request)
             => await mediator.Send(request);
+
+        [HttpPost]
+        [Route("CheckLimitNewDownline")]
+        public async Task<Result> CheckLimitNewDownline([FromBody]CheckLimitNewDownlineQuery request)
+            => await mediator.Send(request);
     }
 }

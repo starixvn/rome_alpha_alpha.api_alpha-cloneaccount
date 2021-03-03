@@ -21,6 +21,8 @@
         Task<CopyCustomerResult> CopyCustomer(CopyCustomerParam param);
 
         Task<Result> CheckReachLimitDownline(CheckReachLimitDownlineParam param);
+
+        Task<Result> CheckLimitNewDownline(CheckLimitNewDownlineParam param);
     }
 
     public class CustomerServiceImpl : CustomerService
@@ -279,6 +281,40 @@
             await repository.ExecuteAsync(command);
 
             return new Result(command.ErrCode, command.ErrMsg);
+        }
+
+        public async Task<Result> CheckLimitNewDownline(CheckLimitNewDownlineParam param)
+        {
+            var command = new CheckLimitNewDownlineCommand(param.CustId);
+            await repository.ExecuteAsync(command);
+
+            return command.IsAllowed
+                ? new Result(0, string.Empty)
+                : GetLimitNewDownlineErrorResult(param.CustLevel, param.Language);
+        }
+
+        private static Result GetLimitNewDownlineErrorResult(UserLevel custLevel, string language)
+        {
+            const int LimitNewDownlineErrorCode = 1001;
+
+            return new Result(
+                LimitNewDownlineErrorCode,
+                StaticResources.Get(GetLimitNewDownlineResourceKey(custLevel), language));
+        }
+
+        private static string GetLimitNewDownlineResourceKey(UserLevel custLevel)
+        {
+            if (custLevel.IsSuperLevel())
+            {
+                return "LimitSuperNewDownlineError";
+            }
+
+            if (custLevel.IsMasterLevel())
+            {
+                return "LimitMasterNewDownlineError";
+            }
+
+            return "LimitAgentNewDownlineError";
         }
     }
 }
