@@ -22,7 +22,8 @@
                 && criteria.Language == null
                 && !criteria.Status
                 && criteria.ErrCode == 0
-                && criteria.ErrMsg == null);
+                && criteria.ErrMsg == null
+                && criteria.IsSc);
         }
 
         [Fact]

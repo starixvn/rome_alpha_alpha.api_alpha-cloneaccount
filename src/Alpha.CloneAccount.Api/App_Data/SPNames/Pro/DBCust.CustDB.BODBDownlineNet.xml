@@ -55,4 +55,8 @@
   <Function Name="UM On product">
     <Setting Key="Acc_CheckUM" SpName="Acc_CheckUM" DbName="DBCust.CustDB.BODBDownlineNet" />
   </Function>
+
+  <Function Name="Problem Account - Limit New Downline">
+    <Setting Key="Acc_ProblemAccountLimitDownlineCheck" SpName="Acc_ProblemAccountLimitDownlineCheck" DbName="DBCust.CustDB.BODBDownlineNet" Plain="0" />
+  </Function>
 </Functions>

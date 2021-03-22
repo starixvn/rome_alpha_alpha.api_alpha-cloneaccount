@@ -7,6 +7,9 @@
     public class LanguageUtilsTests
     {
         [Theory]
+        [InlineData(null, "_En")]
+        [InlineData("", "_En")]
+        [InlineData("   ", "_En")]
         [InlineData("en-US", "_En")]
         [InlineData("ja-JP", "_Jp")]
         [InlineData("zh-TW", "_Ct")]
@@ -24,6 +27,9 @@
         }
 
         [Theory]
+        [InlineData(null, "E")]
+        [InlineData("", "E")]
+        [InlineData("   ", "E")]
         [InlineData("en-US", "E")]
         [InlineData("ja-JP", "J")]
         [InlineData("zh-TW", "CT")]

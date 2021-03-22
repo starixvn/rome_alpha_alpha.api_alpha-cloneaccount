@@ -46,7 +46,7 @@
         }
 
         [Fact]
-        public async Task GetPTInfo_ValidSuperCriteria_CallsGetAsync()
+        public async Task GetPTInfo_ValidCriteria_CallsGetAsync()
         {
             // Arrange
             var custId = 33120484;
@@ -61,33 +61,18 @@
         }
 
         [Fact]
-        public async Task GetPTInfo_ValidMasterCriteria_CallsGetAsync()
+        public async Task GetPTInfo_ValidCriteria_ReturnsCorrectPT()
         {
             // Arrange
-            var custId = 33120484;
+            repository
+                .GetAsync<CustomerPTInfo>(Arg.Any<ICriteria>())
+                .Returns(new CustomerPTInfo(0, 0, "supertest1", 1000 ));
 
             // Act
-            await customerService.GetSMAPTInfo(UserLevel.Master, custId);
+            var actualPT = await customerService.GetSMAPTInfo(UserLevel.Super, 33120484);
 
             // Assert
-            await repository
-                .Received()
-                .GetAsync<CustomerPTInfo>(Arg.Any<GetSMAPTInfoCriteria>());
-        }
-
-        [Fact]
-        public async Task GetPTInfo_ValidAgentCriteria_CallsGetAsync()
-        {
-            // Arrange
-            var custId = 33120484;
-
-            // Act
-            await customerService.GetSMAPTInfo(UserLevel.Agent, custId);
-
-            // Assert
-            await repository
-                .Received()
-                .GetAsync<CustomerPTInfo>(Arg.Any<GetSMAPTInfoCriteria>());
+            Assert.True(actualPT.CustId == 33120484 && actualPT.CustLevel == UserLevel.Super.Value);
         }
 
         [Fact]
@@ -196,6 +181,78 @@
             await repository
                 .Received()
                 .ExecuteAsync(Arg.Any<CopyAgentCommand>());
+        }
+
+        [Fact]
+        public async Task CheckReachLimitDownline_Always_CallsExecuteAsync()
+        {
+            // Arrange
+            var param = new CheckReachLimitDownlineParam(1176070, 4, "supertest1", "en-US");
+
+            // Act
+            await customerService.CheckReachLimitDownline(param);
+
+            // Assert
+            await repository.Received().ExecuteAsync(Arg.Is<CheckReachLimitDownlineCommand>(
+                c => c.CustId == param.CustId
+                && c.RoleId == param.CustLevel
+                && c.Prefix == param.Username
+                && c.Language == param.LanguageKey));
+        }
+
+        [Fact]
+        public async Task CheckLimitNewDownline_Always_CallsExecuteAsync()
+        {
+            // Arrange
+            var param = new CheckLimitNewDownlineParam(1176070, UserLevel.Super, "en-US");
+
+            // Act
+            await customerService.CheckLimitNewDownline(param);
+
+            // Assert
+            await repository.Received().ExecuteAsync(Arg.Is<CheckLimitNewDownlineCommand>(c => c.CustId == param.CustId));
+        }
+
+        [Fact]
+        public async Task CheckLimitNewDownline_SuperIsNotAllowed_ReturnsCorrectErrorMessage()
+        {
+            // Arrange
+            var param = new CheckLimitNewDownlineParam(1176070, UserLevel.Super, "en-US");
+            repository.ExecuteAsync(Arg.Any<ICriteria>()).Returns(Task.CompletedTask);
+
+            // Act
+            var result = await customerService.CheckLimitNewDownline(param);
+
+            // Assert
+            Assert.Equal("Sorry, you can only create 3 masters per day, please try again tomorrow.", result.Message);
+        }
+
+        [Fact]
+        public async Task CheckLimitNewDownline_MasterIsNotAllowed_ReturnsCorrectErrorMessage()
+        {
+            // Arrange
+            var param = new CheckLimitNewDownlineParam(1176070, UserLevel.Master, "en-US");
+            repository.ExecuteAsync(Arg.Any<ICriteria>()).Returns(Task.CompletedTask);
+
+            // Act
+            var result = await customerService.CheckLimitNewDownline(param);
+
+            // Assert
+            Assert.Equal("Sorry, you can only create 3 agents per day, please try again tomorrow.", result.Message);
+        }
+
+        [Fact]
+        public async Task CheckLimitNewDownline_AgentIsNotAllowed_ReturnsCorrectErrorMessage()
+        {
+            // Arrange
+            var param = new CheckLimitNewDownlineParam(1176070, UserLevel.Agent, "en-US");
+            repository.ExecuteAsync(Arg.Any<ICriteria>()).Returns(Task.CompletedTask);
+
+            // Act
+            var result = await customerService.CheckLimitNewDownline(param);
+
+            // Assert
+            Assert.Equal("Sorry, you can only create 5 members per day, please try again tomorrow.", result.Message);
         }
     }
 }

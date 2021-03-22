@@ -216,8 +216,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppResources\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Configurations\AppSettings.cs" />
     <Compile Include="Constants\SystemIdentity.cs" />
+    <Compile Include="Criteria\CheckLimitNewDownlineCommand.cs" />
     <Compile Include="Criteria\CheckReachLimitDownlineCommand.cs" />
     <Compile Include="Criteria\CopyAgentCommand.cs" />
     <Compile Include="Criteria\CopyCustomerCommand.cs" />
@@ -228,7 +234,9 @@
     <Compile Include="Criteria\InsertMemberDCSSettingCommand.cs" />
     <Compile Include="Criteria\UpdateCasinoStatusCriteria.cs" />
     <Compile Include="Criteria\ValidateMaxNewMemberCriteria.cs" />
-    <Compile Include="Enumerations\Enumeration.cs" />
+    <Compile Include="Enumerations\Enumeration.cs">
+	  <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\CustomerInfo.cs" />
     <Compile Include="Models\CustomerPTInfo.cs" />
@@ -238,6 +246,7 @@
     <Compile Include="Models\Result.cs" />
     <Compile Include="Models\StakeLevelDetail.cs" />
     <Compile Include="Models\UserLevel.cs" />
+    <Compile Include="Params\CheckLimitNewDownlineParam.cs" />
     <Compile Include="Params\CheckReachLimitDownlineParam.cs" />
     <Compile Include="Params\CopyCustomerParam.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -252,6 +261,9 @@
     <Compile Include="Services\PasswordService.cs" />
     <Compile Include="Services\ThirdPartyProductService.cs" />
     <Compile Include="Utils\LanguageUtils.cs" />
+    <Compile Include="Utils\StaticResources.cs">
+	  <SonarQubeExclude>true</SonarQubeExclude>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Alpha.CloneAccount.Debug.ruleset" />
@@ -262,9 +274,20 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\Google.Protobuf.dll" />
-    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\SonarAnalyzer.CSharp.dll" />
-    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.6.7.1.4347\analyzers\SonarAnalyzer.dll" />
+    <EmbeddedResource Include="AppResources\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppResources\Resources.th-TH.resx" />
+    <EmbeddedResource Include="AppResources\Resources.vi-VN.resx" />
+    <EmbeddedResource Include="AppResources\Resources.zh-CN.resx" />
+    <EmbeddedResource Include="AppResources\Resources.zh-TW.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.8.9.0.19135\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.8.9.0.19135\analyzers\SonarAnalyzer.CFG.dll" />
+    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.8.9.0.19135\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\..\packages\SonarAnalyzer.CSharp.8.9.0.19135\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\packages\Fanex.Visual-StyleCop.MSBuild.4.7.59.2\build\Fanex.Visual-StyleCop.MSBuild.Targets" Condition="Exists('..\..\packages\Fanex.Visual-StyleCop.MSBuild.4.7.59.2\build\Fanex.Visual-StyleCop.MSBuild.Targets')" />

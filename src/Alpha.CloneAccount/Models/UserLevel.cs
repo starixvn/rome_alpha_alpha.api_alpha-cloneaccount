@@ -32,6 +32,8 @@
 
         public bool IsMasterLevel() => this == Master;
 
+        public bool IsSuperLevel() => this == Super;
+
         public UserLevel GetDirectDownLineLevel() => FromValue<UserLevel>((byte)(Value - 1));
     }
 }

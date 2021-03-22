@@ -76,5 +76,22 @@
             // Assert
             Assert.Equal(expectedRetryTimesIfUserNameNotAvailable, actualRetryTimesIfUserNameNotAvailable);
         }
+       
+        [Theory]
+        [InlineData("1", 1)]
+        [InlineData("0", 0)]
+        [InlineData("abc", 0)]
+        public void SettingStatus_Always_ReturnsCorrectConfig(string settingStatus, byte expectedSettingStatus)
+        {
+            // Arrange
+            AppSettings.AppSettingValues = new NameValueCollection();
+            AppSettings.AppSettingValues.Add("SettingStatus", settingStatus);
+
+            // Act
+            var actualSettingStatus = AppSettings.SettingStatus;
+
+            // Assert
+            Assert.Equal(expectedSettingStatus, actualSettingStatus);
+        }
     }
 }

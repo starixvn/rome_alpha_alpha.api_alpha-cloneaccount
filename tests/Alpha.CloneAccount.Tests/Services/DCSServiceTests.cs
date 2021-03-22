@@ -108,5 +108,32 @@
             // Assert
             logger.Received().Warn(ex.ToString());
         }
+
+        [Fact]
+        public async Task InsertMemberSettings_ThrowAggregateException_CallsWriteLog()
+        {
+            // Arrange
+            var custId = 33120484;
+            var sourceCustId = 33120485;
+            var actorId = 33120519;
+            var actorSubAccId = 0;
+            var ip = string.Empty;
+            var exceptionMessage = "Test Exception";
+            var ex = new AggregateException(exceptionMessage);
+            dynamicRepository
+                .ExecuteAsync(Arg.Any<InsertMemberDCSSettingCommand>())
+                .Throws(ex);
+
+            // Act
+            await dcsService.InsertMemberSettings(
+                custId,
+                sourceCustId,
+                actorId,
+                actorSubAccId,
+                ip);
+
+            // Assert
+            logger.Received().Warn(ex.ToString());
+        }
     }
 }

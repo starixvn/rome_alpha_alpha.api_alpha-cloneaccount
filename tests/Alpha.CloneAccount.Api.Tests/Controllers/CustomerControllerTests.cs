@@ -179,5 +179,26 @@
                     && query.Username == q.Username
                     && q.Language == query.Language));
         }
+
+        [Fact]
+        public async Task CheckLimitNewDownline_Always_CallsMediatorSendCheckLimitNewDownlineQuery()
+        {
+            // Arrange
+            var query = new CheckLimitNewDownlineQuery
+            {
+                CustId = 1,
+                CustLevel = 2,
+                Language = "en-US"
+            };
+
+            // Act
+            await customerController.CheckLimitNewDownline(query);
+
+            // Assert
+            await mediator.Received().Send(Arg.Is<CheckLimitNewDownlineQuery>(
+                q => q.CustId == query.CustId
+                    && q.CustLevel == query.CustLevel
+                    && q.Language == query.Language));
+        }
     }
 }
