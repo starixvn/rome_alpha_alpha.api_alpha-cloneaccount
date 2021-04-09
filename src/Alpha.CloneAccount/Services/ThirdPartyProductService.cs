@@ -24,20 +24,17 @@
         private readonly CasinoService casinoService;
         private readonly NG2Service ng2Service;
         private readonly DCSService dcsService;
-        private readonly GoldDeluxeService goldDeluxeService;
         private readonly KenoService kenoService;
 
         public ThirdPartyProductServiceImpl(
             CasinoService casinoService,
             NG2Service ng2Service,
             DCSService dcsService,
-            GoldDeluxeService goldDeluxeService,
             KenoService kenoService)
         {
             this.casinoService = casinoService;
             this.ng2Service = ng2Service;
             this.dcsService = dcsService;
-            this.goldDeluxeService = goldDeluxeService;
             this.kenoService = kenoService;
         }
 
@@ -64,12 +61,6 @@
                 actor.CustId,
                 param.ActorSubAccId,
                 param.IP);
-
-            goldDeluxeService.UpdateMemberSettings(
-                createdCustomer.CustId,
-                sourceCustomer.CustId,
-                sourceCustomer.DisableGoldDeluxe,
-                param);
 
             await casinoService.SyncMemberSettings(createdCustomer, sourceCustomer, actor, param, true);
 
