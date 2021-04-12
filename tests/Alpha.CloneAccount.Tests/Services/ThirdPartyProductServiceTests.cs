@@ -15,7 +15,6 @@
         private readonly CasinoService casinoService;
         private readonly NG2Service ng2Service;
         private readonly DCSService dcsService;
-        private readonly GoldDeluxeService goldDeluxeService;
         private readonly KenoService kenoService;
         private readonly ThirdPartyProductService thirdPartyProductService;
 
@@ -24,9 +23,8 @@
             casinoService = Substitute.For<CasinoService>();
             ng2Service = Substitute.For<NG2Service>();
             dcsService = Substitute.For<DCSService>();
-            goldDeluxeService = Substitute.For<GoldDeluxeService>();
             kenoService = Substitute.For<KenoService>();
-            thirdPartyProductService = new ThirdPartyProductServiceImpl(casinoService, ng2Service, dcsService, goldDeluxeService, kenoService);
+            thirdPartyProductService = new ThirdPartyProductServiceImpl(casinoService, ng2Service, dcsService, kenoService);
         }
 
         [Fact]
@@ -242,14 +240,6 @@
                     actor.CustId,
                     param.ActorSubAccId,
                     param.IP);
-
-            goldDeluxeService
-                .Received()
-                .UpdateMemberSettings(
-                    createdCustomer.CustId,
-                    sourceCustomer.CustId,
-                    sourceCustomer.DisableGoldDeluxe,
-                    param);
 
             await casinoService
                 .Received()
