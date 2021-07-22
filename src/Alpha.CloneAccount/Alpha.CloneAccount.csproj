@@ -38,14 +38,14 @@
       <HintPath>..\..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="CasinoLibrary, Version=2.0.6.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CasinoLibrary.2.0.6.2\lib\net40\CasinoLibrary.dll</HintPath>
+    <Reference Include="CasinoLibrary, Version=2.1.0.18354, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CasinoLibrary.2.1.0.18354\lib\net40\CasinoLibrary.dll</HintPath>
     </Reference>
     <Reference Include="CasinoSetting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CasinoLibrary.2.0.6.2\lib\net40\CasinoSetting.dll</HintPath>
+      <HintPath>..\..\packages\CasinoLibrary.2.1.0.18354\lib\net40\CasinoSetting.dll</HintPath>
     </Reference>
     <Reference Include="CasinoUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CasinoLibrary.2.0.6.2\lib\net40\CasinoUtility.dll</HintPath>
+      <HintPath>..\..\packages\CasinoLibrary.2.1.0.18354\lib\net40\CasinoUtility.dll</HintPath>
     </Reference>
     <Reference Include="Couchbase, Version=1.0.0.0, Culture=neutral, PublicKeyToken=81137140da4e57ef, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Caching.1.0.404.95\lib\net40\Couchbase.dll</HintPath>
@@ -73,7 +73,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.CustomerSetting.Module.Casino, Version=2.0.4.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Casino.2.0.4.5\lib\net40\Fanex.CustomerSetting.Module.Casino.dll</HintPath>
+      <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Casino.2.0.5.1\lib\net40\Fanex.CustomerSetting.Module.Casino.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.CustomerSetting.Module.Core, Version=2.0.4.7, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Core.2.0.4.7\lib\net461\Fanex.CustomerSetting.Module.Core.dll</HintPath>
@@ -112,7 +112,7 @@
       <HintPath>..\..\packages\Fanex.NAP.Framework.1.0.0.2\lib\net40\Fanex.NAP.Framework.dll</HintPath>
     </Reference>
     <Reference Include="HandHistoryLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CasinoLibrary.2.0.6.2\lib\net40\HandHistoryLibrary.dll</HintPath>
+      <HintPath>..\..\packages\CasinoLibrary.2.1.0.18354\lib\net40\HandHistoryLibrary.dll</HintPath>
     </Reference>
     <Reference Include="IBCCrypt, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\IBCCrypt.1.1.0.0\lib\IBCCrypt.dll</HintPath>
@@ -122,8 +122,8 @@
       <HintPath>..\..\packages\ILogger.1.0.0.0\lib\net40\ILogger.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
-      <HintPath>..\..\packages\log4net.1.2.9.1\lib\net40\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="MessagePack, Version=1.7.3.4, Culture=neutral, PublicKeyToken=b4a0369545f0a1be, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MessagePack.1.7.3.4\lib\net45\MessagePack.dll</HintPath>
@@ -153,8 +153,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="NetUtility, Version=1.0.4199.22106, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NetUtility.1.0.4199.22106\lib\net40\NetUtility.dll</HintPath>
+    <Reference Include="NetUtility, Version=4.5.6325.30210, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NetUtility.4.5.6325.30210\lib\net40\NetUtility.dll</HintPath>
     </Reference>
     <Reference Include="ONEbook.NG2.API, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ONEbook.NG2.API.NAP.1.0.0.5\lib\net461\ONEbook.NG2.API.dll</HintPath>
