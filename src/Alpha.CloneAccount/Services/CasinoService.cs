@@ -276,7 +276,9 @@ namespace Alpha.CloneAccount.Services
                     param.IP,
                     actor.CustId,
                     param.ActorSubAccId == 0 ? actor.UserName : param.ActorSubAccName,
-                    CasinoFromSystem
+                    CasinoFromSystem,
+                    0,
+                    null
                 });
 
                 var lsGameType = sourceCustomer.SyncCasino
@@ -349,7 +351,9 @@ namespace Alpha.CloneAccount.Services
                 new DataColumn("FromIP"),
                 new DataColumn("ModifyBy"),
                 new DataColumn("ModifyUserName"),
-                new DataColumn("FromSystem")
+                new DataColumn("FromSystem"),
+                new DataColumn("IsAutoMPositionTaking"),
+                new DataColumn("AutoMPositionTaking"),
             });
 
             return dtGameKinds;
