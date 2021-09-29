@@ -3,6 +3,7 @@ namespace Alpha.CloneAccount.Api
 {
     using System;
     using System.Web.Http;
+    using Alpha.CloneAccount.Utils;
     using App_Start;
     using Configurations;
     using Fanex.Data;
@@ -39,6 +40,8 @@ namespace Alpha.CloneAccount.Api
             RefDataTypeContainer
                 .ConnectTo(new Uri(AppSettings.RemoteRefURL))
                 .FromApplication("Alpha.CloneAccount.Api");
+
+            CasinoAPILoggerManager.Register();
         }
     }
 }

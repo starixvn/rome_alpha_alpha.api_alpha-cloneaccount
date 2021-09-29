@@ -4,4 +4,7 @@
     <Setting Key="WriteLog_UserLog_ExternalAPI_Ins" SpName="WriteLog_UserLog_ExternalAPI_Ins" DbName="DBLOG.bodb_CustomerLog.BODBDownlineNet" Plain="0" />
     <Setting Key="WriteLog_UserLog_ExternalAPI_UpdResponse" SpName="WriteLog_UserLog_ExternalAPI_UpdResponse" DbName="DBLOG.bodb_CustomerLog.BODBDownlineNet" Plain="0" />
   </Function>
+  <Function Name="Casino Logs">
+    <Setting Key="WriteLog_UserLog_CasinoAPI" SpName="WriteLog_UserLog_CasinoAPI" DbName="DBLOG.bodb_CustomerLog.BODBDownlineNet" Plain="0" />
+  </Function>
 </Functions>
