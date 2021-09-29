@@ -3,21 +3,20 @@ namespace Alpha.CloneAccount.Api
 {
     using System;
     using System.Web.Http;
-    using Alpha.CloneAccount.Utils;
     using App_Start;
     using Configurations;
     using Fanex.Data;
     using Fanex.Data.CrossCutting.WrappingException;
     using Fanex.Data.OldConnectionStringProvider;
     using Fanex.GoldDeluxe.CoreSetting.Mappings;
-    using Fanex.Logging.Extensions.Database;
-    using Fanex.Logging.Extensions.Web;
     using Fanex.RemotingRef;
 
     public class WebApiApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
         {
+            LoggerManager.Register();
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
             DependencyConfig.Init();
@@ -32,16 +31,9 @@ namespace Alpha.CloneAccount.Api
                 .Use((settingKey, commandTimeout) => new WrappingExceptionObjectDb(settingKey, commandTimeout))
                 .Run();
 
-            var loggingConfiguration = new LoggingConfiguration()
-                .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
-
-            ExceptionHandler.UseConfig(loggingConfiguration);
-
             RefDataTypeContainer
                 .ConnectTo(new Uri(AppSettings.RemoteRefURL))
                 .FromApplication("Alpha.CloneAccount.Api");
-
-            CasinoAPILoggerManager.Register();
         }
     }
 }

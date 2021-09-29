@@ -35,6 +35,10 @@
 
         public static int RetryTimesIfUserNameNotAvailable => GetIntConfigValue("RetryTimesIfUserNameNotAvailable");
 
+        public static string LoggingDefaultCategory => GetConfigValue("Fanex.Logging:DefaultCategory");
+
+        public static string RabbitMQConnectionStrings => GetConfigValue("Fanex.Logging:RabbitMQConnectionStrings");
+
         public static int GetIntConfigValue(string configName) => int.Parse(GetConfigValue(configName));
 
         public static string GetConfigValue(string configName) => AppSettingValues[configName];
