@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using Alpha.CloneAccount.Configurations;
-    using Alpha.CloneAccount.Utils;
     using Fanex.Logging;
     using Fanex.Logging.Extensions.Database;
     using Fanex.Logging.Extensions.Web;
@@ -33,8 +32,6 @@
                 // To Enable Log Http Session
                 /*.GetHttpSessionInfo()*/)
                 .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
-
-            CasinoAPILoggerManager.Register();
         }
     }
 }

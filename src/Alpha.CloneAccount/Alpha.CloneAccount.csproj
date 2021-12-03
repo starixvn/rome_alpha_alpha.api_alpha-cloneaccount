@@ -38,15 +38,6 @@
       <HintPath>..\..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="CasinoLibrary, Version=2.1.0.18354, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CasinoLibrary.2.1.0.18354\lib\net40\CasinoLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="CasinoSetting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CasinoLibrary.2.1.0.18354\lib\net40\CasinoSetting.dll</HintPath>
-    </Reference>
-    <Reference Include="CasinoUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CasinoLibrary.2.1.0.18354\lib\net40\CasinoUtility.dll</HintPath>
-    </Reference>
     <Reference Include="Couchbase, Version=1.0.0.0, Culture=neutral, PublicKeyToken=81137140da4e57ef, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Caching.1.0.404.95\lib\net40\Couchbase.dll</HintPath>
     </Reference>
@@ -70,9 +61,6 @@
     <Reference Include="Fanex.Common, Version=1.0.404.97, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Common.1.0.404.97\lib\net40\Fanex.Common.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="Fanex.CustomerSetting.Module.Casino, Version=2.0.4.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Casino.2.0.5.1\lib\net40\Fanex.CustomerSetting.Module.Casino.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.CustomerSetting.Module.Core, Version=2.0.4.7, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.CustomerSetting.Module.Core.2.0.4.7\lib\net461\Fanex.CustomerSetting.Module.Core.dll</HintPath>
@@ -105,9 +93,6 @@
     </Reference>
     <Reference Include="Fanex.NAP.Framework, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.NAP.Framework.1.0.0.2\lib\net40\Fanex.NAP.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="HandHistoryLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CasinoLibrary.2.1.0.18354\lib\net40\HandHistoryLibrary.dll</HintPath>
     </Reference>
     <Reference Include="IBCCrypt, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\IBCCrypt.1.1.0.0\lib\IBCCrypt.dll</HintPath>
@@ -227,7 +212,6 @@
     </Compile>
     <Compile Include="Configurations\AppSettings.cs" />
     <Compile Include="Constants\SystemIdentity.cs" />
-    <Compile Include="Criteria\CasinoAPILogCriteria.cs" />
     <Compile Include="Criteria\CheckLimitNewDownlineCommand.cs" />
     <Compile Include="Criteria\CheckReachLimitDownlineCommand.cs" />
     <Compile Include="Criteria\CopyAgentCommand.cs" />
@@ -237,7 +221,6 @@
     <Compile Include="Criteria\GetMemberSportbooksSettingCriteria.cs" />
     <Compile Include="Criteria\GetSMAPTInfoCriteria.cs" />
     <Compile Include="Criteria\InsertMemberDCSSettingCommand.cs" />
-    <Compile Include="Criteria\UpdateCasinoStatusCriteria.cs" />
     <Compile Include="Criteria\ValidateMaxNewMemberCriteria.cs" />
     <Compile Include="Enumerations\Enumeration.cs">
       <SonarQubeExclude>true</SonarQubeExclude>
@@ -246,18 +229,13 @@
     <Compile Include="Models\CustomerInfo.cs" />
     <Compile Include="Models\CustomerPTInfo.cs" />
     <Compile Include="Models\CopyCustomerResult.cs" />
-    <Compile Include="Models\GameKindDetail.cs" />
-    <Compile Include="Models\GameTypeDetail.cs" />
     <Compile Include="Models\Result.cs" />
-    <Compile Include="Models\StakeLevelDetail.cs" />
     <Compile Include="Models\UserLevel.cs" />
     <Compile Include="Params\CheckLimitNewDownlineParam.cs" />
     <Compile Include="Params\CheckReachLimitDownlineParam.cs" />
     <Compile Include="Params\CopyCustomerParam.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CasinoAPILogger.cs" />
     <Compile Include="Services\CustomerService.cs" />
-    <Compile Include="Services\CasinoService.cs" />
     <Compile Include="Services\KenoService.cs" />
     <Compile Include="Services\DCSService.cs" />
     <Compile Include="Services\KenoStalelessSession.cs" />
@@ -265,7 +243,6 @@
     <Compile Include="Services\SportbooksCopyMemberSpParamsBuilder.cs" />
     <Compile Include="Services\PasswordService.cs" />
     <Compile Include="Services\ThirdPartyProductService.cs" />
-    <Compile Include="Utils\CasinoAPILoggerManager.cs" />
     <Compile Include="Utils\LanguageUtils.cs" />
     <Compile Include="Utils\StaticResources.cs">
       <SonarQubeExclude>true</SonarQubeExclude>

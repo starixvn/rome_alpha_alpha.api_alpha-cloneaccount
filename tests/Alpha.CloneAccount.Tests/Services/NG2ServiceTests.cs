@@ -48,8 +48,6 @@
                 0,
                 0,
                 3,
-                true,
-                false,
                 false,
                 true,
                 false
@@ -72,8 +70,6 @@
                 0,
                 0,
                 4,
-                true,
-                false,
                 true,
                 false,
                 true
@@ -141,8 +137,6 @@
                 0,
                 0,
                 3,
-                true,
-                false,
                 false,
                 true,
                 false
@@ -165,8 +159,6 @@
                 0,
                 0,
                 4,
-                true,
-                false,
                 false,
                 false,
                 true
@@ -237,8 +229,6 @@
                 0,
                 0,
                 (byte)(actorUserLevel - 1),
-                true,
-                false,
                 false,
                 true,
                 false
@@ -261,8 +251,6 @@
                 0,
                 0,
                 actorUserLevel,
-                true,
-                false,
                 false,
                 true,
                 false
@@ -330,8 +318,6 @@
                 0,
                 0,
                 3,
-                true,
-                false,
                 false,
                 true,
                 false
@@ -354,8 +340,6 @@
                 0,
                 0,
                 4,
-                true,
-                false,
                 false,
                 true,
                 false

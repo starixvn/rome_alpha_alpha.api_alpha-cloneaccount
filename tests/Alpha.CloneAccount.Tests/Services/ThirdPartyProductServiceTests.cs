@@ -12,7 +12,6 @@
     [Trait("Category", "Services")]
     public class ThirdPartyProductServiceTests
     {
-        private readonly CasinoService casinoService;
         private readonly NG2Service ng2Service;
         private readonly DCSService dcsService;
         private readonly KenoService kenoService;
@@ -20,15 +19,14 @@
 
         public ThirdPartyProductServiceTests()
         {
-            casinoService = Substitute.For<CasinoService>();
             ng2Service = Substitute.For<NG2Service>();
             dcsService = Substitute.For<DCSService>();
             kenoService = Substitute.For<KenoService>();
-            thirdPartyProductService = new ThirdPartyProductServiceImpl(casinoService, ng2Service, dcsService, kenoService);
+            thirdPartyProductService = new ThirdPartyProductServiceImpl(ng2Service, dcsService, kenoService);
         }
 
         [Fact]
-        public async Task SyncMasterOrAgentSettings_Always_CallsSync3rdProductSettings()
+        public void SyncMasterOrAgentSettings_Always_CallsSync3rdProductSettings()
         {
             // Arrange
             var createdCustomer = new CustomerInfo(
@@ -48,8 +46,6 @@
                 0,
                 0,
                 3,
-                true,
-                false,
                 false,
                 true,
                 false
@@ -71,8 +67,6 @@
                 0,
                 0,
                 3,
-                true,
-                false,
                 false,
                 true,
                 false
@@ -94,8 +88,6 @@
                 0,
                 0,
                 4,
-                true,
-                false,
                 false,
                 true,
                 false
@@ -122,13 +114,9 @@
                 false);
 
             // Act
-            await thirdPartyProductService.SyncMasterOrAgentSettings(createdCustomer, sourceCustomer, actor, param);
+            thirdPartyProductService.SyncMasterOrAgentSettings(createdCustomer, sourceCustomer, actor, param);
 
             // Assert
-            await casinoService
-                .Received()
-                .SyncMasterOrAgentSettings(createdCustomer, sourceCustomer, actor, param);
-
             ng2Service
                 .Received()
                 .SyncCustomerSettings(createdCustomer, sourceCustomer.DisableNG2, actor, param);
@@ -155,8 +143,6 @@
                 0,
                 0,
                 3,
-                true,
-                false,
                 false,
                 true,
                 false
@@ -178,8 +164,6 @@
                 0,
                 0,
                 3,
-                true,
-                false,
                 false,
                 true,
                 false
@@ -201,8 +185,6 @@
                 0,
                 0,
                 4,
-                true,
-                false,
                 false,
                 true,
                 false
@@ -240,10 +222,6 @@
                     actor.CustId,
                     param.ActorSubAccId,
                     param.IP);
-
-            await casinoService
-                .Received()
-                .SyncMemberSettings(createdCustomer, sourceCustomer, actor, param, true);
 
             kenoService
                 .Received()

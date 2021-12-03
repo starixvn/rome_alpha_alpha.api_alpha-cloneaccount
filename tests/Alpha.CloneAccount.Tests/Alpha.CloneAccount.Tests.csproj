@@ -149,7 +149,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurations\AppSettingsTests.cs" />
-    <Compile Include="Criteria\CasinoAPILogCriteriaTests.cs" />
     <Compile Include="Criteria\CheckLimitNewDownlineCommandTests.cs" />
     <Compile Include="Criteria\CheckReachLimitDownlineCommandTests.cs" />
     <Compile Include="Criteria\CopyAgentCommandTests.cs" />
@@ -160,7 +159,6 @@
     <Compile Include="Criteria\GetMemberSportbooksSettingCriteriaTests.cs" />
     <Compile Include="Criteria\GetSMAPTInfoCriteriaTests.cs" />
     <Compile Include="Criteria\InsertMemberDCSSettingCommandTests.cs" />
-    <Compile Include="Criteria\UpdateCasinoStatusCriteriaTests.cs" />
     <Compile Include="Criteria\ValidateMaxNewMemberCriteriaTests.cs" />
     <Compile Include="Enumerations\EnumerationTests.cs" />
     <Compile Include="Models\CopyCustomerResultTests.cs" />
@@ -177,7 +175,6 @@
     <Compile Include="Services\KenoStalelessSessionTests.cs" />
     <Compile Include="Services\NG2ServiceTests.cs" />
     <Compile Include="Services\ThirdPartyProductServiceTests.cs" />
-    <Compile Include="Utils\LanguageUtilsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

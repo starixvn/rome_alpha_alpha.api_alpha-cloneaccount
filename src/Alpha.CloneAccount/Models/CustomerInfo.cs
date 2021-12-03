@@ -25,8 +25,6 @@
             int masterId,
             int agentId,
             byte roleId,
-            bool syncCasino,
-            bool disableCasino,
             bool hideNG2,
             bool syncedNG2,
             bool disableNG2)
@@ -47,8 +45,6 @@
             MasterId = masterId;
             AgentId = agentId;
             RoleId = roleId;
-            SyncCasino = syncCasino;
-            DisableCasino = disableCasino;
             HideNG2 = hideNG2;
             SyncedNG2 = syncedNG2;
             DisableNG2 = disableNG2;
@@ -88,10 +84,6 @@
 
         public UserLevel CustLevel
             => Enumeration.FromValue<UserLevel>(RoleId);
-
-        public bool SyncCasino { get; }
-
-        public bool DisableCasino { get; }
 
         public bool HideNG2 { get; }
 

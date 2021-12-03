@@ -241,7 +241,7 @@
                 }
                 else
                 {
-                    await thirdPartyProductService.SyncMasterOrAgentSettings(
+                    thirdPartyProductService.SyncMasterOrAgentSettings(
                         createdCustomer,
                         sourceCustomer,
                         actor,

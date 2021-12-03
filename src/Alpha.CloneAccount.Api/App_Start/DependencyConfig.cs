@@ -2,8 +2,6 @@
 namespace Alpha.CloneAccount.Api.App_Start
 {
     using Controllers;
-    using Fanex.CustomerSetting.Module.Casino.Services.Impl;
-    using Fanex.CustomerSetting.Module.Casino.Services.Interface;
     using Fanex.CustomerSetting.Module.Keno.KenoSetting.Configurations;
     using Fanex.CustomerSetting.Module.Keno.KenoSetting.Services;
     using Fanex.Data.Repository;
@@ -83,8 +81,6 @@ namespace Alpha.CloneAccount.Api.App_Start
             container.Register<KenoService>(
                 () => new KenoServiceImpl(new KenoSettingService(), container.GetInstance<ILogger>(), () => KenoSection.Instance.ShowSetting),
                 Lifestyle.Scoped);
-            container.RegisterSingleton<CasinoService, CasinoServiceImpl>();
-            container.RegisterSingleton<MemberWinLimitService, MemberWinLimitServiceImpl>();
             container.RegisterSingleton<NG2Service, NG2ServiceImpl>();
             container.RegisterSingleton<ING2StatusService, NG2StatusService>();
         }
