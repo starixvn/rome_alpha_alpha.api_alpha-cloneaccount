@@ -52,8 +52,8 @@
                 false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var sourceCustomer = new CustomerInfo(
                 33120480,
                 "1234aa",
@@ -75,8 +75,8 @@
                 false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var actor = new CustomerInfo(
                 33120519,
                 "1234aa",
@@ -98,8 +98,8 @@
                 false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var param = new CopyCustomerParam(
                 33120519,
                 0,
@@ -159,8 +159,8 @@
                 false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var sourceCustomer = new CustomerInfo(
                 33120480,
                 "1234aa",
@@ -182,8 +182,8 @@
                 false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var actor = new CustomerInfo(
                 33120519,
                 "1234aa",
@@ -205,8 +205,8 @@
                 false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var param = new CopyCustomerParam(
                 33120519,
                 0,

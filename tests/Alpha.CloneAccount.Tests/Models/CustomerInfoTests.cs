@@ -35,7 +35,7 @@
                 && !actualResult.HideNG2
                 && !actualResult.SyncedNG2
                 && !actualResult.DisableNG2
-                && !actualResult.DisableGoldDeluxe);
+                );
         }
 
         [Fact]
@@ -63,8 +63,8 @@
                 false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
 
             // Assert
             Assert.True(
@@ -89,7 +89,6 @@
                 && !actualResult.HideNG2
                 && actualResult.SyncedNG2
                 && !actualResult.DisableNG2
-                && !actualResult.DisableGoldDeluxe
                 && actualResult.CustLevel.IsMasterLevel());
         }
     }

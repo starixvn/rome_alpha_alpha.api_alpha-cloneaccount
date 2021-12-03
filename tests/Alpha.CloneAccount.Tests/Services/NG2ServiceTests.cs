@@ -52,8 +52,8 @@
                 false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var disableNG2 = true;
             var actor = new CustomerInfo(
                 33120519,
@@ -76,8 +76,8 @@
                 false,
                 true,
                 false,
-                true,
-                false);
+                true
+                );
             var param = new CopyCustomerParam(
                 33120519,
                 0,
@@ -145,8 +145,8 @@
                 false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var disableNG2 = true;
             var actor = new CustomerInfo(
                 33120519,
@@ -169,8 +169,8 @@
                 false,
                 false,
                 false,
-                true,
-                false);
+                true
+                );
             var param = new CopyCustomerParam(
                 33120519,
                 0,
@@ -241,8 +241,8 @@
                 false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var disableNG2 = false;
             var actor = new CustomerInfo(
                 33120519,
@@ -265,8 +265,8 @@
                 false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var param = new CopyCustomerParam(
                 33120519,
                 0,
@@ -334,8 +334,8 @@
                 false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var disableNG2 = false;
             var actor = new CustomerInfo(
                 33120519,
@@ -358,8 +358,8 @@
                 false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var param = new CopyCustomerParam(
                 33120519,
                 0,

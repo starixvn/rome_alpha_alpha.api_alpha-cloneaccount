@@ -29,8 +29,7 @@
             bool disableCasino,
             bool hideNG2,
             bool syncedNG2,
-            bool disableNG2,
-            bool disableGoldDeluxe)
+            bool disableNG2)
         {
             CustId = custId;
             UserPwd = userPwd;
@@ -53,7 +52,6 @@
             HideNG2 = hideNG2;
             SyncedNG2 = syncedNG2;
             DisableNG2 = disableNG2;
-            DisableGoldDeluxe = disableGoldDeluxe;
         }
 
         public int CustId { get; }
@@ -99,8 +97,6 @@
 
         public bool SyncedNG2 { get; }
 
-        public bool DisableNG2 { get; }
-
-        public bool DisableGoldDeluxe { get; }
+        public bool DisableNG2 { get; }       
     }
 }
