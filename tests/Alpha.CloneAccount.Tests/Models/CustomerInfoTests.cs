@@ -30,12 +30,10 @@
                 && actualResult.MasterId == 0
                 && actualResult.AgentId == 0
                 && actualResult.RoleId == 0
-                && !actualResult.SyncCasino
-                && !actualResult.DisableCasino
                 && !actualResult.HideNG2
                 && !actualResult.SyncedNG2
                 && !actualResult.DisableNG2
-                && !actualResult.DisableGoldDeluxe);
+                );
         }
 
         [Fact]
@@ -59,12 +57,10 @@
                 0,
                 0,
                 3,
-                true,
-                false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
 
             // Assert
             Assert.True(
@@ -84,12 +80,9 @@
                 && actualResult.MasterId == 0
                 && actualResult.AgentId == 0
                 && actualResult.RoleId == 3
-                && actualResult.SyncCasino
-                && !actualResult.DisableCasino
                 && !actualResult.HideNG2
                 && actualResult.SyncedNG2
                 && !actualResult.DisableNG2
-                && !actualResult.DisableGoldDeluxe
                 && actualResult.CustLevel.IsMasterLevel());
         }
     }

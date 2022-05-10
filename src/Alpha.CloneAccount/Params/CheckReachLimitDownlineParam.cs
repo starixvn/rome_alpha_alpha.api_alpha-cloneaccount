@@ -14,7 +14,6 @@
             CustLevel = custLevel;
             Username = username;
             Language = language;
-            LanguageKey = LanguageUtils.ToLanguageKey(Language);
         }
 
         public int CustId { get; }

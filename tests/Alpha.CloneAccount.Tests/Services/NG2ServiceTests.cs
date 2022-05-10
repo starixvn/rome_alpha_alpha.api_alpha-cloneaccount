@@ -48,12 +48,10 @@
                 0,
                 0,
                 3,
-                true,
-                false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var disableNG2 = true;
             var actor = new CustomerInfo(
                 33120519,
@@ -74,10 +72,8 @@
                 4,
                 true,
                 false,
-                true,
-                false,
-                true,
-                false);
+                true
+                );
             var param = new CopyCustomerParam(
                 33120519,
                 0,
@@ -141,12 +137,10 @@
                 0,
                 0,
                 3,
-                true,
-                false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var disableNG2 = true;
             var actor = new CustomerInfo(
                 33120519,
@@ -165,12 +159,10 @@
                 0,
                 0,
                 4,
-                true,
                 false,
                 false,
-                false,
-                true,
-                false);
+                true
+                );
             var param = new CopyCustomerParam(
                 33120519,
                 0,
@@ -237,12 +229,10 @@
                 0,
                 0,
                 (byte)(actorUserLevel - 1),
-                true,
-                false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var disableNG2 = false;
             var actor = new CustomerInfo(
                 33120519,
@@ -261,12 +251,10 @@
                 0,
                 0,
                 actorUserLevel,
-                true,
-                false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var param = new CopyCustomerParam(
                 33120519,
                 0,
@@ -330,12 +318,10 @@
                 0,
                 0,
                 3,
-                true,
-                false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var disableNG2 = false;
             var actor = new CustomerInfo(
                 33120519,
@@ -354,12 +340,10 @@
                 0,
                 0,
                 4,
-                true,
-                false,
                 false,
                 true,
-                false,
-                false);
+                false
+                );
             var param = new CopyCustomerParam(
                 33120519,
                 0,
