@@ -35,6 +35,8 @@
 
         public byte SettingStatus => AppSettings.SettingStatus;
 
+        public bool IsSearchAndCopy => true;
+
         public int ErrCode { get; set; }
 
         public string ErrMsg { get; set; }
