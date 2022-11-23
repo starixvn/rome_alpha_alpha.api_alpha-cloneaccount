@@ -217,6 +217,7 @@
     <Compile Include="Criteria\CopyAgentCommand.cs" />
     <Compile Include="Criteria\CopyCustomerCommand.cs" />
     <Compile Include="Criteria\CopyMasterCommand.cs" />
+    <Compile Include="Criteria\CustomerReadMessageCriteria.cs" />
     <Compile Include="Criteria\GetCustomerInfoCriteria.cs" />
     <Compile Include="Criteria\GetMemberSportbooksSettingCriteria.cs" />
     <Compile Include="Criteria\GetSMAPTInfoCriteria.cs" />

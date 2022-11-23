@@ -8,6 +8,7 @@
     using Criteria;
     using Fanex.Data;
     using Fanex.Data.Repository;
+    using Fanex.Logging;
     using Models;
     using Params;
     using Utils;
@@ -123,6 +124,11 @@
             var criteria = BuildCopyMasterOrAgentCriteria(param);
 
             await repository.ExecuteAsync(criteria);
+
+            if (criteria.CustId > 0)
+            {
+                InsertUnreadMessage(criteria.CustId, param.ActorUserLevel.GetDirectDownLineLevel().Value);
+            }
 
             return new CopyCustomerResult(
                 criteria.CustId,
@@ -315,6 +321,27 @@
             }
 
             return "LimitAgentNewDownlineError";
+        }
+
+        private void InsertUnreadMessage(int custId, byte roleId)
+        {
+            Task.Run(() =>
+            {
+                try
+                {
+                    var criteria = new CustomerReadMessageCriteria(custId, roleId, 0, 0, string.Empty);
+                    this.repository.Execute(criteria);
+
+                    if (criteria.ErrCode != 0)
+                    {
+                        LogService.Info($"[Age_MsgCustReadStatus_Ins] CustId: {custId}; SubAccId: 0; RoleId: {roleId} ErrCode: {criteria.ErrCode}; ErrMsg: {criteria.ErrMsg}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogService.Error(ex.Message, ex);
+                }
+            });
         }
     }
 }
