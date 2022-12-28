@@ -112,6 +112,7 @@
                     actor.CustId,
                     param.SystemId,
                     param.IP,
+                    0,
                     param.Language,
                     param.ActorSubAccId);
         }
@@ -201,6 +202,7 @@
                     actor.CustId,
                     param.SystemId,
                     param.IP,
+                    0,
                     param.Language,
                     param.ActorSubAccId);
         }
@@ -293,6 +295,7 @@
                     actor.CustId,
                     param.SystemId,
                     param.IP,
+                    0,
                     param.Language,
                     param.ActorSubAccId);
         }
@@ -378,6 +381,7 @@
                     actor.CustId,
                     param.SystemId,
                     param.IP,
+                    0,
                     param.Language,
                     param.ActorSubAccId)
                 .Throws(ex);
