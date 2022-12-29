@@ -239,7 +239,6 @@
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\KenoService.cs" />
     <Compile Include="Services\DCSService.cs" />
-    <Compile Include="Services\KenoStalelessSession.cs" />
     <Compile Include="Services\NG2Service.cs" />
     <Compile Include="Services\SportbooksCopyMemberSpParamsBuilder.cs" />
     <Compile Include="Services\PasswordService.cs" />
