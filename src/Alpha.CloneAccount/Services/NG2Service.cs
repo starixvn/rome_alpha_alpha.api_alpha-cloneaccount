@@ -1,11 +1,12 @@
 ﻿namespace Alpha.CloneAccount.Services
 {
-    using System;
+    using Alpha.CloneAccount.Configurations;
     using Fanex.Logging;
     using Fanex.Module.NG2.Entities;
     using Fanex.Module.NG2.Services;
     using Models;
     using Params;
+    using System;
     using Result = Fanex.Module.NG2.Entities.Result;
 
     public interface NG2Service
@@ -49,6 +50,7 @@
                         actor.CustId,
                         param.SystemId,
                         param.IP,
+                        AppSettings.SettingStatus,
                         param.Language,
                         param.ActorSubAccId);
                 }
