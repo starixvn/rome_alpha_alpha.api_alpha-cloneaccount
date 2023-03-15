@@ -2,8 +2,6 @@
 namespace Alpha.CloneAccount.Api.App_Start
 {
     using Controllers;
-    using Fanex.CustomerSetting.Module.Keno.KenoSetting.Configurations;
-    using Fanex.CustomerSetting.Module.Keno.KenoSetting.Services;
     using Fanex.Data.Repository;
     using Fanex.Logging;
     using Fanex.Module.NG2.Services;
@@ -78,9 +76,6 @@ namespace Alpha.CloneAccount.Api.App_Start
             container.RegisterSingleton<SportbooksCopyMemberSpParamsBuilder, SportbooksCopyMemberSpParamsBuilderImpl>();
             container.Register<ThirdPartyProductService, ThirdPartyProductServiceImpl>(Lifestyle.Scoped);
             container.RegisterSingleton<DCSService, DCSServiceImpl>();
-            container.Register<KenoService>(
-                () => new KenoServiceImpl(new KenoSettingService(), container.GetInstance<ILogger>(), () => KenoSection.Instance.ShowSetting),
-                Lifestyle.Scoped);
             container.RegisterSingleton<NG2Service, NG2ServiceImpl>();
             container.RegisterSingleton<ING2StatusService, NG2StatusService>();
         }
