@@ -322,6 +322,15 @@
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Alpha.CloneAccount.Api.ruleset" />
+    <None Include="Web.AppSettings.aws.config">
+      <DependentUpon>Web.AppSettings.config</DependentUpon>
+    </None>
+    <None Include="Web.aws.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.ConnectionStrings.aws.config">
+      <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
