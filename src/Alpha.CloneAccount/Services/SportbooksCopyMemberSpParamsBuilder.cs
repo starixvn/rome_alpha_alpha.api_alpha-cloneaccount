@@ -48,7 +48,6 @@ namespace Alpha.CloneAccount.Services
             spParams.Add("ugroup", sportbooksSetting["ugroup"]);
             spParams.Add("closed", sportbooksSetting["closed"]);
             spParams.Add("issearchandcopy", 1);
-            spParams.Add("disablenumber", sportbooksSetting["disablenumber"]);
             spParams.Add("language", param.LanguageKey);
             spParams.Add("ip", param.IP);
             //spParams.Add("userid", param.ActorId);
