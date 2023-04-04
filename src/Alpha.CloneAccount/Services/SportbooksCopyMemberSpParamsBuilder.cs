@@ -80,6 +80,11 @@ namespace Alpha.CloneAccount.Services
 
                         if (!spParams.ContainsKey(formatParam))
                         {
+                            if (param == "maxpopermatchv{0}")
+                            {
+                                spParams.Add(formatParam, sportbooksSetting[string.Format("maxpayoutpermatchv{0}", item)]);
+                            }
+
                             if (param != "maxpopermatchv{0}")
                             {
                                 spParams.Add(formatParam, sportbooksSetting[formatParam]);
