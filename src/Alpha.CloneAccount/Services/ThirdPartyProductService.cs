@@ -23,16 +23,13 @@
     {
         private readonly NG2Service ng2Service;
         private readonly DCSService dcsService;
-        private readonly KenoService kenoService;
 
         public ThirdPartyProductServiceImpl(
             NG2Service ng2Service,
-            DCSService dcsService,
-            KenoService kenoService)
+            DCSService dcsService)
         {
             this.ng2Service = ng2Service;
             this.dcsService = dcsService;
-            this.kenoService = kenoService;
         }
 
         public void SyncMasterOrAgentSettings(
@@ -56,12 +53,7 @@
                 actor.CustId,
                 param.ActorSubAccId,
                 param.IP);
-
-            kenoService.UpdateMemberSettings(
-                createdCustomer.CustId,
-                sourceCustomer.CustId,
-                param);
-
+            
             ng2Service.SyncCustomerSettings(createdCustomer, sourceCustomer.DisableNG2, actor, param);
         }
     }

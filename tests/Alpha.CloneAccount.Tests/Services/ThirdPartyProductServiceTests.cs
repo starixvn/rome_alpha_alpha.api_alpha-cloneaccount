@@ -14,15 +14,13 @@
     {
         private readonly NG2Service ng2Service;
         private readonly DCSService dcsService;
-        private readonly KenoService kenoService;
         private readonly ThirdPartyProductService thirdPartyProductService;
 
         public ThirdPartyProductServiceTests()
         {
             ng2Service = Substitute.For<NG2Service>();
             dcsService = Substitute.For<DCSService>();
-            kenoService = Substitute.For<KenoService>();
-            thirdPartyProductService = new ThirdPartyProductServiceImpl(ng2Service, dcsService, kenoService);
+            thirdPartyProductService = new ThirdPartyProductServiceImpl(ng2Service, dcsService);
         }
 
         [Fact]
@@ -222,13 +220,6 @@
                     actor.CustId,
                     param.ActorSubAccId,
                     param.IP);
-
-            kenoService
-                .Received()
-                .UpdateMemberSettings(
-                    createdCustomer.CustId,
-                    sourceCustomer.CustId,
-                    param);
 
             ng2Service
                 .Received()

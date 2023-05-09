@@ -37,7 +37,7 @@ _CodeCoverageReport
 /packages/*
 /PrecompiledWeb
 *.suo
-.vs/config/applicationhost.config
+.vs/
 /OpenCover/*
 
 *.min.js
