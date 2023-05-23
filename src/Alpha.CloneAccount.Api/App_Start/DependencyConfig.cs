@@ -10,6 +10,7 @@ namespace Alpha.CloneAccount.Api.App_Start
     using SimpleInjector;
     using SimpleInjector.Integration.WebApi;
     using SimpleInjector.Lifestyles;
+    using Sunplus.Agent.Utilities;
     using System.Collections.Generic;
     using System.Reflection;
     using System.Web.Http;
@@ -69,8 +70,9 @@ namespace Alpha.CloneAccount.Api.App_Start
 
         private static void RegisterServices(Container container)
         {
-            container.RegisterSingleton(() => Logger.Log);
+            container.RegisterSingleton(() => Fanex.Logging.Logger.Log);
 
+            container.RegisterSingleton<Encryptor, EncryptorImpl>();
             container.Register<CustomerService, CustomerServiceImpl>(Lifestyle.Scoped);
             container.RegisterSingleton<PasswordService, PasswordServiceImpl>();
             container.RegisterSingleton<SportbooksCopyMemberSpParamsBuilder, SportbooksCopyMemberSpParamsBuilderImpl>();
