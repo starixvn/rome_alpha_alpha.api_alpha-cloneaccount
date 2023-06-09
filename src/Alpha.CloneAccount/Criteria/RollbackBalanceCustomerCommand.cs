@@ -14,7 +14,7 @@
         public int CustId { get; }
 
         [SpParam(Ignored = true)]
-        private bool IsCreditBalance { get; }
+        internal bool IsCreditBalance { get; }
 
         public override string GetSettingKey()
             => IsCreditBalance ? "SiteDB_Dot_BalanceCreditRemove" : "SiteDB_Dot_BalanceDebitRemove";

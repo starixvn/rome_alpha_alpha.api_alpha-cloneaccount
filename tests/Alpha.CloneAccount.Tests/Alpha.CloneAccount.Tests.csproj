@@ -140,6 +140,8 @@
     <Compile Include="Configurations\AppSettingsTests.cs" />
     <Compile Include="Criteria\CheckLimitNewDownlineCommandTests.cs" />
     <Compile Include="Criteria\CheckReachLimitDownlineCommandTests.cs" />
+    <Compile Include="Criteria\RollbackBalanceCustomerCommandTests.cs" />
+    <Compile Include="Criteria\InsertBalanceCustomerCommandTests.cs" />
     <Compile Include="Criteria\CopyAgentCommandTests.cs" />
     <Compile Include="Criteria\CopyCustomerCommandForTesting.cs" />
     <Compile Include="Criteria\CopyCustomerCommandTests.cs" />
@@ -158,6 +160,7 @@
     <Compile Include="Models\UserLevelTests.cs" />
     <Compile Include="Params\CopyCustomerParamTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BalanceServiceTests.cs" />
     <Compile Include="Services\CustomerServiceTests.cs" />
     <Compile Include="Services\DCSServiceTests.cs" />
     <Compile Include="Services\ThirdPartyProductServiceTests.cs" />

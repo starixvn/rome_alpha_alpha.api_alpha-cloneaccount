@@ -16,9 +16,9 @@
         IRequestHandler<CheckReachLimitDownlineQuery, Result>,
         IRequestHandler<CheckLimitNewDownlineQuery, Result>
     {
-        private readonly CustomerService customerService;
+        private readonly ICustomerService customerService;
 
-        public CustomerHandler(CustomerService customerService)
+        public CustomerHandler(ICustomerService customerService)
         {
             this.customerService = customerService;
         }

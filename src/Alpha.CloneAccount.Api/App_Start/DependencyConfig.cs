@@ -73,7 +73,7 @@ namespace Alpha.CloneAccount.Api.App_Start
             container.RegisterSingleton(() => Fanex.Logging.Logger.Log);
 
             container.RegisterSingleton<Encryptor, EncryptorImpl>();
-            container.Register<CustomerService, CustomerServiceImpl>(Lifestyle.Scoped);
+            container.Register<ICustomerService, CustomerServiceImpl>(Lifestyle.Scoped);
             container.Register<IBalanceService, BalanceService>(Lifestyle.Scoped);
             container.RegisterSingleton<PasswordService, PasswordServiceImpl>();
             container.RegisterSingleton<SportbooksCopyMemberSpParamsBuilder, SportbooksCopyMemberSpParamsBuilderImpl>();

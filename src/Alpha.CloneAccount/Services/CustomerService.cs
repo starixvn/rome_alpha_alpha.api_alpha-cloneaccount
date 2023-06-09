@@ -15,7 +15,7 @@
     using Params;
     using Utils;
 
-    public interface CustomerService
+    public interface ICustomerService
     {
         Task<Result> ValidateMaxNewMember(int agentId, string language);
 
@@ -28,7 +28,7 @@
         Task<Result> CheckLimitNewDownline(CheckLimitNewDownlineParam param);
     }
 
-    public class CustomerServiceImpl : CustomerService
+    public class CustomerServiceImpl : ICustomerService
     {
         private readonly IDynamicRepository repository;
         private readonly PasswordService passwordService;

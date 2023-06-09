@@ -16,7 +16,7 @@
         public int ErrCode { get; set; }
 
         [SpParam(Ignored = true)]
-        private bool IsCreditBalance { get; }
+        internal bool IsCreditBalance { get; }
 
         public override string GetSettingKey()
             => IsCreditBalance ? "SiteDB_Dot_BalanceCreditInitialize" : "SiteDB_Dot_BalanceDebitInitialize";
