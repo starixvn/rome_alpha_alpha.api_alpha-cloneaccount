@@ -30,9 +30,6 @@
                 && actualResult.MasterId == 0
                 && actualResult.AgentId == 0
                 && actualResult.RoleId == 0
-                && !actualResult.HideNG2
-                && !actualResult.SyncedNG2
-                && !actualResult.DisableNG2
                 );
         }
 
@@ -56,10 +53,7 @@
                 33120480,
                 0,
                 0,
-                3,
-                false,
-                true,
-                false
+                3
                 );
 
             // Assert
@@ -80,9 +74,6 @@
                 && actualResult.MasterId == 0
                 && actualResult.AgentId == 0
                 && actualResult.RoleId == 3
-                && !actualResult.HideNG2
-                && actualResult.SyncedNG2
-                && !actualResult.DisableNG2
                 && actualResult.CustLevel.IsMasterLevel());
         }
     }
