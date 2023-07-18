@@ -28,11 +28,6 @@
     <Setting Key="Age_CustomerCheckReachDownline" SpName="Age_CustomerCheckReachDownline" DbName="DBCust.CustDB.BODBDownlineNet" Plain="0" />
   </Function>
 
-  <Function Name="NG2">
-    <Setting Key="Acc_CustSetting_SyncGameStatusUpd" SpName="Acc_CustSetting_SyncGameStatusUpd" DbName="DBCUST.CustDB.BODBDownlineNet" Plain="0" />
-    <Setting Key="Acc_CustSetting_DisableGameStatusUpd" SpName="Acc_CustSetting_DisableGameStatusUpd" DbName="DBCUST.CustDB.BODBDownlineNet" Plain="0" />
-  </Function>
-
   <Function Name="UM On product">
     <Setting Key="Acc_CheckUM" SpName="Acc_CheckUM" DbName="DBCust.CustDB.BODBDownlineNet" />
   </Function>

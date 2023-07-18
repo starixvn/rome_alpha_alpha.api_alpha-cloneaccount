@@ -4,7 +4,6 @@ namespace Alpha.CloneAccount.Api.App_Start
     using Controllers;
     using Fanex.Data.Repository;
     using Fanex.Logging;
-    using Fanex.Module.NG2.Services;
     using MediatR;
     using Services;
     using SimpleInjector;
@@ -78,8 +77,6 @@ namespace Alpha.CloneAccount.Api.App_Start
             container.RegisterSingleton<SportbooksCopyMemberSpParamsBuilder, SportbooksCopyMemberSpParamsBuilderImpl>();
             container.Register<ThirdPartyProductService, ThirdPartyProductServiceImpl>(Lifestyle.Scoped);
             container.RegisterSingleton<DCSService, DCSServiceImpl>();
-            container.RegisterSingleton<NG2Service, NG2ServiceImpl>();
-            container.RegisterSingleton<ING2StatusService, NG2StatusService>();
         }
     }
 }

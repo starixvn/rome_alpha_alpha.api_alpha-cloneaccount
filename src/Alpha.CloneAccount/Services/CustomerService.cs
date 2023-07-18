@@ -235,24 +235,13 @@
             var sourceCustomer = await GetCustomerInfo(param.SourceCustId);
             var actor = await GetCustomerInfo(param.ActorId);
 
-            if (createdCustomer != null && sourceCustomer != null && actor != null)
+            if (createdCustomer != null && sourceCustomer != null && actor != null && param.ActorUserLevel.IsAgentLevel())
             {
-                if (param.ActorUserLevel.IsAgentLevel())
-                {
-                    await thirdPartyProductService.SyncMemberSettings(
-                        createdCustomer,
-                        sourceCustomer,
-                        actor,
-                        param);
-                }
-                else
-                {
-                    thirdPartyProductService.SyncMasterOrAgentSettings(
-                        createdCustomer,
-                        sourceCustomer,
-                        actor,
-                        param);
-                }
+                await thirdPartyProductService.SyncMemberSettings(
+                    createdCustomer,
+                    sourceCustomer,
+                    actor,
+                    param);
             }
         }
 
