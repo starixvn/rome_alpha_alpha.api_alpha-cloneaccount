@@ -15,12 +15,12 @@
     [Trait("Category", "Handlers")]
     public class CustomerHandlerTests
     {
-        private readonly CustomerService customerService;
+        private readonly ICustomerService customerService;
         private readonly CustomerHandler customerHandler;
 
         public CustomerHandlerTests()
         {
-            customerService = Substitute.For<CustomerService>();
+            customerService = Substitute.For<ICustomerService>();
             customerHandler = new CustomerHandler(customerService);
         }
 

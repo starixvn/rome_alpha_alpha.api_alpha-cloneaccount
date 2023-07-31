@@ -1,11 +1,13 @@
 ﻿namespace Alpha.CloneAccount.Services
 {
+    using Alpha.CloneAccount;
     using System;
     using System.Data;
     using System.Threading.Tasks;
     using Configurations;
     using Constants;
     using Criteria;
+    using Fanex.Caching;
     using Fanex.Data;
     using Fanex.Data.Repository;
     using Fanex.Logging;
@@ -13,7 +15,7 @@
     using Params;
     using Utils;
 
-    public interface CustomerService
+    public interface ICustomerService
     {
         Task<Result> ValidateMaxNewMember(int agentId, string language);
 
@@ -26,23 +28,26 @@
         Task<Result> CheckLimitNewDownline(CheckLimitNewDownlineParam param);
     }
 
-    public class CustomerServiceImpl : CustomerService
+    public class CustomerServiceImpl : ICustomerService
     {
         private readonly IDynamicRepository repository;
         private readonly PasswordService passwordService;
         private readonly SportbooksCopyMemberSpParamsBuilder copyMemberSpParamsBuilder;
         private readonly ThirdPartyProductService thirdPartyProductService;
+        private readonly IBalanceService balanceCustomerService;
 
         public CustomerServiceImpl(
             IDynamicRepository repository,
             PasswordService passwordService,
             SportbooksCopyMemberSpParamsBuilder copyMemberSpParamsBuilder,
-            ThirdPartyProductService thirdPartyProductService)
+            ThirdPartyProductService thirdPartyProductService,
+            IBalanceService balanceCustomerService)
         {
             this.repository = repository;
             this.passwordService = passwordService;
             this.copyMemberSpParamsBuilder = copyMemberSpParamsBuilder;
             this.thirdPartyProductService = thirdPartyProductService;
+            this.balanceCustomerService = balanceCustomerService;
         }
 
         public async Task<Result> ValidateMaxNewMember(int agentId, string language)
@@ -186,7 +191,6 @@
         private async Task<CopyCustomerResult> CopyMember(CopyCustomerParam param)
         {
             var dataTable = await GetMemberSportbooksSetting(param.SourceCustId);
-
             if (dataTable.Rows.Count > 0)
             {
                 using (IObjectDb db = new ObjectDb("Acc_CustomerInsMember_Ag"))
@@ -198,16 +202,22 @@
 
                     await db.ExecuteNonQueryAsync(spParams);
                     var ouputParams = db.GetOuputParams();
+                    var custId = Convert.ToInt32(ouputParams["custid"]);
+                    var errCode = Convert.ToInt32(ouputParams["errcode"]);
+                    if (errCode == 0)
+                    {
+                        await balanceCustomerService.InitBalanceCustomer(custId);
+                    }
 
                     return new CopyCustomerResult(
-                        Convert.ToInt32(ouputParams["custid"]),
+                        custId,
                         param.UserName,
                         param.Password,
                         param.ActorUserLevel.GetDirectDownLineLevel().Value,
                         param.SourceUsername,
                         param.Credit,
                         param.MaxCredit,
-                        Convert.ToInt32(ouputParams["errcode"]),
+                        errCode,
                         ouputParams["errmsg"].ToString());
                 }
             }

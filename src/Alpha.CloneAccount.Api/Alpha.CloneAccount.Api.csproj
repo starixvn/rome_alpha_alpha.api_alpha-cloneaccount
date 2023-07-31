@@ -215,7 +215,6 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -246,6 +245,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SPNames\Pro\SiteDB.bodb02.BODBDownlineNet.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\SPNames\Pro\DBCust.CustDB.BODBDownlineNet.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -256,6 +258,9 @@
     </Content>
     <Content Include="App_Data\SPNames\SIT\DBLOG.bodb_CustomerLog.BODBDownlineNet.xml" />
     <Content Include="App_Data\SPNames\SIT\DBMSG.bodb_Message.xml" />
+    <Content Include="App_Data\SPNames\SIT\SiteDB.bodb02.BODBDownlineNet.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -296,6 +301,9 @@
     <Compile Include="Requests\CopyCustomerCommand.cs" />
     <Compile Include="Requests\HashPasswordCommand.cs" />
     <Compile Include="Requests\ValidateMaxNewMemberQuery.cs" />
+    <Compile Include="Utilities\DbSettingProviderManagerExtension.cs" />
+    <Compile Include="Utilities\ShardDbSettingProvider.cs" />
+    <Compile Include="Utilities\ShardInfoAccessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

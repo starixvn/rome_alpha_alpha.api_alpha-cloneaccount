@@ -18,7 +18,8 @@
         private readonly PasswordService passwordService;
         private readonly SportbooksCopyMemberSpParamsBuilder copyMemberSpParamsBuilder;
         private readonly ThirdPartyProductService thirdPartyProductService;
-        private readonly CustomerService customerService;
+        private readonly ICustomerService customerService;
+        private readonly IBalanceService balanceService;
 
         public CustomerServiceTests()
         {
@@ -26,7 +27,8 @@
             passwordService = Substitute.For<PasswordService>();
             copyMemberSpParamsBuilder = Substitute.For<SportbooksCopyMemberSpParamsBuilder>();
             thirdPartyProductService = Substitute.For<ThirdPartyProductService>();
-            customerService = new CustomerServiceImpl(repository, passwordService, copyMemberSpParamsBuilder, thirdPartyProductService);
+            balanceService = Substitute.For<IBalanceService>();
+            customerService = new CustomerServiceImpl(repository, passwordService, copyMemberSpParamsBuilder, thirdPartyProductService, balanceService);
         }
 
         [Fact]

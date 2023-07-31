@@ -9,6 +9,7 @@ namespace Alpha.CloneAccount.Api
     using Fanex.RemotingRef;
     using System;
     using System.Web.Http;
+    using Alpha.CloneAccount.Api.Utilities;
 
     public class WebApiApplication : System.Web.HttpApplication
     {
@@ -25,7 +26,7 @@ namespace Alpha.CloneAccount.Api
                 .StartNewSession()
                 .Use(new OldConnectionStringProvider())
                 .UseDefaultDbSettingProvider(resourcePath: AppSettings.StoredProcedurePath, enableWatching: true)
-                .Use((settingKey, commandTimeout) => new WrappingExceptionObjectDb(settingKey, commandTimeout))
+                .UseShardDbSettingProvider()
                 .Run();
 
             RefDataTypeContainer
