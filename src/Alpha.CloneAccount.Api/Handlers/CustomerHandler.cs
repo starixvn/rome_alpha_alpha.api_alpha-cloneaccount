@@ -62,10 +62,30 @@
                     request.Language));
 
         public async Task<Result> Handle(CheckLimitNewDownlineQuery request, CancellationToken cancellationToken)
-            => await customerService.CheckLimitNewDownline(
-                new CheckLimitNewDownlineParam(
-                    request.CustId,
-                    Enumeration.FromValue<UserLevel>(request.CustLevel),
-                    request.Language));
+        {
+            var result = new Result(0, string.Empty);
+            if (request.CustLevel == 2)
+            {
+                result = await Handle(new ValidateMaxNewMemberQuery(request.CustId, request.Language), cancellationToken);
+            }
+
+            if (result.IsSuccess)
+            {
+                result = await Handle(new CheckReachLimitDownlineQuery
+                { CustId = request.CustId, CustLevel = request.CustLevel, Language = request.Language, Username = request.ActorUsername },
+                cancellationToken);
+            }
+
+            if (result.IsSuccess)
+            {
+                result = await customerService.CheckLimitNewDownline(
+                    new CheckLimitNewDownlineParam(
+                        request.CustId,
+                        Enumeration.FromValue<UserLevel>(request.CustLevel),
+                        request.Language));
+            }
+
+            return result;
+        }
     }
 }
