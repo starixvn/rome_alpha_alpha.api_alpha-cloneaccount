@@ -245,6 +245,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SPNames\DR\DBCust.CustDB.BODBDownlineNet.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\SPNames\DR\DBLOG.bodb_CustomerLog.BODBDownlineNet.xml" />
+    <Content Include="App_Data\SPNames\DR\DBMSG.bodb_Message.xml" />
+    <Content Include="App_Data\SPNames\DR\SiteDB.bodb02.BODBDownlineNet.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\SPNames\Pro\SiteDB.bodb02.BODBDownlineNet.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -332,12 +340,12 @@
       <DependentUpon>Web.AppSettings.config</DependentUpon>
     </Content>
     <Content Include="Alpha.CloneAccount.Api.ruleset" />
-    <None Include="Web.AppSettings.dr.config">
+    <Content Include="Web.AppSettings.dr.config">
       <DependentUpon>Web.AppSettings.config</DependentUpon>
-    </None>
-    <None Include="Web.ConnectionStrings.dr.config">
+    </Content>
+    <Content Include="Web.ConnectionStrings.dr.config">
       <DependentUpon>Web.ConnectionStrings.config</DependentUpon>
-    </None>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
