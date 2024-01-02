@@ -24,6 +24,8 @@
 
         public static string ApiKey => GetConfigValue("ApiKey");
 
+        public static string SiteDB03IP => GetConfigValue("SiteDB.03");
+
         public static byte SettingStatus
         {
             get
@@ -42,6 +44,8 @@
         public static int GetIntConfigValue(string configName) => int.Parse(GetConfigValue(configName));
 
         public static string GetConfigValue(string configName) => AppSettingValues[configName];
+
+       
 
         public static void Verify()
         {

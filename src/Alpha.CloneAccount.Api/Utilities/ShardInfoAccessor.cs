@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Alpha.CloneAccount.Configurations;
+using System;
 using System.Web;
 
 namespace Alpha.CloneAccount.Api.Utilities
@@ -26,6 +27,6 @@ namespace Alpha.CloneAccount.Api.Utilities
 
         private static bool IsBelongSiteDB(string key) => key.StartsWith(PrefixSiteDB, StringComparison.OrdinalIgnoreCase);
 
-        private static string SiteDBServer => HttpContext.Current?.Request.Headers["X-SiteDBServer"];
+        private static string SiteDBServer =>  string.IsNullOrEmpty(AppSettings.SiteDB03IP) ? HttpContext.Current?.Request.Headers["X-SiteDBServer"] : AppSettings.SiteDB03IP;
     }
 }
