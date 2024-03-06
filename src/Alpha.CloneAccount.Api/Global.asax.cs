@@ -6,7 +6,6 @@ namespace Alpha.CloneAccount.Api
     using Fanex.Data;
     using Fanex.Data.CrossCutting.WrappingException;
     using Fanex.Data.OldConnectionStringProvider;
-    using Fanex.RemotingRef;
     using System;
     using System.Web.Http;
     using Alpha.CloneAccount.Api.Utilities;
@@ -28,10 +27,6 @@ namespace Alpha.CloneAccount.Api
                 .UseDefaultDbSettingProvider(resourcePath: AppSettings.StoredProcedurePath, enableWatching: true)
                 .UseShardDbSettingProvider()
                 .Run();
-
-            RefDataTypeContainer
-                .ConnectTo(new Uri(AppSettings.RemoteRefURL))
-                .FromApplication("Alpha.CloneAccount.Api");
         }
     }
 }
